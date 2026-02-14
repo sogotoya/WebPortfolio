@@ -1,16 +1,16 @@
 export const m_ProjectData = [
     {
         id: 1,
-        title: "Neon Genesis",
+        title: "Axis:Save",
         description: "A futuristic city simulation with real-time traffic AI.",
-        videoUrl: "https://vimeo.com/123456789",
+        videoUrl: "/projects/AxisSave/Game4.mp4",
         imageUrls: [
-            "https://placehold.co/600x400/000000/00f3ff?text=Neon+Genesis+1",
-            "https://placehold.co/600x400/0a0a0a/00f3ff?text=Neon+Genesis+2",
-            "https://placehold.co/600x400/1a1a1a/00f3ff?text=Neon+Genesis+3",
-            "https://placehold.co/600x400/2a2a2a/00f3ff?text=Neon+Genesis+4",
+            "/projects/AxisSave/AxisSave1.png",
+            "/projects/AxisSave/AxisSave2.png",
+            "/projects/AxisSave/AxisSave3.png",
+            "/projects/AxisSave/AxisSave4.png",
         ],
-        githubUrl: "https://github.com/user/neon-genesis",
+        githubUrl: "https://github.com/user/axis-save",
         technologies: ["Unity", "C#", "HLSL"],
     },
     {
