@@ -48,7 +48,7 @@ const ProjectCard = ({ project }) => {
                         />
                     )}
                     <img
-                        src={project.imageUrl}
+                        src={project.imageUrls[0]}
                         alt={project.title}
                         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
                     />

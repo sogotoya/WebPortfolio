@@ -3,8 +3,13 @@ export const m_ProjectData = [
         id: 1,
         title: "Neon Genesis",
         description: "A futuristic city simulation with real-time traffic AI.",
-        videoUrl: "https://vimeo.com/123456789", // Placeholder
-        imageUrl: "https://placehold.co/600x400/000000/00f3ff?text=Neon+Genesis",
+        videoUrl: "https://vimeo.com/123456789",
+        imageUrls: [
+            "https://placehold.co/600x400/000000/00f3ff?text=Neon+Genesis+1",
+            "https://placehold.co/600x400/0a0a0a/00f3ff?text=Neon+Genesis+2",
+            "https://placehold.co/600x400/1a1a1a/00f3ff?text=Neon+Genesis+3",
+            "https://placehold.co/600x400/2a2a2a/00f3ff?text=Neon+Genesis+4",
+        ],
         githubUrl: "https://github.com/user/neon-genesis",
         technologies: ["Unity", "C#", "HLSL"],
     },
@@ -12,8 +17,13 @@ export const m_ProjectData = [
         id: 2,
         title: "Cyber Katana",
         description: "First-person slasher with physics-based cutting mechanics.",
-        videoUrl: "https://vimeo.com/987654321", // Placeholder
-        imageUrl: "https://placehold.co/600x400/000000/ff00ff?text=Cyber+Katana",
+        videoUrl: "https://vimeo.com/987654321",
+        imageUrls: [
+            "https://placehold.co/600x400/000000/ff00ff?text=Cyber+Katana+1",
+            "https://placehold.co/600x400/0a0a0a/ff00ff?text=Cyber+Katana+2",
+            "https://placehold.co/600x400/1a1a1a/ff00ff?text=Cyber+Katana+3",
+            "https://placehold.co/600x400/2a2a2a/ff00ff?text=Cyber+Katana+4",
+        ],
         githubUrl: "https://github.com/user/cyber-katana",
         technologies: ["Unreal Engine 5", "Blueprints", "C++"],
     },
@@ -21,8 +31,13 @@ export const m_ProjectData = [
         id: 3,
         title: "Void Drifter",
         description: "Zero-gravity racing game with customizable hovercrafts.",
-        videoUrl: "https://vimeo.com/456789123", // Placeholder
-        imageUrl: "https://placehold.co/600x400/000000/fcee0a?text=Void+Drifter",
+        videoUrl: "https://vimeo.com/456789123",
+        imageUrls: [
+            "https://placehold.co/600x400/000000/fcee0a?text=Void+Drifter+1",
+            "https://placehold.co/600x400/0a0a0a/fcee0a?text=Void+Drifter+2",
+            "https://placehold.co/600x400/1a1a1a/fcee0a?text=Void+Drifter+3",
+            "https://placehold.co/600x400/2a2a2a/fcee0a?text=Void+Drifter+4",
+        ],
         githubUrl: "https://github.com/user/void-drifter",
         technologies: ["React", "Three.js", "WebGL"],
     },
@@ -30,8 +45,13 @@ export const m_ProjectData = [
         id: 4,
         title: "Net Runner",
         description: "Hacking simulation puzzle game.",
-        videoUrl: "https://vimeo.com/789123456", // Placeholder
-        imageUrl: "https://placehold.co/600x400/000000/ffffff?text=Net+Runner",
+        videoUrl: "https://vimeo.com/789123456",
+        imageUrls: [
+            "https://placehold.co/600x400/000000/ffffff?text=Net+Runner+1",
+            "https://placehold.co/600x400/0a0a0a/ffffff?text=Net+Runner+2",
+            "https://placehold.co/600x400/1a1a1a/ffffff?text=Net+Runner+3",
+            "https://placehold.co/600x400/2a2a2a/ffffff?text=Net+Runner+4",
+        ],
         githubUrl: "https://github.com/user/net-runner",
         technologies: ["Python", "PyGame"],
     },

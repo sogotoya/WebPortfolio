@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import { m_ProjectData } from '../constants/m_ProjectData';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Github, ExternalLink } from 'lucide-react';
+import ImageCarousel from '../components/ImageCarousel';
 
 const ProjectDetail = () => {
     const { id } = useParams();
@@ -37,12 +38,8 @@ const ProjectDetail = () => {
                     <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-neon-pink z-20"></div>
                     <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-neon-pink z-20"></div>
 
-                    <div className="aspect-video mb-8 overflow-hidden bg-black relative">
-                        {/* Show video if available, else image */}
-                        <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover opacity-80" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            {/* Play button overlay or similar could go here */}
-                        </div>
+                    <div className="aspect-video mb-8 overflow-hidden bg-black relative rounded-lg border border-gray-800">
+                        <ImageCarousel images={project.imageUrls} />
                     </div>
 
                     <h1 className="text-4xl md:text-5xl font-orbitron font-bold text-white mb-4">{project.title}</h1>
