@@ -94,9 +94,9 @@ const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
 
     // スライドアニメーションの方向
     const variants = {
-        enter: { opacity: 0, x: slideDirection * 100 },
+        enter: (direction) => ({ opacity: 0, x: direction * 100 }),
         center: { opacity: 1, x: 0 },
-        exit: { opacity: 0, x: slideDirection * -100 },
+        exit: (direction) => ({ opacity: 0, x: direction * -100 }),
     };
 
     return (
@@ -109,7 +109,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseLeave}
         >
-            <AnimatePresence mode='wait' custom={slideDirection}>
+            <AnimatePresence initial={false} mode='wait' custom={slideDirection}>
                 <motion.img
                     key={currentIndex}
                     src={images[currentIndex]}
@@ -119,6 +119,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
                     initial="enter"
                     animate="center"
                     exit="exit"
+                    custom={slideDirection}
                     transition={{ duration: 0.4 }}
                     draggable={false}
                 />

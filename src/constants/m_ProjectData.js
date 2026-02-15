@@ -10,7 +10,8 @@ export const m_ProjectData = [
             "/projects/AxisSave/AxisSave3.png",
             "/projects/AxisSave/AxisSave4.png",
         ],
-        githubUrl: "https://github.com/user/axis-save",
+        githubUrl: "https://github.com/chogeru/3DCombat",
+        downloadUrl: "https://drive.google.com/drive/folders/1vabvlXhPTLtVtxnlnO1IsJV7u5S8FY4F?usp=drive_link",
         technologies: ["Unity", "C#", "HLSL"],
     },
     {
@@ -25,6 +26,7 @@ export const m_ProjectData = [
             "https://placehold.co/600x400/2a2a2a/ff00ff?text=Cyber+Katana+4",
         ],
         githubUrl: "https://github.com/user/cyber-katana",
+        downloadUrl: "",
         technologies: ["Unreal Engine 5", "Blueprints", "C++"],
     },
     {
@@ -39,6 +41,7 @@ export const m_ProjectData = [
             "https://placehold.co/600x400/2a2a2a/fcee0a?text=Void+Drifter+4",
         ],
         githubUrl: "https://github.com/user/void-drifter",
+        downloadUrl: "",
         technologies: ["React", "Three.js", "WebGL"],
     },
     {
@@ -53,6 +56,7 @@ export const m_ProjectData = [
             "https://placehold.co/600x400/2a2a2a/ffffff?text=Net+Runner+4",
         ],
         githubUrl: "https://github.com/user/net-runner",
+        downloadUrl: "",
         technologies: ["Python", "PyGame"],
     },
 ];

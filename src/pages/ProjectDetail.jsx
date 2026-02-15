@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { m_ProjectData } from '../constants/m_ProjectData';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Github, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Download } from 'lucide-react';
 import ImageCarousel from '../components/ImageCarousel';
 
 const ProjectDetail = () => {
@@ -66,6 +66,17 @@ const ProjectDetail = () => {
                             >
                                 <Github size={20} className="mr-2 group-hover:text-neon-pink transition-colors" />
                                 View Source
+                            </a>
+                        )}
+                        {project.downloadUrl && (
+                            <a
+                                href={project.downloadUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center px-6 py-3 bg-dark-bg border border-gray-600 hover:border-neon-blue text-white transition-colors group"
+                            >
+                                <Download size={20} className="mr-2 group-hover:text-neon-blue transition-colors" />
+                                Download
                             </a>
                         )}
                         {/* Example for live demo if needed */}
