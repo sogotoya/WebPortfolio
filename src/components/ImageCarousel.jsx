@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 
 const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
     // 動画がある場合、スライド配列の先頭に動画を挿入
@@ -12,6 +12,7 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
     const [isAutoPlaying, setIsAutoPlaying] = useState(!hasVideo);
     const [slideDirection, setSlideDirection] = useState(1); // 1: next, -1: prev
     const [videoEnded, setVideoEnded] = useState(false);
+    const [isVideoPaused, setIsVideoPaused] = useState(false); // 再生/一時停止状態
 
     // マウスドラッグ用ローカル変数
     const dragStartX = useRef(0);
@@ -22,16 +23,34 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
     // 現在のスライドが動画かどうか
     const isVideoSlide = hasVideo && currentIndex === 0;
 
+    // 動画の再生/一時停止切り替え
+    const toggleVideo = useCallback(() => {
+        if (!videoRef.current) return;
+        if (videoRef.current.paused) {
+            videoRef.current.play();
+            setIsVideoPaused(false);
+        } else {
+            videoRef.current.pause();
+            setIsVideoPaused(true);
+        }
+    }, []);
+
     // 次の画像へ
     const nextImage = useCallback(() => {
         setSlideDirection(1);
         setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+        // スライド切り替え時に動画状態をリセット
+        setIsVideoPaused(false);
+        setVideoEnded(false);
     }, [totalSlides]);
 
     // 前の画像へ
     const prevImage = useCallback(() => {
         setSlideDirection(-1);
         setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
+        // スライド切り替え時に動画状態をリセット
+        setIsVideoPaused(false);
+        setVideoEnded(false);
     }, [totalSlides]);
 
     // 手動操作時のタイマーリセット
@@ -48,6 +67,7 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
     // 動画の再生終了時
     const handleVideoEnded = useCallback(() => {
         setVideoEnded(true);
+        setIsVideoPaused(false);
         // 次のスライド（最初の画像）に進む
         setSlideDirection(1);
         setCurrentIndex(1);
@@ -96,6 +116,9 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
         } else if (dragDistance > threshold) {
             // 右にドラッグ → 前の画像
             handleManualNavigation('prev');
+        } else if (Math.abs(dragDistance) < 5 && isVideoSlide) {
+            // クリック（ドラッグ距離が小さい）かつ動画スライドの場合 → 再生/一時停止
+            toggleVideo();
         }
     };
 
@@ -158,6 +181,19 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
                             playsInline
                             onEnded={handleVideoEnded}
                         />
+                        {/* 再生/一時停止ボタンオーバーレイ */}
+                        <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${isVideoPaused ? 'opacity-100 bg-black/40' : 'opacity-0 hover:opacity-100'}`}>
+                            <button
+                                onClick={(e) => { e.stopPropagation(); toggleVideo(); }}
+                                className="bg-black/60 text-neon-pink p-4 rounded-full border border-neon-blue backdrop-blur-sm transform hover:scale-110 transition-transform"
+                            >
+                                {isVideoPaused ? (
+                                    <Play size={48} fill="currentColor" />
+                                ) : (
+                                    <Pause size={48} fill="currentColor" />
+                                )}
+                            </button>
+                        </div>
                     </motion.div>
                 ) : (
                     <motion.img

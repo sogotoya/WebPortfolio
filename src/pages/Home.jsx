@@ -14,7 +14,7 @@ const Home = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                    PORTFOLIO
+                    TOYASOGO PORTFOLIO
                 </motion.h1>
                 <motion.p
                     className="text-gray-500 text-sm font-rajdhani tracking-widest"
