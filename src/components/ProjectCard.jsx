@@ -1,16 +1,25 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ project, isHero = false }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
+    const [hoverImageIndex, setHoverImageIndex] = useState(0);
     const videoRef = useRef(null);
+    const imageTimerRef = useRef(null);
 
     const handleMouseEnter = () => {
         setIsHovered(true);
         if (videoRef.current) {
             videoRef.current.play().catch(e => console.log('Video play failed', e));
+        }
+        // 動画がない場合、画像の自動切り替えを開始
+        if (!project.videoUrl && project.imageUrls.length > 1) {
+            setHoverImageIndex(0);
+            imageTimerRef.current = setInterval(() => {
+                setHoverImageIndex((prevIndex) => (prevIndex + 1) % project.imageUrls.length);
+            }, 1500);
         }
     };
 
@@ -21,7 +30,22 @@ const ProjectCard = ({ project, isHero = false }) => {
             videoRef.current.currentTime = 0;
         }
         setIsMuted(true);
+        // 画像切り替えタイマーをクリア
+        if (imageTimerRef.current) {
+            clearInterval(imageTimerRef.current);
+            imageTimerRef.current = null;
+        }
+        setHoverImageIndex(0);
     };
+
+    // コンポーネントアンマウント時にタイマーをクリア
+    useEffect(() => {
+        return () => {
+            if (imageTimerRef.current) {
+                clearInterval(imageTimerRef.current);
+            }
+        };
+    }, []);
 
     // 音声トグルハンドラ（Linkのページ遷移を防止しつつミュート切り替え）
     const handleToggleMute = (e) => {
@@ -57,9 +81,9 @@ const ProjectCard = ({ project, isHero = false }) => {
                         />
                     )}
                     <img
-                        src={project.imageUrls[project.imageUrls.length - 1]}
+                        src={project.imageUrls[isHovered && !project.videoUrl ? hoverImageIndex : project.imageUrls.length - 1]}
                         alt={project.title}
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered && project.videoUrl ? 'opacity-0' : 'opacity-100'}`}
                     />
 
                     {/* 音声トグルボタン（ホバー中かつ動画がある場合のみ表示） */}

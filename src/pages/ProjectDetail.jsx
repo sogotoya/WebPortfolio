@@ -5,9 +5,11 @@ import { m_ProjectData } from '../constants/m_ProjectData';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Github, ExternalLink, Download } from 'lucide-react';
 import ImageCarousel from '../components/ImageCarousel';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const ProjectDetail = () => {
     const { id } = useParams();
+    const { language } = useLanguage();
     const project = m_ProjectData.find((p) => p.id === parseInt(id));
 
     if (!project) {
@@ -24,12 +26,23 @@ const ProjectDetail = () => {
     return (
         <Layout>
             <div className="max-w-4xl mx-auto">
-                <Link to="/" className="inline-flex items-center text-gray-400 hover:text-neon-blue mb-8 transition-colors">
+                {/* プロジェクト背景画像 */}
+                {project.backgroundUrl && (
+                    <>
+                        <div
+                            className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+                            style={{ backgroundImage: `url(${project.backgroundUrl})` }}
+                        />
+                        <div className="fixed inset-0 z-0 bg-dark-bg/70" />
+                    </>
+                )}
+
+                <Link to="/" className="relative z-10 inline-flex items-center text-gray-400 hover:text-neon-blue mb-8 transition-colors">
                     <ArrowLeft size={20} className="mr-2" /> Back to Works
                 </Link>
 
                 <motion.div
-                    className="bg-cyber-gray border border-gray-800 p-6 relative overflow-hidden"
+                    className="relative z-10 bg-cyber-gray border border-gray-800 p-6 overflow-hidden"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
@@ -52,9 +65,10 @@ const ProjectDetail = () => {
                         ))}
                     </div>
 
-                    <p className="text-gray-300 text-lg leading-relaxed mb-8 font-rajdhani">
-                        {project.description}
-                    </p>
+                    <p
+                        className="text-gray-300 text-lg leading-relaxed mb-8 font-rajdhani"
+                        dangerouslySetInnerHTML={{ __html: (language === 'en' && project.descriptionEn ? project.descriptionEn : project.description).replace(/\n/g, '<br/>') }}
+                    />
 
                     <div className="flex gap-4">
                         {project.githubUrl && (
@@ -73,9 +87,9 @@ const ProjectDetail = () => {
                                 href={project.downloadUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center px-6 py-3 bg-dark-bg border border-gray-600 hover:border-neon-blue text-white transition-colors group"
+                                className="flex items-center px-6 py-3 bg-neon-blue text-black font-bold hover:bg-white transition-colors group"
                             >
-                                <Download size={20} className="mr-2 group-hover:text-neon-blue transition-colors" />
+                                <Download size={20} className="mr-2" />
                                 Download
                             </a>
                         )}
