@@ -52,7 +52,7 @@ const ProjectDetail = () => {
                     <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-neon-pink z-20"></div>
 
                     <div className="aspect-video mb-8 overflow-hidden bg-black relative rounded-lg border border-gray-800">
-                        <ImageCarousel images={project.imageUrls} />
+                        <ImageCarousel images={project.imageUrls} videoUrl={project.videoUrl} />
                     </div>
 
                     <h1 className="text-4xl md:text-5xl font-orbitron font-bold text-white mb-4">{project.title}</h1>

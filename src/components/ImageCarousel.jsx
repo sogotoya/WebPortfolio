@@ -2,35 +2,58 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
+const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
+    // 動画がある場合、スライド配列の先頭に動画を挿入
+    const hasVideo = videoUrl && videoUrl.length > 0 && !videoUrl.startsWith('http');
+    const totalSlides = hasVideo ? images.length + 1 : images.length;
+
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    // 動画がある場合は自動再生OFF、動画が終わってからON
+    const [isAutoPlaying, setIsAutoPlaying] = useState(!hasVideo);
     const [slideDirection, setSlideDirection] = useState(1); // 1: next, -1: prev
+    const [videoEnded, setVideoEnded] = useState(false);
 
     // マウスドラッグ用ローカル変数
     const dragStartX = useRef(0);
     const isDragging = useRef(false);
     const containerRef = useRef(null);
+    const videoRef = useRef(null);
+
+    // 現在のスライドが動画かどうか
+    const isVideoSlide = hasVideo && currentIndex === 0;
 
     // 次の画像へ
     const nextImage = useCallback(() => {
         setSlideDirection(1);
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, [images.length]);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+    }, [totalSlides]);
 
     // 前の画像へ
     const prevImage = useCallback(() => {
         setSlideDirection(-1);
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-    }, [images.length]);
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
+    }, [totalSlides]);
 
     // 手動操作時のタイマーリセット
     const handleManualNavigation = useCallback((direction) => {
         setIsAutoPlaying(false);
         if (direction === 'next') nextImage();
         else prevImage();
-        setTimeout(() => setIsAutoPlaying(true), 10);
-    }, [nextImage, prevImage]);
+        // 動画が終了済み or 動画なしの場合のみ自動再生を再開
+        if (!hasVideo || videoEnded) {
+            setTimeout(() => setIsAutoPlaying(true), 10);
+        }
+    }, [nextImage, prevImage, hasVideo, videoEnded]);
+
+    // 動画の再生終了時
+    const handleVideoEnded = useCallback(() => {
+        setVideoEnded(true);
+        // 次のスライド（最初の画像）に進む
+        setSlideDirection(1);
+        setCurrentIndex(1);
+        // 自動再生を開始
+        setIsAutoPlaying(true);
+    }, []);
 
     // キーボード操作
     useEffect(() => {
@@ -99,6 +122,11 @@ const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
         exit: (direction) => ({ opacity: 0, x: direction * -100 }),
     };
 
+    // 現在のスライドに対応する画像のインデックスを取得
+    const getImageIndex = (slideIndex) => {
+        return hasVideo ? slideIndex - 1 : slideIndex;
+    };
+
     return (
         <div
             ref={containerRef}
@@ -110,19 +138,42 @@ const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
             onMouseLeave={handleMouseLeave}
         >
             <AnimatePresence initial={false} mode='wait' custom={slideDirection}>
-                <motion.img
-                    key={currentIndex}
-                    src={images[currentIndex]}
-                    alt={`Slide ${currentIndex + 1}`}
-                    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                    variants={variants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    custom={slideDirection}
-                    transition={{ duration: 0.4 }}
-                    draggable={false}
-                />
+                {isVideoSlide ? (
+                    <motion.div
+                        key="video-slide"
+                        className="absolute inset-0 w-full h-full"
+                        variants={variants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        custom={slideDirection}
+                        transition={{ duration: 0.4 }}
+                    >
+                        <video
+                            ref={videoRef}
+                            src={videoUrl}
+                            className="w-full h-full object-cover"
+                            autoPlay
+                            muted
+                            playsInline
+                            onEnded={handleVideoEnded}
+                        />
+                    </motion.div>
+                ) : (
+                    <motion.img
+                        key={currentIndex}
+                        src={images[getImageIndex(currentIndex)]}
+                        alt={`Slide ${currentIndex + 1}`}
+                        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                        variants={variants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        custom={slideDirection}
+                        transition={{ duration: 0.4 }}
+                        draggable={false}
+                    />
+                )}
             </AnimatePresence>
 
             {/* ナビゲーションボタン */}
@@ -141,7 +192,7 @@ const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
 
             {/* インジケーター */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                {images.map((_, idx) => (
+                {Array.from({ length: totalSlides }).map((_, idx) => (
                     <div
                         key={idx}
                         className={`w-2 h-2 rounded-full transition-colors ${idx === currentIndex ? 'bg-neon-pink' : 'bg-gray-600'}`}
@@ -153,4 +204,3 @@ const ImageCarousel = ({ images, autoPlayInterval = 3000 }) => {
 };
 
 export default ImageCarousel;
-
