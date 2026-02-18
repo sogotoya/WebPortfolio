@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Pause, Maximize, Minimize } from 'lucide-react';
 
 const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
     // 動画がある場合、スライド配列の先頭に動画を挿入
@@ -13,6 +13,7 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
     const [slideDirection, setSlideDirection] = useState(1); // 1: next, -1: prev
     const [videoEnded, setVideoEnded] = useState(false);
     const [isVideoPaused, setIsVideoPaused] = useState(false); // 再生/一時停止状態
+    const [isFullscreen, setIsFullscreen] = useState(false); // フルスクリーン状態
 
     // マウスドラッグ用ローカル変数
     const dragStartX = useRef(0);
@@ -33,6 +34,29 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
             videoRef.current.pause();
             setIsVideoPaused(true);
         }
+    }, []);
+
+    // フルスクリーン切り替え
+    const toggleFullscreen = useCallback(() => {
+        if (!videoRef.current) return;
+
+        if (!document.fullscreenElement) {
+            videoRef.current.requestFullscreen().catch(err => {
+                console.error(`Error attempting to enable fullscreen: ${err.message} (${err.name})`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    }, []);
+
+    // フルスクリーン状態の監視
+    useEffect(() => {
+        const handleFullscreenChange = () => {
+            setIsFullscreen(!!document.fullscreenElement);
+        };
+
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
     }, []);
 
     // 次の画像へ
@@ -191,6 +215,19 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
                                     <Play size={48} fill="currentColor" />
                                 ) : (
                                     <Pause size={48} fill="currentColor" />
+                                )}
+                            </button>
+
+                            {/* フルスクリーンボタン (右下) */}
+                            <button
+                                onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
+                                className="absolute bottom-4 right-4 bg-black/60 text-white p-2 rounded-full border border-gray-500 hover:border-neon-blue hover:text-neon-blue backdrop-blur-sm transition-all duration-200"
+                                title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+                            >
+                                {isFullscreen ? (
+                                    <Minimize size={20} />
+                                ) : (
+                                    <Maximize size={20} />
                                 )}
                             </button>
                         </div>
