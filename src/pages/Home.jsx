@@ -1,7 +1,8 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import ProjectCard from '../components/ProjectCard';
-import { m_ProjectData } from '../constants/m_ProjectData';
+import CollapsibleSection from '../components/CollapsibleSection';
+import { m_ProjectData, m_ToolData, m_GameJamData } from '../constants/m_ProjectData';
 import { motion } from 'framer-motion';
 
 const Home = () => {
@@ -48,6 +49,53 @@ const Home = () => {
                         <ProjectCard project={project} />
                     </motion.div>
                 ))}
+            </div>
+
+            {/* ゲームジャム & ツール — 横2列 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* 左: ゲームジャム作品 */}
+                <CollapsibleSection title="GAME JAM">
+                    {m_GameJamData.length > 0 ? (
+                        <div className="grid grid-cols-1 gap-6">
+                            {m_GameJamData.map((project, index) => (
+                                <motion.div
+                                    key={project.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                                >
+                                    <ProjectCard project={project} />
+                                </motion.div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-12 border border-gray-800 bg-cyber-gray/50">
+                            <p className="text-gray-500 font-rajdhani tracking-widest text-sm">COMING SOON...</p>
+                        </div>
+                    )}
+                </CollapsibleSection>
+
+                {/* 右: ツール一覧 */}
+                <CollapsibleSection title="TOOLS">
+                    {m_ToolData.length > 0 ? (
+                        <div className="grid grid-cols-1 gap-6">
+                            {m_ToolData.map((project, index) => (
+                                <motion.div
+                                    key={project.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                                >
+                                    <ProjectCard project={project} />
+                                </motion.div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-12 border border-gray-800 bg-cyber-gray/50">
+                            <p className="text-gray-500 font-rajdhani tracking-widest text-sm">COMING SOON...</p>
+                        </div>
+                    )}
+                </CollapsibleSection>
             </div>
         </Layout>
     );
