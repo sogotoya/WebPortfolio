@@ -73,7 +73,7 @@ export const m_ToolData = [];
 export const m_GameJamData = [
     {
         id: "gj-1",
-        title: "Global Game Jam",
+        title: "Global",
         description: "Global Game Jam 参加作品",
         descriptionEn: "Global Game Jam entry",
         imageUrls: [
@@ -83,6 +83,44 @@ export const m_GameJamData = [
             "/projects/GameJam/GlobalGameJam/GlobalGameJam4.png",
         ],
         backgroundUrl: "/projects/GameJam/GlobalGameJam/GlobalGameJamBack.png",
+        technologies: ["Unity", "C#"],
+    },
+    {
+        id: "gj-2",
+        title: "Takahashi",
+        description: "ゲームジャム参加作品",
+        descriptionEn: "Game Jam entry",
+        imageUrls: [
+            "/projects/GameJam/GameJamTakahashi/GameJamTakahashi1.png",
+            "/projects/GameJam/GameJamTakahashi/GameJamTakahashi2.png",
+            "/projects/GameJam/GameJamTakahashi/GameJamTakahashi3.png",
+            "/projects/GameJam/GameJamTakahashi/GameJamTakahashi4.png",
+        ],
+        backgroundUrl: "/projects/GameJam/GameJamTakahashi/GameJamTakahashiBack.png",
+        technologies: ["Unity", "C#"],
+    },
+    {
+        id: "gj-3",
+        title: "BitSummit",
+        description: "ゲームジャム参加作品",
+        descriptionEn: "Game Jam entry",
+        imageUrls: [],
+        technologies: ["Unity", "C#"],
+    },
+    {
+        id: "gj-4",
+        title: "Saikyou",
+        description: "ゲームジャム参加作品",
+        descriptionEn: "Game Jam entry",
+        imageUrls: [],
+        technologies: ["Unity", "C#"],
+    },
+    {
+        id: "gj-5",
+        title: "Shoyutengai",
+        description: "ゲームジャム参加作品",
+        descriptionEn: "Game Jam entry",
+        imageUrls: [],
         technologies: ["Unity", "C#"],
     },
 ];
