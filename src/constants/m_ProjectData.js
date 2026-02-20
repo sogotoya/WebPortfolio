@@ -70,4 +70,19 @@ export const m_ProjectData = [
 export const m_ToolData = [];
 
 // ゲームジャム作品
-export const m_GameJamData = [];
+export const m_GameJamData = [
+    {
+        id: "gj-1",
+        title: "Global Game Jam",
+        description: "Global Game Jam 参加作品",
+        descriptionEn: "Global Game Jam entry",
+        imageUrls: [
+            "/projects/GameJam/GlobalGameJam/GlobalGameJam1.png",
+            "/projects/GameJam/GlobalGameJam/GlobalGameJam2.png",
+            "/projects/GameJam/GlobalGameJam/GlobalGameJam3.png",
+            "/projects/GameJam/GlobalGameJam/GlobalGameJam4.png",
+        ],
+        backgroundUrl: "/projects/GameJam/GlobalGameJam/GlobalGameJamBack.png",
+        technologies: ["Unity", "C#"],
+    },
+];
