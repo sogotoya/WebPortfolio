@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import ProjectCard from '../components/ProjectCard';
 import CollapsibleSection from '../components/CollapsibleSection';
+import GameJamMonitor from '../components/GameJamMonitor';
 import { m_ProjectData, m_ToolData, m_GameJamData } from '../constants/m_ProjectData';
 import { motion } from 'framer-motion';
 
@@ -55,24 +56,7 @@ const Home = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* 左: ゲームジャム作品 */}
                 <CollapsibleSection title="GAME JAM">
-                    {m_GameJamData.length > 0 ? (
-                        <div className="grid grid-cols-1 gap-6">
-                            {m_GameJamData.map((project, index) => (
-                                <motion.div
-                                    key={project.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.4, delay: index * 0.08 }}
-                                >
-                                    <ProjectCard project={project} />
-                                </motion.div>
-                            ))}
-                        </div>
-                    ) : (
-                        <div className="text-center py-12 border border-gray-800 bg-cyber-gray/50">
-                            <p className="text-gray-500 font-rajdhani tracking-widest text-sm">COMING SOON...</p>
-                        </div>
-                    )}
+                    <GameJamMonitor items={m_GameJamData} />
                 </CollapsibleSection>
 
                 {/* 右: ツール一覧 */}
