@@ -44,12 +44,22 @@ const useIsMobile = (breakpoint = 768) => {
 // ===== 画像カルーセル（スワイプ対応） =====
 const ImageCarouselSwipeable = ({ imageUrls, title }) => {
     const [imageIndex, setImageIndex] = useState(0);
+    const [slideDirection, setSlideDirection] = useState(1); // 1: next(右から), -1: prev(左から)
+
+    // スライドアニメーションの方向（ImageCarousel.jsxと同じパターン）
+    const variants = {
+        enter: (direction) => ({ opacity: 0, x: direction * 100 }),
+        center: { opacity: 1, x: 0 },
+        exit: (direction) => ({ opacity: 0, x: direction * -100 }),
+    };
 
     const handleNext = useCallback(() => {
+        setSlideDirection(1);
         setImageIndex((prev) => (prev + 1) % imageUrls.length);
     }, [imageUrls.length]);
 
     const handlePrev = useCallback(() => {
+        setSlideDirection(-1);
         setImageIndex((prev) => prev === 0 ? imageUrls.length - 1 : prev - 1);
     }, [imageUrls.length]);
 
@@ -62,16 +72,18 @@ const ImageCarouselSwipeable = ({ imageUrls, title }) => {
             className="relative aspect-video bg-black/60 select-none cursor-grab active:cursor-grabbing"
             {...swipeHandlers}
         >
-            <AnimatePresence mode="wait">
+            <AnimatePresence initial={false} mode="wait" custom={slideDirection}>
                 <motion.img
                     key={imageIndex}
                     src={imageUrls[imageIndex]}
                     alt={title}
                     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -30 }}
-                    transition={{ duration: 0.25 }}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    custom={slideDirection}
+                    transition={{ duration: 0.4 }}
                     draggable={false}
                 />
             </AnimatePresence>
