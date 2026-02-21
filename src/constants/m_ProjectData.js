@@ -73,7 +73,7 @@ export const m_ToolData = [];
 export const m_GameJamData = [
     {
         id: "gj-1",
-        title: "Global",
+        title: "Global　参加作品",
         description: "Global Game Jam 参加作品",
         descriptionEn: "Global Game Jam entry",
         imageUrls: [
@@ -101,7 +101,7 @@ export const m_GameJamData = [
     },
     {
         id: "gj-3",
-        title: "BitSummit",
+        title: "BitSummit　参加作品",
         description: "ゲームジャム参加作品",
         descriptionEn: "Game Jam entry",
         imageUrls: [],
@@ -109,7 +109,7 @@ export const m_GameJamData = [
     },
     {
         id: "gj-4",
-        title: "Saikyou",
+        title: "Saikyou　参加作品",
         description: "ゲームジャム参加作品",
         descriptionEn: "Game Jam entry",
         imageUrls: [],
@@ -117,7 +117,7 @@ export const m_GameJamData = [
     },
     {
         id: "gj-5",
-        title: "Shoyutengai",
+        title: "Shoyutengai　参加作品",
         description: "ゲームジャム参加作品",
         descriptionEn: "Game Jam entry",
         imageUrls: [],
