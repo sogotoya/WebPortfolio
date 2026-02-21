@@ -392,19 +392,19 @@ const GameJamMonitor = ({ items }) => {
                         )}
 
                         {/* モニター下部 */}
-                        {selectedItem && (
+                        {activeBackgroundItem && (
                             <div className="px-4 py-3 border-t border-gray-700/50 bg-black/50">
                                 <div className="flex items-center justify-between">
                                     <div>
                                         <h3 className="text-base font-orbitron font-bold text-white tracking-wide">
-                                            {selectedItem.title}
+                                            {activeBackgroundItem.title}
                                         </h3>
                                         <p className="text-xs text-gray-500 mt-0.5 font-rajdhani">
-                                            {selectedItem.description}
+                                            {activeBackgroundItem.description}
                                         </p>
                                     </div>
                                     <div className="flex gap-1.5">
-                                        {selectedItem.technologies.map((tech, i) => (
+                                        {activeBackgroundItem.technologies.map((tech, i) => (
                                             <span key={i} className="text-[10px] text-neon-blue bg-black/60 px-2 py-1 border border-neon-blue/30 rounded-sm">
                                                 {tech}
                                             </span>
