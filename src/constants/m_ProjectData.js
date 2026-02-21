@@ -132,7 +132,13 @@ export const m_GameJamData = [
         title: "Shoutengai",
         description: "商店街GameJam 参加作品",
         descriptionEn: "Game Jam entry",
-        imageUrls: [],
+        imageUrls: [
+            "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJam1.png",
+            "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJam2.png",
+            "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJam3.png",
+            "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJam4.png",
+        ],
+        backgroundUrl: "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJamBack.png",
         technologies: ["Unity", "C#"],
     },
 ];
