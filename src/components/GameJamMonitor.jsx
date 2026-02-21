@@ -226,10 +226,10 @@ const GameJamMonitor = ({ items }) => {
     const isMobile = useIsMobile();
 
     const selectedItem = items[selectedIndex] || null;
-    const hasImages = selectedItem && selectedItem.imageUrls && selectedItem.imageUrls.length > 0;
 
     // 背景ジャック
     const activeBackgroundItem = hoveredIndex !== null ? items[hoveredIndex] : selectedItem;
+    const hasActiveImages = activeBackgroundItem && activeBackgroundItem.imageUrls && activeBackgroundItem.imageUrls.length > 0;
     const backgroundImageUrl = activeBackgroundItem
         ? (activeBackgroundItem.backgroundUrl || (activeBackgroundItem.imageUrls && activeBackgroundItem.imageUrls[0]) || null)
         : null;
@@ -380,8 +380,8 @@ const GameJamMonitor = ({ items }) => {
                         <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-neon-blue z-10" />
 
                         {/* メイン表示エリア（スワイプ対応カルーセル） */}
-                        {hasImages ? (
-                            <ImageCarouselSwipeable imageUrls={selectedItem.imageUrls} title={selectedItem.title} />
+                        {hasActiveImages ? (
+                            <ImageCarouselSwipeable key={activeBackgroundItem.id} imageUrls={activeBackgroundItem.imageUrls} title={activeBackgroundItem.title} />
                         ) : (
                             <div className="relative aspect-video bg-black/60 flex flex-col items-center justify-center">
                                 <div className="absolute inset-0 pointer-events-none"
