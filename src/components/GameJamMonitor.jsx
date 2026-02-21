@@ -210,7 +210,7 @@ const MobileListItem = ({ item, index }) => {
                         <ImageCarouselSwipeable imageUrls={item.imageUrls} title={item.title} />
                         {/* 説明テキスト */}
                         <div className="px-3 py-2 bg-black/40">
-                            <p className="text-xs text-gray-500 font-rajdhani">{item.description}</p>
+                            <p className="text-xs text-gray-500 font-rajdhani whitespace-pre-line">{item.description}</p>
                         </div>
                     </motion.div>
                 )}
@@ -402,7 +402,7 @@ const GameJamMonitor = ({ items }) => {
                                         <h3 className="text-base font-orbitron font-bold text-white tracking-wide">
                                             {activeBackgroundItem.title}
                                         </h3>
-                                        <p className="text-xs text-gray-500 mt-0.5 font-rajdhani">
+                                        <p className="text-xs text-gray-500 mt-0.5 font-rajdhani whitespace-pre-line">
                                             {activeBackgroundItem.description}
                                         </p>
                                     </div>
