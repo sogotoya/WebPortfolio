@@ -116,7 +116,7 @@ export const m_GameJamData = [
     {
         id: "gj-4",
         title: "Saikyou",
-        description: "最強GameJam 参加作品",
+        description: "最強ゲームジャム 参加作品",
         descriptionEn: "Game Jam entry",
         imageUrls: [
             "/projects/GameJam/SaikyouGameJam/SaikyouGameJam1.png",
@@ -130,7 +130,7 @@ export const m_GameJamData = [
     {
         id: "gj-5",
         title: "Shoutengai",
-        description: "商店街GameJam 参加作品",
+        description: "商店街ゲームジャム 参加作品",
         descriptionEn: "Game Jam entry",
         imageUrls: [
             "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJam1.png",
