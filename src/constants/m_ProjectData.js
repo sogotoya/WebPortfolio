@@ -102,7 +102,7 @@ export const m_GameJamData = [
     {
         id: "gj-3",
         title: "BitSummit",
-        description: "ゲームジャム参加作品",
+        description: "BitSummit GameJam参加作品",
         descriptionEn: "Game Jam entry",
         imageUrls: [],
         technologies: ["Unity", "C#"],
@@ -110,15 +110,15 @@ export const m_GameJamData = [
     {
         id: "gj-4",
         title: "Saikyou",
-        description: "ゲームジャム参加作品",
+        description: "最強GameJam参加作品",
         descriptionEn: "Game Jam entry",
         imageUrls: [],
         technologies: ["Unity", "C#"],
     },
     {
         id: "gj-5",
-        title: "Shoyutengai",
-        description: "ゲームジャム参加作品",
+        title: "Shoutengai",
+        description: "商店街GameJam参加作品",
         descriptionEn: "Game Jam entry",
         imageUrls: [],
         technologies: ["Unity", "C#"],
