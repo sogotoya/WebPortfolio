@@ -104,7 +104,13 @@ export const m_GameJamData = [
         title: "BitSummit",
         description: "BitSummit GameJam 参加作品",
         descriptionEn: "Game Jam entry",
-        imageUrls: [],
+        imageUrls: [
+            "/projects/GameJam/BitSummitGameJam/BitSummitGameJam1.png",
+            "/projects/GameJam/BitSummitGameJam/BitSummitGameJam2.png",
+            "/projects/GameJam/BitSummitGameJam/BitSummitGameJam3.png",
+            "/projects/GameJam/BitSummitGameJam/BitSummitGameJam4.png",
+        ],
+        backgroundUrl: "/projects/GameJam/BitSummitGameJam/BitSummitGameJamBack.jpg",
         technologies: ["Unity", "C#"],
     },
     {
