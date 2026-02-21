@@ -87,8 +87,8 @@ export const m_GameJamData = [
     },
     {
         id: "gj-2",
-        title: "Takahashi",
-        description: "ゲームジャム参加作品",
+        title: "ゲームジャム高梁　参加作品",
+        description: "ゲームジャム高梁",
         descriptionEn: "Game Jam entry",
         imageUrls: [
             "/projects/GameJam/GameJamTakahashi/GameJamTakahashi1.png",
