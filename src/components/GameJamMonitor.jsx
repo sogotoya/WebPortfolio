@@ -308,7 +308,10 @@ const GameJamMonitor = ({ items }) => {
                             <motion.button
                                 key={item.id}
                                 onClick={() => handleSelectItem(index)}
-                                onMouseEnter={() => setHoveredIndex(index)}
+                                onMouseEnter={() => {
+                                    setHoveredIndex(index);
+                                    handleSelectItem(index);
+                                }}
                                 onMouseLeave={() => setHoveredIndex(null)}
                                 whileHover={{ x: 4 }}
                                 transition={{ duration: 0.15 }}
