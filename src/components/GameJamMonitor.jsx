@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Github, Download } from 'lucide-react';
 
 // ===== スワイプ検知フック =====
 const useSwipe = (onSwipeLeft, onSwipeRight, threshold = 50) => {
@@ -406,12 +407,40 @@ const GameJamMonitor = ({ items }) => {
                                             {activeBackgroundItem.description}
                                         </p>
                                     </div>
-                                    <div className="flex gap-1.5">
-                                        {activeBackgroundItem.technologies.map((tech, i) => (
-                                            <span key={i} className="text-[10px] text-neon-blue bg-black/60 px-2 py-1 border border-neon-blue/30 rounded-sm">
-                                                {tech}
-                                            </span>
-                                        ))}
+                                    <div className="flex flex-col items-end gap-1.5">
+                                        <div className="flex gap-1.5">
+                                            {activeBackgroundItem.technologies.map((tech, i) => (
+                                                <span key={i} className="text-[10px] text-neon-blue bg-black/60 px-2 py-1 border border-neon-blue/30 rounded-sm">
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        {(activeBackgroundItem.githubUrl || activeBackgroundItem.downloadUrl) && (
+                                            <div className="flex gap-3 mr-1 mt-0.5">
+                                                {activeBackgroundItem.githubUrl && (
+                                                    <a
+                                                        href={activeBackgroundItem.githubUrl}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="text-gray-500/80 hover:text-neon-blue transition-colors duration-200"
+                                                        title="View Source"
+                                                    >
+                                                        <Github size={15} />
+                                                    </a>
+                                                )}
+                                                {activeBackgroundItem.downloadUrl && (
+                                                    <a
+                                                        href={activeBackgroundItem.downloadUrl}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="text-gray-500/80 hover:text-neon-blue transition-colors duration-200"
+                                                        title="Download"
+                                                    >
+                                                        <Download size={15} />
+                                                    </a>
+                                                )}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>

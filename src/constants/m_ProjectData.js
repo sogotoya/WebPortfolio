@@ -84,6 +84,8 @@ export const m_GameJamData = [
         ],
         backgroundUrl: "/projects/GameJam/GlobalGameJam/GlobalGameJamBack.png",
         technologies: ["Unity", "C#"],
+        githubUrl: "#",
+        downloadUrl: "#",
     },
     {
         id: "gj-2",
@@ -98,6 +100,8 @@ export const m_GameJamData = [
         ],
         backgroundUrl: "/projects/GameJam/GameJamTakahashi/GameJamTakahashiBack.png",
         technologies: ["Unity", "C#"],
+        githubUrl: "#",
+        downloadUrl: "#",
     },
     {
         id: "gj-3",
@@ -112,6 +116,8 @@ export const m_GameJamData = [
         ],
         backgroundUrl: "/projects/GameJam/BitSummitGameJam/BitSummitGameJamBack.jpg",
         technologies: ["Unity", "C#"],
+        githubUrl: "#",
+        downloadUrl: "#",
     },
     {
         id: "gj-4",
@@ -126,6 +132,8 @@ export const m_GameJamData = [
         ],
         backgroundUrl: "/projects/GameJam/SaikyouGameJam/SaikyouGameJamBack.png",
         technologies: ["Unity", "C#"],
+        githubUrl: "#",
+        downloadUrl: "#",
     },
     {
         id: "gj-5",
@@ -140,5 +148,7 @@ export const m_GameJamData = [
         ],
         backgroundUrl: "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJamBack.png",
         technologies: ["Unity", "C#"],
+        githubUrl: "#",
+        downloadUrl: "#",
     },
 ];
