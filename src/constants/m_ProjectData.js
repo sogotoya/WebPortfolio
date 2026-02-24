@@ -84,7 +84,7 @@ export const m_GameJamData = [
         ],
         backgroundUrl: "/projects/GameJam/GlobalGameJam/GlobalGameJamBack.png",
         technologies: ["Unity", "C#"],
-        githubUrl: "#",
+        githubUrl: "https://github.com/MKTkakumei/GGJ2026_01",
         downloadUrl: "#",
     },
     {
@@ -100,7 +100,7 @@ export const m_GameJamData = [
         ],
         backgroundUrl: "/projects/GameJam/GameJamTakahashi/GameJamTakahashiBack.png",
         technologies: ["Unity", "C#"],
-        githubUrl: "#",
+        githubUrl: "https://github.com/Hamster-jpg/mistshooter",
         downloadUrl: "#",
     },
     {
@@ -116,7 +116,7 @@ export const m_GameJamData = [
         ],
         backgroundUrl: "/projects/GameJam/BitSummitGameJam/BitSummitGameJamBack.jpg",
         technologies: ["Unity", "C#"],
-        githubUrl: "#",
+        githubUrl: "https://github.com/hy0by0/Bug_Cord",
         downloadUrl: "#",
     },
     {
@@ -132,7 +132,7 @@ export const m_GameJamData = [
         ],
         backgroundUrl: "/projects/GameJam/SaikyouGameJam/SaikyouGameJamBack.png",
         technologies: ["Unity", "C#"],
-        githubUrl: "#",
+        githubUrl: "https://github.com/kayinazlost/ExcellentTeam",
         downloadUrl: "#",
     },
     {
@@ -148,7 +148,7 @@ export const m_GameJamData = [
         ],
         backgroundUrl: "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJamBack.png",
         technologies: ["Unity", "C#"],
-        githubUrl: "#",
+        githubUrl: "https://github.com/SanukiGameN108/ShotengaiGJ2024_TeamD",
         downloadUrl: "#",
     },
 ];
