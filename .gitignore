@@ -123,3 +123,9 @@ Desktop.ini
 
 # Temporary batch scripts
 *.bat
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
