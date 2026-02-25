@@ -85,7 +85,7 @@ export const m_GameJamData = [
         backgroundUrl: "/projects/GameJam/GlobalGameJam/GlobalGameJamBack.png",
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/MKTkakumei/GGJ2026_01",
-        downloadUrl: "#",
+        downloadUrl: "https://drive.google.com/drive/folders/1zqc_DEku_vkQqIurhKQhbbz50RdoKSxb?usp=sharing",
     },
     {
         id: "gj-2",
@@ -101,7 +101,7 @@ export const m_GameJamData = [
         backgroundUrl: "/projects/GameJam/GameJamTakahashi/GameJamTakahashiBack.png",
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/Hamster-jpg/mistshooter",
-        downloadUrl: "#",
+        downloadUrl: "https://drive.google.com/drive/folders/18Ln0c9baNiyWdGVi3LZ3yTVFrFlPXg9k?usp=sharing",
     },
     {
         id: "gj-3",
@@ -117,7 +117,7 @@ export const m_GameJamData = [
         backgroundUrl: "/projects/GameJam/BitSummitGameJam/BitSummitGameJamBack.jpg",
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/hy0by0/Bug_Cord",
-        downloadUrl: "#",
+        downloadUrl: "https://drive.google.com/drive/folders/1mp87IbYL_i7KyUzruZjmDjG0Ns4ulh1v?usp=sharing",
     },
     {
         id: "gj-4",
@@ -133,7 +133,7 @@ export const m_GameJamData = [
         backgroundUrl: "/projects/GameJam/SaikyouGameJam/SaikyouGameJamBack.png",
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/kayinazlost/ExcellentTeam",
-        downloadUrl: "#",
+        downloadUrl: "https://drive.google.com/drive/folders/1oc61BSOcm2yNSzKaiYQrBK2_w6dQYO-7?usp=sharing",
     },
     {
         id: "gj-5",
@@ -149,6 +149,6 @@ export const m_GameJamData = [
         backgroundUrl: "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJamBack.png",
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/SanukiGameN108/ShotengaiGJ2024_TeamD",
-        downloadUrl: "#",
+        downloadUrl: "https://drive.google.com/drive/folders/1JMCisiSB07Oe4FoF3CWBAfveRvkJsGrf?usp=sharing",
     },
 ];
