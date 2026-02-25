@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import ProjectCard from '../components/ProjectCard';
 import CollapsibleSection from '../components/CollapsibleSection';
 import GameJamMonitor from '../components/GameJamMonitor';
+import ToolMonitor from '../components/ToolMonitor';
 import { m_ProjectData, m_ToolData, m_GameJamData } from '../constants/m_ProjectData';
 import { motion } from 'framer-motion';
 
@@ -61,24 +62,7 @@ const Home = () => {
 
                 {/* 右: ツール一覧 */}
                 <CollapsibleSection title="TOOLS">
-                    {m_ToolData.length > 0 ? (
-                        <div className="grid grid-cols-1 gap-6">
-                            {m_ToolData.map((project, index) => (
-                                <motion.div
-                                    key={project.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.4, delay: index * 0.08 }}
-                                >
-                                    <ProjectCard project={project} />
-                                </motion.div>
-                            ))}
-                        </div>
-                    ) : (
-                        <div className="text-center py-12 border border-gray-800 bg-cyber-gray/50">
-                            <p className="text-gray-500 font-rajdhani tracking-widest text-sm">COMING SOON...</p>
-                        </div>
-                    )}
+                    <ToolMonitor items={m_ToolData} />
                 </CollapsibleSection>
             </div>
         </Layout>
