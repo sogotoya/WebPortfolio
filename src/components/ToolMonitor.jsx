@@ -157,9 +157,9 @@ const MobileListItem = ({ item, index }) => {
             >
                 {/* サムネイル */}
                 {hasImages ? (
-                    <div className="w-12 h-12 flex-shrink-0 border border-gray-700 bg-black overflow-hidden rounded-sm">
+                    <div className="w-12 h-12 flex-shrink-0 border border-gray-700 overflow-hidden rounded-sm">
                         <img src={item.imageUrls[0]} alt={item.title}
-                            className="w-full h-full object-contain" />
+                            className="w-full h-full object-cover" />
                     </div>
                 ) : (
                     <div className="w-12 h-12 flex-shrink-0 border border-gray-700 bg-black/30
@@ -336,8 +336,8 @@ const ToolMonitor = ({ items }) => {
                                 )}
                                 <div className="flex items-center gap-3">
                                     {item.imageUrls && item.imageUrls.length > 0 ? (
-                                        <div className="w-10 h-10 flex-shrink-0 border border-gray-700 bg-black overflow-hidden">
-                                            <img src={item.imageUrls[0]} alt={item.title} className="w-full h-full object-contain" />
+                                        <div className="w-10 h-10 flex-shrink-0 border border-gray-700 overflow-hidden">
+                                            <img src={item.imageUrls[0]} alt={item.title} className="w-full h-full object-cover" />
                                         </div>
                                     ) : (
                                         <span className={`text-[10px] font-orbitron w-10 h-10 flex items-center justify-center
