@@ -12,36 +12,36 @@ export const m_ProjectData = [
             "/projects/AxisSave/AxisSave4.png",
         ],
         githubUrl: "https://github.com/chogeru/3DCombat",
-        downloadUrl: "https://drive.google.com/drive/folders/1vabvlXhPTLtVtxnlnO1IsJV7u5S8FY4F?usp=drive_link",
+        downloadUrl: "https://drive.google.com/drive/folders/1mN7YWpIgN0pv2fasbTTO-C3A3vCtW4GQ?usp=drive_link",
         backgroundUrl: "/projects/AxisSave/AxisSaveBack.png",
         technologies: ["Unity", "C#", "HLSL"],
     },
     {
         id: 2,
         title: "PlanetariumVR",
-        description: "UniTaskと体験設計を学習目的とした作品です。\n\n▸ コンセプト：『自然に体が動いて体験に入れる』設計\n▸ 音声の発生地点を星座に設定 → 視線誘導を自然に促す\n▸ 音声再生完了をUniTaskで待ってから星座をフェードイン → 体験シーケンスの構築\n\n<strong>制作期間</strong> : 2日 &emsp; <strong>チーム人数</strong> : 個人制作 &emsp; <strong>プラットフォーム</strong> : VR",
-        descriptionEn: "A project focused on learning UniTask and experience design.\n\n▸ Concept: A design where <strong>the body naturally moves into the experience</strong>\n▸ Sound sources placed at constellations → naturally guides the user's gaze\n▸ Wait for audio playback to complete via UniTask, then fade in the constellation → building an experience sequence\n\n<strong>Duration</strong> : 2 days &emsp; <strong>Team</strong> : Solo &emsp; <strong>Platform</strong> : VR",
+        description: "UniTaskと体験設計を学習目的とした作品です。\n\n▸ コンセプト：『自然に体が動いて体験に入れる』設計\n▸ 音声の発生地点を星座に設定 → 視線誘導を自然に促す\n▸ 音声再生完了をUniTaskで待ってから星座をフェードイン → 体験シーケンスの構築\n\n<strong>制作期間</strong> : 3日 &emsp; <strong>チーム人数</strong> : 個人制作 &emsp; <strong>プラットフォーム</strong> : VR",
+        descriptionEn: "A project focused on learning UniTask and experience design.\n\n▸ Concept: A design where <strong>the body naturally moves into the experience</strong>\n▸ Sound sources placed at constellations → naturally guides the user's gaze\n▸ Wait for audio playback to complete via UniTask, then fade in the constellation → building an experience sequence\n\n<strong>Duration</strong> : 3 days &emsp; <strong>Team</strong> : Solo &emsp; <strong>Platform</strong> : VR",
         videoUrl: "",
         imageUrls: [
             "/projects/PlanetariumVR/PlanetariumVR1.png",
             "/projects/PlanetariumVR/Planetarium2.png",
         ],
         githubUrl: "https://github.com/sogotoya/Planetarium_VR",
-        downloadUrl: "",
+        downloadUrl: "https://drive.google.com/drive/folders/1gKum3c_dI211KniKmo8cWO2rhy93Dcph?usp=sharing",
         backgroundUrl: "/projects/PlanetariumVR/PlanetariumVRBack.png",
         technologies: ["Unity", "C#", "VR"],
     },
     {
         id: 3,
         title: "DartsVR",
-        description: "VRダーツゲーム",
-        descriptionEn: "A VR darts game",
+        description: "VRダーツゲーム制作中",
+        descriptionEn: "A VR darts game (in production)",
         videoUrl: "",
         imageUrls: [
             "/projects/DartsVR/DartsVR1.png",
             "/projects/DartsVR/DartsVR2.png",
         ],
-        githubUrl: "https://github.com/sogotoya/DartsVR",
+        githubUrl: "",
         downloadUrl: "",
         backgroundUrl: "/projects/DartsVR/DartsVRBack.png",
         technologies: ["Unity", "C#", "VR"],
@@ -60,14 +60,45 @@ export const m_ProjectData = [
             "/projects/Orimichikun/Orimichikun1.png",
         ],
         githubUrl: "https://github.com/sogotoya/Orimichikun",
-        downloadUrl: "",
+        downloadUrl: "https://drive.google.com/file/d/17AjwSIBC5E0qQm1ME8txIx4mbA7m5UvG/view?usp=drive_link",
         backgroundUrl: "/projects/Orimichikun/OrimichikunBack.png",
         technologies: ["Unity", "C#"],
     },
 ];
 
 // ツール一覧
-export const m_ToolData = [];
+export const m_ToolData = [
+    {
+        id: "tool-1",
+        title: "BatchProcessAutomation",
+        description: "このツールは、プロジェクトの健康診断（エラーチェック）や各種の自動処理を、複数まとめて一気に実行できる便利な機能です。\nビルド前（ゲームを書き出す前）の最終チェックなどに活用できます。",
+        descriptionEn: "Unity Editor Extension",
+        imageUrls: [
+            "/projects/Tools/BatchProcessAutomation/BatchProcessAutomation1.png",
+            "/projects/Tools/BatchProcessAutomation/BatchProcessAutomation2.png",
+            "/projects/Tools/BatchProcessAutomation/BatchProcessAutomation3.png",
+        ],
+        backgroundUrl: "/projects/Tools/BatchProcessAutomation/BatchProcessAutomation1.png",
+        technologies: ["Unity", "C#"],
+        githubUrl: "#",
+        downloadUrl: "https://drive.google.com/drive/folders/1Bs2oXTUNJAlu1QVL9lsFN-VkI8JHCImW?usp=sharing",
+    },
+    {
+        id: "tool-2",
+        title: "AssetDependencyVisualizer",
+        description: "プロジェクト内の「アセット同士のつながり」を可視化するEditor拡張ツールです。\nテクスチャ・プレハブ・マテリアルなどの使用状況を簡単に確認でき、\nどこからも参照されていない不要なアセットの特定に役立ちます。",
+        descriptionEn: "Unity Editor Extension",
+        imageUrls: [
+            "/projects/Tools/AssetDependencyVisualizer/AssetDependencyVisualizer1.png",
+            "/projects/Tools/AssetDependencyVisualizer/AssetDependencyVisualizer2.png",
+            "/projects/Tools/AssetDependencyVisualizer/AssetDependencyVisualizer3.png",
+        ],
+        backgroundUrl: "/projects/Tools/AssetDependencyVisualizer/AssetDependencyVisualizer1.png",
+        technologies: ["Unity", "C#"],
+        githubUrl: "#",
+        downloadUrl: "https://drive.google.com/drive/folders/1WGPgiF_Zeddhv4zD2E1y0kbZG9-2qNsW?usp=sharing",
+    },
+];
 
 // ゲームジャム作品
 export const m_GameJamData = [
