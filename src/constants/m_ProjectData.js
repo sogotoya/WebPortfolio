@@ -49,8 +49,8 @@ export const m_ProjectData = [
     {
         id: 4,
         title: "Orimichikun",
-        description: "2D横スクロールアクションゲーム",
-        descriptionEn: "2D Side-scrolling Action Game",
+        description: "▸ 担当：チュートリアルおよびボス戦の実装・設計\n\n<strong>直感的なチュートリアル導入</strong>\n操作説明で進行を止めるのではなく、背景アニメーションとして配置。ゲームのテンポを阻害せず、プレイヤーが自然に操作を理解できる導線を実現しました。\n\n<strong>「学習と攻略」を促すボス戦設計</strong>\n敵の攻撃をパターン化し、プレイヤーが「動きを覚えて攻略する」というアクションゲーム本来の達成感を味わえるようにレベルデザインを行いました。\n\n<strong>制作期間</strong> : 3週間 &emsp; <strong>チーム人数</strong> : 2人 &emsp; <strong>プラットフォーム</strong> : PC / スマホ",
+        descriptionEn: "▸ Role: Tutorial & Boss Battle Implementation\n\n<strong>Intuitive Tutorial Design</strong>\nInstead of stopping the flow for instructions, controls were embedded as background animations, letting players learn naturally without disrupting the game's pacing.\n\n<strong>Boss Battle Design for 'Learning & Mastery'</strong>\nPatterned enemy attacks to deliver the core action game experience — the satisfaction of reading movements and overcoming challenges through skill.\n\n<strong>Duration</strong> : 3 weeks &emsp; <strong>Team</strong> : 2 people &emsp; <strong>Platform</strong> : PC / Mobile",
         videoUrl: "",
         imageUrls: [
             "/projects/Orimichikun/Orimichikun2.png",
