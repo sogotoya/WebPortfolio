@@ -7,6 +7,7 @@ import { ArrowLeft, Github, ExternalLink, Download } from 'lucide-react';
 import ImageCarousel from '../components/ImageCarousel';
 import AxisSaveDiagram from '../components/AxisSaveDiagram';
 import PlanetariumVRDiagram from '../components/PlanetariumVRDiagram';
+import OrimichikunDiagram from '../components/OrimichikunDiagram';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const ProjectDetail = () => {
@@ -74,6 +75,7 @@ const ProjectDetail = () => {
 
                     {project.id === 1 && <AxisSaveDiagram language={language} />}
                     {project.id === 2 && <PlanetariumVRDiagram language={language} />}
+                    {project.id === 4 && <OrimichikunDiagram language={language} />}
 
                     <div className="flex gap-4">
                         {project.githubUrl && (
