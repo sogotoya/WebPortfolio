@@ -7,14 +7,14 @@ const OrimichikunDiagram = ({ language = 'ja' }) => {
             title: 'State Machine 戦闘AIアーキテクチャ',
             manager: 'Boss AI Context (Orchestrator)',
             managerState: 'State Management',
-            managerStateDesc: '・CurrentState\n・ChangeState()',
+            managerStateDesc: '・CurrentState\n・ChangeState()\n<span class="text-orange-400/90 text-[11px] block mt-1 font-bold">┗ 遷移の最終実行</span>',
             managerRef: 'Shared References',
             managerRefDesc: '・Transform / Animator\n・Rigidbody2D\n・Player Reference',
             managerData: 'Runtime Data',
             managerDataDesc: '・HP / Phase\n・Cooldown Timer',
             stateInterface: 'IState (Interface)',
             stateInterfaceDesc: '全ステート共通の振る舞いと遷移判定を定義',
-            stateInterfaceDetail: '・OnEnter() / OnUpdate() / OnExit()\n・CheckTransition()',
+            stateInterfaceDetail: '・OnEnter() / OnUpdate() / OnExit()\n・CheckTransition()\n<span class="text-orange-400/90 text-[11px] block mt-1 font-bold">┗ 次状態をContextへ提案</span>',
             stateMove: 'State_Move',
             stateMoveDesc: '・距離維持ロジック\n・フレーム非依存移動',
             stateRoll: 'State_Roll',
@@ -30,22 +30,22 @@ const OrimichikunDiagram = ({ language = 'ja' }) => {
                 '巨大単一クラスの回避',
                 '攻撃ロジックの責務分離',
                 'データ駆動設計への拡張前提',
-                'GC負荷軽減（ObjectPool / UniTask検討）',
-                '物理設計方針の明文化'
+                'Instantiate依存排除によるGC発生抑制',
+                '意図的な非物理設計（軽量2Dアクション特化）'
             ]
         },
         en: {
             title: 'State Machine Combat AI Architecture',
             manager: 'Boss AI Context (Orchestrator)',
             managerState: 'State Management',
-            managerStateDesc: '・CurrentState\n・ChangeState()',
+            managerStateDesc: '・CurrentState\n・ChangeState()\n<span class="text-orange-400/90 text-[11px] block mt-1 font-bold">┗ Final transition execution</span>',
             managerRef: 'Shared References',
             managerRefDesc: '・Transform / Animator\n・Rigidbody2D\n・Player Reference',
             managerData: 'Runtime Data',
             managerDataDesc: '・HP / Phase\n・Cooldown Timer',
             stateInterface: 'IState (Interface)',
             stateInterfaceDesc: 'Defines common behavior and transition logic',
-            stateInterfaceDetail: '・OnEnter() / OnUpdate() / OnExit()\n・CheckTransition()',
+            stateInterfaceDetail: '・OnEnter() / OnUpdate() / OnExit()\n・CheckTransition()\n<span class="text-orange-400/90 text-[11px] block mt-1 font-bold">┗ Proposes next state to Context</span>',
             stateMove: 'State_Move',
             stateMoveDesc: '・Distance maintenance\n・Framerate-independent move',
             stateRoll: 'State_Roll',
@@ -61,8 +61,8 @@ const OrimichikunDiagram = ({ language = 'ja' }) => {
                 'Avoidance of massive single classes',
                 'Separation of attack logic responsibilities',
                 'Designed for data-driven extension',
-                'GC load reduction (ObjectPool / UniTask planned)',
-                'Clarification of physics design philosophy'
+                'GC suppression by eliminating Instantiate dependency',
+                'Intentional non-physics design (lightweight 2D action focused)'
             ]
         }
     };
@@ -94,7 +94,7 @@ const OrimichikunDiagram = ({ language = 'ja' }) => {
                         {/* State Management */}
                         <div className="bg-gray-900/80 border border-gray-700/50 rounded flex flex-col items-center p-3 shadow-inner">
                             <span className="text-orange-300 text-xs font-bold mb-2 uppercase tracking-wider">{content.managerState}</span>
-                            <span className="text-gray-300 text-sm whitespace-pre-line leading-relaxed text-center">{content.managerStateDesc}</span>
+                            <span className="text-gray-300 text-sm whitespace-pre-line leading-relaxed text-center" dangerouslySetInnerHTML={{ __html: content.managerStateDesc }}></span>
                         </div>
                         {/* Shared References */}
                         <div className="bg-gray-900/80 border border-gray-700/50 rounded flex flex-col items-center p-3 shadow-inner">
@@ -123,7 +123,7 @@ const OrimichikunDiagram = ({ language = 'ja' }) => {
                         {content.stateInterfaceDesc}
                     </p>
                     <div className="bg-gray-900/80 border border-yellow-700/50 rounded py-2 px-3 flex justify-center text-sm text-yellow-100 shadow-inner font-mono">
-                        <span className="whitespace-pre-line leading-relaxed text-center">{content.stateInterfaceDetail}</span>
+                        <span className="whitespace-pre-line leading-relaxed text-center" dangerouslySetInnerHTML={{ __html: content.stateInterfaceDetail }}></span>
                     </div>
                 </div>
 
