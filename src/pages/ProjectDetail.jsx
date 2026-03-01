@@ -5,6 +5,7 @@ import { m_ProjectData } from '../constants/m_ProjectData';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Github, ExternalLink, Download } from 'lucide-react';
 import ImageCarousel from '../components/ImageCarousel';
+import AxisSaveDiagram from '../components/AxisSaveDiagram';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const ProjectDetail = () => {
@@ -69,6 +70,8 @@ const ProjectDetail = () => {
                         className="text-gray-300 text-lg leading-relaxed mb-8 font-rajdhani"
                         dangerouslySetInnerHTML={{ __html: (language === 'en' && project.descriptionEn ? project.descriptionEn : project.description).replace(/\n/g, '<br/>') }}
                     />
+
+                    {project.id === 1 && <AxisSaveDiagram language={language} />}
 
                     <div className="flex gap-4">
                         {project.githubUrl && (
