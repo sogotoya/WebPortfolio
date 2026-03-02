@@ -397,18 +397,18 @@ const GameJamMonitor = ({ items }) => {
 
                         {/* モニター下部 */}
                         {activeBackgroundItem && (
-                            <div className="px-4 py-3 border-t border-gray-700/50 bg-black/50">
-                                <div className="flex items-center justify-between">
-                                    <div>
+                            <div className="px-4 py-3 border-t border-gray-700/50 bg-black/50 min-h-[200px]">
+                                <div className="flex items-start justify-between">
+                                    <div className="flex-1 pr-4">
                                         <h3 className="text-base font-orbitron font-bold text-white tracking-wide">
                                             {activeBackgroundItem.title}
                                         </h3>
-                                        <p className="text-xs text-gray-500 mt-0.5 font-rajdhani whitespace-pre-line">
+                                        <p className="text-xs text-gray-500 mt-1.5 font-rajdhani whitespace-pre-line leading-relaxed">
                                             {activeBackgroundItem.description}
                                         </p>
                                     </div>
-                                    <div className="flex flex-col items-end gap-1.5">
-                                        <div className="flex gap-1.5">
+                                    <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
+                                        <div className="flex gap-1.5 flex-wrap justify-end max-w-[120px]">
                                             {activeBackgroundItem.technologies.map((tech, i) => (
                                                 <span key={i} className="text-[10px] text-neon-blue bg-black/60 px-2 py-1 border border-neon-blue/30 rounded-sm">
                                                     {tech}
