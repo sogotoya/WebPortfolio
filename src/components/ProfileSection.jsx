@@ -138,7 +138,12 @@ const ProfileSection = () => {
 
                             <div className="mt-6 p-4 border border-neon-blue/40 bg-neon-blue/10 rounded-sm shadow-[0_0_15px_rgba(0,243,255,0.1)]">
                                 <p className="text-neon-blue font-bold text-center tracking-wide text-sm md:text-base">
-                                    {isEn ? "My current design standard is not \"maximizing implementation speed\" but \"maximizing the probability of completion.\"" : "現在は「実装速度の最大化」ではなく「完成確率の最大化」を設計基準としています。"}
+                                    {isEn ? "My current design standard is not \"maximizing implementation speed\" but \"maximizing the probability of completion.\"" : (
+                                        <>
+                                            <span className="inline-block">現在は「実装速度の最大化」ではなく</span>
+                                            <span className="inline-block">「完成確率の最大化」を設計基準としています。</span>
+                                        </>
+                                    )}
                                 </p>
                             </div>
                         </div>
