@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
+import ProfileSection from '../components/ProfileSection';
 import ProjectCard from '../components/ProjectCard';
 import CollapsibleSection from '../components/CollapsibleSection';
 import GameJamMonitor from '../components/GameJamMonitor';
@@ -10,7 +11,7 @@ import { motion } from 'framer-motion';
 const Home = () => {
     return (
         <Layout>
-            <header className="mb-8 text-center">
+            <header className="mb-8 text-center border-b border-gray-800 pb-8">
                 <motion.h1
                     className="text-2xl md:text-3xl font-orbitron font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-500 mb-3"
                     initial={{ opacity: 0, y: -30 }}
@@ -28,6 +29,15 @@ const Home = () => {
                     VISUAL / INTERACTIVE / CODE
                 </motion.p>
             </header>
+
+            {/* プロフィールセクション */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+            >
+                <ProfileSection />
+            </motion.div>
 
             {/* ヒーロープロジェクト（Axis:Save） */}
             <motion.div
