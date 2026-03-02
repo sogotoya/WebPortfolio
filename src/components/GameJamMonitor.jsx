@@ -397,7 +397,7 @@ const GameJamMonitor = ({ items }) => {
 
                         {/* モニター下部 */}
                         {activeBackgroundItem && (
-                            <div className="px-4 py-3 border-t border-gray-700/50 bg-black/50 min-h-[200px]">
+                            <div className="px-4 py-3 border-t border-gray-700/50 bg-black/50 h-[280px] overflow-y-auto custom-scrollbar">
                                 <div className="flex items-start justify-between">
                                     <div className="flex-1 pr-4">
                                         <h3 className="text-base font-orbitron font-bold text-white tracking-wide">
