@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { m_ProjectData } from '../constants/m_ProjectData';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 import { ArrowLeft, Github, ExternalLink, Download } from 'lucide-react';
 import ImageCarousel from '../components/ImageCarousel';
 import AxisSaveDiagram from '../components/AxisSaveDiagram';

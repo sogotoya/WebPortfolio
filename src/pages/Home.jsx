@@ -6,7 +6,7 @@ import CollapsibleSection from '../components/CollapsibleSection';
 import GameJamMonitor from '../components/GameJamMonitor';
 import ToolMonitor from '../components/ToolMonitor';
 import { m_ProjectData, m_ToolData, m_GameJamData } from '../constants/m_ProjectData';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 const Home = () => {
     return (
