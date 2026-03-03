@@ -61,6 +61,7 @@ export const m_ProjectData = [
         ],
         githubUrl: "https://github.com/sogotoya/Orimichikun",
         downloadUrl: "https://drive.google.com/file/d/17AjwSIBC5E0qQm1ME8txIx4mbA7m5UvG/view?usp=drive_link",
+        videoUrl: "/projects/Orimichikun/Orimichikun.mp4",
         backgroundUrl: "/projects/Orimichikun/OrimichikunBack.png",
         technologies: ["Unity", "C#"],
     },
