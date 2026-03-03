@@ -1,0 +1,4 @@
+C:\GitHub\WebPortfolio\src\components\ImageCarousel.jsx:183 react-hooks/refs
+C:\GitHub\WebPortfolio\src\constants\m_ProjectData.js:49 no-dupe-keys
+C:\GitHub\WebPortfolio\src\contexts\AudioContext.jsx:38 react-refresh/only-export-components
+C:\GitHub\WebPortfolio\src\contexts\LanguageContext.jsx:19 react-refresh/only-export-components

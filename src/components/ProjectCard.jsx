@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-// import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ project, isHero = false }) => {
