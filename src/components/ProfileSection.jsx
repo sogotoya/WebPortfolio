@@ -28,7 +28,7 @@ const ProfileSection = () => {
             category: isEn ? "Libraries" : "ライブラリ",
             skills: [
                 { name: "OpenGL", icon: <Layers size={24} strokeWidth={1.5} /> },
-                { name: "VCC", icon: <Wrench size={24} strokeWidth={1.5} /> },
+                { name: "VRChat Creator Companion", icon: <Wrench size={24} strokeWidth={1.5} /> },
             ]
         },
         {
