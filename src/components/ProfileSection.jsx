@@ -123,18 +123,11 @@ const ProfileSection = () => {
                             </p>
 
                             <ul className="list-disc list-inside space-y-1 my-4 ml-2 text-gray-300">
-                                <li>{isEn ? "Explicit state transitions (State Machine / Event-driven design)" : "状態遷移の明示化（ステートマシン／イベント駆動設計）"}</li>
+                                <li>{isEn ? "Explicit state transitions (defining state priorities)" : "状態遷移の明示化（ステート優先順位の定義）"}</li>
                                 <li>{isEn ? "Guaranteed completion design for TimeScale changes and presentation locks" : "TimeScale変更や演出ロックに対する終了保証設計"}</li>
                                 <li>{isEn ? "Separation of responsibilities across Input, Physics, Presentation, and UI" : "入力／物理／演出／UIの責務分離"}</li>
                                 <li>{isEn ? "Structural design predicated on ease of integration" : "統合容易性を前提とした構造設計"}</li>
                             </ul>
-
-                            <p className="text-gray-300">
-                                {isEn ?
-                                    "Triggered by integration failures in short-term development, I standardized the definition of transition priorities, the unification of animation event specifications, and regular integration testing." :
-                                    "短期開発における統合破綻を契機に、遷移優先度の定義、アニメーションイベント仕様の統一、定期的な統合テストを標準化しました。"
-                                }
-                            </p>
 
                             <div className="mt-6 p-4 border border-neon-blue/40 bg-neon-blue/10 rounded-sm shadow-[0_0_15px_rgba(0,243,255,0.1)]">
                                 <p className="text-neon-blue font-bold text-center tracking-wide text-sm md:text-base">
