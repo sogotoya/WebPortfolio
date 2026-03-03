@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const OrimichikunDiagram = ({ language = 'ja' }) => {
     const t = {
         ja: {
-            title: 'State Machine 戦闘AIアーキテクチャ',
+            title: '初期State Machine戦闘AIアーキテクチャ',
             manager: 'Boss AI Context (Orchestrator)',
             managerState: 'State Management',
             managerStateDesc: '・CurrentState\n・ChangeState()\n<span class="text-orange-400/90 text-[11px] block mt-1 font-bold">┗ 遷移の最終実行</span>',
@@ -20,22 +20,22 @@ const OrimichikunDiagram = ({ language = 'ja' }) => {
             stateRoll: 'State_Roll',
             stateRollDesc: '・突進パターン\n・クールタイム管理',
             stateHari: 'State_Hari',
-            stateHariDesc: '・弾生成処理\n・コリジョン処理\n<span class="text-xs text-orange-400 font-bold">*ObjectPool導入予定</span>',
+            stateHariDesc: '・弾生成処理\n・コリジョン処理\n<span class="text-xs text-orange-400 font-bold">*InstantiateによるGC課題あり</span>',
             transitionTitle: '状態遷移ロジック',
             transition1: 'Distance < 3f\n↓\nState_Roll',
             transition2: 'Attack End\n↓\nState_Move',
             transition3: 'Phase Change\n↓\nState_Hari',
-            principlesTitle: 'Design Principles',
+            principlesTitle: 'Issues & Learnings',
             principles: [
-                '巨大単一クラスの回避',
-                '攻撃ロジックの責務分離',
-                'データ駆動設計への拡張前提',
-                'Instantiate依存排除によるGC発生抑制',
-                '意図的な非物理設計（軽量2Dアクション特化）'
+                '巨大単一クラス化の回避には成功',
+                'パラメータのコード依存による調整難',
+                'Instantiate過多によるGC発生リスク',
+                'Coroutine主体で進行管理が分散',
+                '→「終了保証・データ駆動設計」の必要性を痛感'
             ]
         },
         en: {
-            title: 'State Machine Combat AI Architecture',
+            title: 'Initial State Machine Combat AI Architecture',
             manager: 'Boss AI Context (Orchestrator)',
             managerState: 'State Management',
             managerStateDesc: '・CurrentState\n・ChangeState()\n<span class="text-orange-400/90 text-[11px] block mt-1 font-bold">┗ Final transition execution</span>',
@@ -51,18 +51,18 @@ const OrimichikunDiagram = ({ language = 'ja' }) => {
             stateRoll: 'State_Roll',
             stateRollDesc: '・Dash pattern\n・Cooldown management',
             stateHari: 'State_Hari',
-            stateHariDesc: '・Bullet generation\n・Collision logic\n<span class="text-xs text-orange-400 font-bold">*ObjectPool planned</span>',
+            stateHariDesc: '・Bullet generation\n・Collision logic\n<span class="text-xs text-orange-400 font-bold">*GC issues via Instantiate</span>',
             transitionTitle: 'State Transitions',
             transition1: 'Distance < 3f\n↓\nState_Roll',
             transition2: 'Attack End\n↓\nState_Move',
             transition3: 'Phase Change\n↓\nState_Hari',
-            principlesTitle: 'Design Principles',
+            principlesTitle: 'Issues & Learnings',
             principles: [
-                'Avoidance of massive single classes',
-                'Separation of attack logic responsibilities',
-                'Designed for data-driven extension',
-                'GC suppression by eliminating Instantiate dependency',
-                'Intentional non-physics design (lightweight 2D action focused)'
+                'Successfully avoided massive specific classes',
+                'Hard-coded parameters led to adjustment difficulty',
+                'GC spike risk due to excessive Instantiate calls',
+                'Fragmented progression management via Coroutines',
+                '→ Realized the critical need for "Guaranteed Completion" & "Data-Driven Design"'
             ]
         }
     };
