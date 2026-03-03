@@ -208,22 +208,26 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
                             onClick={(e) => { e.stopPropagation(); toggleVideo(); }}
                         />
                         {/* 再生/一時停止ボタンオーバーレイ */}
-                        <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none ${isVideoPaused ? 'opacity-100 bg-black/40' : 'opacity-0 group-hover:opacity-100'}`}>
-                            <button
-                                onClick={(e) => { e.stopPropagation(); toggleVideo(); }}
-                                className="pointer-events-auto bg-black/60 text-neon-pink p-4 rounded-full border border-neon-blue backdrop-blur-sm transform hover:scale-110 transition-transform"
-                            >
-                                {isVideoPaused ? (
-                                    <Play size={48} className="translate-x-1" fill="currentColor" />
-                                ) : (
-                                    <Pause size={48} fill="currentColor" />
-                                )}
-                            </button>
+                        <div className={`absolute inset-0 transition-colors duration-500 pointer-events-none ${isVideoPaused ? 'bg-black/40' : 'bg-transparent'}`}>
 
-                            {/* フルスクリーンボタン (右下) */}
+                            {/* 中央：再生/一時停止ボタン（再生中は完全にフェードアウト） */}
+                            <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${isVideoPaused ? 'opacity-100' : 'opacity-0'}`}>
+                                <button
+                                    onClick={(e) => { e.stopPropagation(); toggleVideo(); }}
+                                    className={`bg-black/60 text-neon-pink p-4 rounded-full border border-neon-blue backdrop-blur-sm transform hover:scale-110 transition-transform ${isVideoPaused ? 'pointer-events-auto' : 'pointer-events-none'}`}
+                                >
+                                    {isVideoPaused ? (
+                                        <Play size={48} className="translate-x-1" fill="currentColor" />
+                                    ) : (
+                                        <Pause size={48} fill="currentColor" />
+                                    )}
+                                </button>
+                            </div>
+
+                            {/* フルスクリーンボタン (右下) - ホバー時に表示 */}
                             <button
                                 onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
-                                className="pointer-events-auto absolute bottom-4 right-4 bg-black/60 text-white p-2 rounded-full border border-gray-500 hover:border-neon-blue hover:text-neon-blue backdrop-blur-sm transition-all duration-200"
+                                className={`pointer-events-auto absolute bottom-4 right-4 bg-black/60 text-white p-2 rounded-full border border-gray-500 hover:border-neon-blue hover:text-neon-blue backdrop-blur-sm transition-opacity duration-300 ${isVideoPaused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
                                 title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
                             >
                                 {isFullscreen ? (
