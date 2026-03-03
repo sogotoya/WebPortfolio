@@ -205,7 +205,6 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
                             muted={!isAudioEnabled}
                             playsInline
                             onEnded={handleVideoEnded}
-                            onClick={(e) => { e.stopPropagation(); toggleVideo(); }}
                         />
                         {/* 再生/一時停止ボタンオーバーレイ */}
                         <div className={`absolute inset-0 transition-colors duration-500 pointer-events-none ${isVideoPaused ? 'bg-black/40' : 'bg-transparent'}`}>
@@ -214,6 +213,8 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
                             <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${isVideoPaused ? 'opacity-100' : 'opacity-0'}`}>
                                 <button
                                     onClick={(e) => { e.stopPropagation(); toggleVideo(); }}
+                                    onMouseDown={(e) => e.stopPropagation()}
+                                    onMouseUp={(e) => e.stopPropagation()}
                                     className={`bg-black/60 text-neon-pink p-4 rounded-full border border-neon-blue backdrop-blur-sm transform hover:scale-110 transition-transform ${isVideoPaused ? 'pointer-events-auto' : 'pointer-events-none'}`}
                                 >
                                     {isVideoPaused ? (
@@ -227,6 +228,8 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
                             {/* フルスクリーンボタン (右下) - ホバー時に表示 */}
                             <button
                                 onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
+                                onMouseDown={(e) => e.stopPropagation()}
+                                onMouseUp={(e) => e.stopPropagation()}
                                 className={`pointer-events-auto absolute bottom-4 right-4 bg-black/60 text-white p-2 rounded-full border border-gray-500 hover:border-neon-blue hover:text-neon-blue backdrop-blur-sm transition-opacity duration-300 ${isVideoPaused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
                                 title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
                             >
@@ -258,12 +261,16 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
             {/* ナビゲーションボタン */}
             <button
                 onClick={(e) => { e.stopPropagation(); handleManualNavigation('prev'); }}
+                onMouseDown={(e) => e.stopPropagation()}
+                onMouseUp={(e) => e.stopPropagation()}
                 className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full text-neon-blue hover:bg-neon-blue hover:text-black transition-colors opacity-0 group-hover:opacity-100 z-10"
             >
                 <ChevronLeft size={24} />
             </button>
             <button
                 onClick={(e) => { e.stopPropagation(); handleManualNavigation('next'); }}
+                onMouseDown={(e) => e.stopPropagation()}
+                onMouseUp={(e) => e.stopPropagation()}
                 className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full text-neon-blue hover:bg-neon-blue hover:text-black transition-colors opacity-0 group-hover:opacity-100 z-10"
             >
                 <ChevronRight size={24} />
