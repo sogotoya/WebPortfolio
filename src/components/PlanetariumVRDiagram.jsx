@@ -4,34 +4,34 @@ import { motion } from 'framer-motion';
 const PlanetariumVRDiagram = ({ language = 'ja' }) => {
     const t = {
         ja: {
-            title: 'VRプレゼンテーション制御アーキテクチャ',
-            input: 'Gaze Recognition',
+            title: '責務分離と終了保証アーキテクチャ',
+            input: 'Spatial Recognition',
             inputDesc: 'Vector3.Dot による視線計算',
             inputDetail: '・プレイヤーの視線方向\n・オブジェクトの座標',
             audioManager: 'Audio & Visual Controller',
             audioManagerDesc: '視線連動・空間音響制御',
             audioDetail: '・Mathf.Lerp による音量補間\n・AudioSource (Spatial Blend 1.0)',
             sequenceManager: 'Event Sequence Manager',
-            sequenceManagerDesc: 'UniTaskによる非同期進行管理',
-            sequenceDetail: '・WaitWhile() で音声終了待機\n・Yield() 経由のフェードコルーチン呼び出し',
+            sequenceManagerDesc: '音声終了をトリガーとする進行制御',
+            sequenceDetail: '・WaitWhile() で音声終了を明示的に待機\n・終了保証による表示不整合の防止',
             ui: 'VR UI System',
-            uiDesc: 'Quaternion.LookRotation連携',
-            conclusion: '「空間認識」「音響」「進行管理」への責務分割と、イベント駆動型の自然なVRUXを実現'
+            uiDesc: 'Quaternion.LookRotation / Time.timeフェード制御',
+            conclusion: '「状態遷移の明示化」と「終了保証設計」により、進行破綻を防ぎ自然な視線誘導を実現'
         },
         en: {
-            title: 'VR Presentation Control Architecture',
-            input: 'Gaze Recognition',
+            title: 'Separation of Responsibilities & Guaranteed Completion',
+            input: 'Spatial Recognition',
             inputDesc: 'Gaze calculation via Vector3.Dot',
             inputDetail: '・Player gaze direction\n・Object coordinates',
             audioManager: 'Audio & Visual Controller',
             audioManagerDesc: 'Gaze-linked spatial audio control',
             audioDetail: '・Volume interpolation via Mathf.Lerp\n・AudioSource (Spatial Blend 1.0)',
             sequenceManager: 'Event Sequence Manager',
-            sequenceManagerDesc: 'Async progression via UniTask',
-            sequenceDetail: '・WaitWhile() for audio completion\n・Yield() routed fade coroutines',
+            sequenceManagerDesc: 'Audio completion triggered progression',
+            sequenceDetail: '・Explicit WaitWhile() for audio completion\n・Preventing display inconsistencies via guaranteed completion',
             ui: 'VR UI System',
-            uiDesc: 'Quaternion.LookRotation integration',
-            conclusion: 'Achieves natural VR UX via event-driven design and divided responsibilities between spatial recognition, audio, and progression.'
+            uiDesc: 'Quaternion.LookRotation / Time.time fade control',
+            conclusion: 'Achieves natural gaze guidance and prevents progression breakdowns via explicit state transitions and guaranteed completion design.'
         }
     };
     const content = t[language] || t.ja;
