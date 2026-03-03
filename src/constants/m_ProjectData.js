@@ -32,21 +32,6 @@ export const m_ProjectData = [
         technologies: ["Unity", "C#", "VR"],
     },
     {
-        id: 3,
-        title: "DartsVR",
-        description: "VRダーツゲーム制作中",
-        descriptionEn: "A VR darts game (in production)",
-        videoUrl: "",
-        imageUrls: [
-            "/projects/DartsVR/DartsVR1.png",
-            "/projects/DartsVR/DartsVR2.png",
-        ],
-        githubUrl: "",
-        downloadUrl: "",
-        backgroundUrl: "/projects/DartsVR/DartsVRBack.png",
-        technologies: ["Unity", "C#", "VR"],
-    },
-    {
         id: 4,
         title: "Orimichikun",
         description: "<strong>■ 本作の位置付け</strong>\n本作は、State Machineベースの戦闘AI設計に初めて本格的に取り組んだ作品です。\n拡張性と実行効率の両立を目標に、State PatternによるボスAI制御を実装しました。\n\n<strong>■ 設計内容</strong>\n各攻撃（Move / Roll / Hari など）を個別ステートクラスとして分離し、状態遷移を明確化。\n\nTime.deltaTimeを用いたフレームレート非依存移動を実装し、\ntransform加算による安定した速度制御を行いました。\n\nまた、攻撃ロジックをクラス単位で分離し、巨大な単一クラス化を回避しました。\n\n<strong>■ 発生した課題と学び</strong>\nしかし以下の問題が発生しました：\n\n▸ パラメータがコード依存で調整性が低い\n▸ Instantiate依存によるGC発生リスク\n▸ Coroutine主体で進行管理が分散\n▸ transform直操作による物理拡張制限\n\nこの経験から、\n「状態を分けるだけでは不十分であり、終了保証・責務分離・データ駆動設計まで踏み込む必要がある」\nという設計思想に至りました。\n\n<strong>制作期間</strong> : 3週間 &emsp; <strong>チーム人数</strong> : 2人 &emsp; <strong>プラットフォーム</strong> : PC / スマホ",
@@ -64,6 +49,21 @@ export const m_ProjectData = [
         videoUrl: "/projects/Orimichikun/Orimichikun.mp4",
         backgroundUrl: "/projects/Orimichikun/OrimichikunBack.png",
         technologies: ["Unity", "C#"],
+    },
+    {
+        id: 3,
+        title: "DartsVR",
+        description: "VRダーツゲーム制作中",
+        descriptionEn: "A VR darts game (in production)",
+        videoUrl: "",
+        imageUrls: [
+            "/projects/DartsVR/DartsVR1.png",
+            "/projects/DartsVR/DartsVR2.png",
+        ],
+        githubUrl: "",
+        downloadUrl: "",
+        backgroundUrl: "/projects/DartsVR/DartsVRBack.png",
+        technologies: ["Unity", "C#", "VR"],
     },
 ];
 
