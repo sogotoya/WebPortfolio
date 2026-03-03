@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, Pause, Maximize, Minimize } from 'lucide-react';
+import { useAudio } from '../contexts/AudioContext';
 
 const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
+    const { isAudioEnabled } = useAudio();
     // 動画がある場合、スライド配列の先頭に動画を挿入
     const hasVideo = videoUrl && videoUrl.length > 0 && !videoUrl.startsWith('http');
     const totalSlides = hasVideo ? images.length + 1 : images.length;
@@ -12,7 +14,7 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
     const [isAutoPlaying, setIsAutoPlaying] = useState(!hasVideo);
     const [slideDirection, setSlideDirection] = useState(1); // 1: next, -1: prev
     const [videoEnded, setVideoEnded] = useState(false);
-    const [isVideoPaused, setIsVideoPaused] = useState(false); // 再生/一時停止状態
+    const [isVideoPaused, setIsVideoPaused] = useState(true); // ユーザー設定に関わらず最初は一時停止状態から開始
     const [isFullscreen, setIsFullscreen] = useState(false); // フルスクリーン状態
 
     // マウスドラッグ用ローカル変数
@@ -199,20 +201,20 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
                         <video
                             ref={videoRef}
                             src={videoUrl}
-                            className="w-full h-full object-cover"
-                            autoPlay
-                            muted
+                            className="w-full h-full object-cover cursor-pointer"
+                            muted={!isAudioEnabled}
                             playsInline
                             onEnded={handleVideoEnded}
+                            onClick={(e) => { e.stopPropagation(); toggleVideo(); }}
                         />
                         {/* 再生/一時停止ボタンオーバーレイ */}
-                        <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${isVideoPaused ? 'opacity-100 bg-black/40' : 'opacity-0 hover:opacity-100'}`}>
+                        <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none ${isVideoPaused ? 'opacity-100 bg-black/40' : 'opacity-0 group-hover:opacity-100'}`}>
                             <button
                                 onClick={(e) => { e.stopPropagation(); toggleVideo(); }}
-                                className="bg-black/60 text-neon-pink p-4 rounded-full border border-neon-blue backdrop-blur-sm transform hover:scale-110 transition-transform"
+                                className="pointer-events-auto bg-black/60 text-neon-pink p-4 rounded-full border border-neon-blue backdrop-blur-sm transform hover:scale-110 transition-transform"
                             >
                                 {isVideoPaused ? (
-                                    <Play size={48} fill="currentColor" />
+                                    <Play size={48} className="translate-x-1" fill="currentColor" />
                                 ) : (
                                     <Pause size={48} fill="currentColor" />
                                 )}
@@ -221,7 +223,7 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
                             {/* フルスクリーンボタン (右下) */}
                             <button
                                 onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
-                                className="absolute bottom-4 right-4 bg-black/60 text-white p-2 rounded-full border border-gray-500 hover:border-neon-blue hover:text-neon-blue backdrop-blur-sm transition-all duration-200"
+                                className="pointer-events-auto absolute bottom-4 right-4 bg-black/60 text-white p-2 rounded-full border border-gray-500 hover:border-neon-blue hover:text-neon-blue backdrop-blur-sm transition-all duration-200"
                                 title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
                             >
                                 {isFullscreen ? (

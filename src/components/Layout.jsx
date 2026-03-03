@@ -1,9 +1,12 @@
 import React from 'react';
-import { Twitter, Github } from 'lucide-react';
+import { Twitter, Github, Volume2, VolumeX } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useAudio } from '../contexts/AudioContext';
+import AudioPermissionModal from './AudioPermissionModal';
 
 const Layout = ({ children }) => {
     const { language, toggleLanguage } = useLanguage();
+    const { isAudioEnabled, toggleAudio } = useAudio();
 
     return (
         <div className="min-h-screen bg-dark-bg text-gray-200 font-rajdhani relative overflow-hidden">
@@ -38,16 +41,28 @@ const Layout = ({ children }) => {
                     </a>
                 </div>
 
-                {/* Right: Language Toggle */}
-                <button
-                    onClick={toggleLanguage}
-                    className="flex items-center gap-1 text-sm font-orbitron font-bold tracking-wider transition-colors"
-                >
-                    <span className={language === 'ja' ? 'text-neon-blue' : 'text-gray-500'}>JP</span>
-                    <span className="text-gray-600">/</span>
-                    <span className={language === 'en' ? 'text-neon-blue' : 'text-gray-500'}>EN</span>
-                </button>
+                {/* Right: Language & Audio Toggle */}
+                <div className="flex items-center gap-6">
+                    <button
+                        onClick={toggleLanguage}
+                        className="flex items-center gap-1 text-sm font-orbitron font-bold tracking-wider transition-colors"
+                    >
+                        <span className={language === 'ja' ? 'text-neon-blue' : 'text-gray-500'}>JP</span>
+                        <span className="text-gray-600">/</span>
+                        <span className={language === 'en' ? 'text-neon-blue' : 'text-gray-500'}>EN</span>
+                    </button>
+
+                    <button
+                        onClick={toggleAudio}
+                        className={`transition-colors duration-200 ${isAudioEnabled ? 'text-neon-blue hover:text-white' : 'text-gray-500 hover:text-gray-300'}`}
+                        title={isAudioEnabled ? (language === 'ja' ? '音声をオフにする' : 'Mute Audio') : (language === 'ja' ? '音声をオンにする' : 'Enable Audio')}
+                    >
+                        {isAudioEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
+                    </button>
+                </div>
             </nav>
+
+            <AudioPermissionModal language={language} />
 
             {/* Main Content */}
             <main className="relative z-10 px-4 pb-8 max-w-7xl mx-auto">

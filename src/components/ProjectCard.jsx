@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ project, isHero = false }) => {
     const [isHovered, setIsHovered] = useState(false);
-    const [isMuted, setIsMuted] = useState(true);
     const [hoverImageIndex, setHoverImageIndex] = useState(0);
     const videoRef = useRef(null);
     const imageTimerRef = useRef(null);
@@ -29,7 +28,6 @@ const ProjectCard = ({ project, isHero = false }) => {
             videoRef.current.pause();
             videoRef.current.currentTime = 0;
         }
-        setIsMuted(true);
         // 画像切り替えタイマーをクリア
         if (imageTimerRef.current) {
             clearInterval(imageTimerRef.current);
@@ -46,13 +44,6 @@ const ProjectCard = ({ project, isHero = false }) => {
             }
         };
     }, []);
-
-    // 音声トグルハンドラ（Linkのページ遷移を防止しつつミュート切り替え）
-    const handleToggleMute = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        setIsMuted(!isMuted);
-    };
 
     return (
         <Link to={`/project/${project.id}`}>
@@ -76,7 +67,7 @@ const ProjectCard = ({ project, isHero = false }) => {
                             src={project.videoUrl}
                             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
                             loop
-                            muted={isMuted}
+                            muted={true}
                             playsInline
                         />
                     )}
@@ -85,17 +76,6 @@ const ProjectCard = ({ project, isHero = false }) => {
                         alt={project.title}
                         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered && project.videoUrl ? 'opacity-0' : 'opacity-100'}`}
                     />
-
-                    {/* 音声トグルボタン（ホバー中かつ動画がある場合のみ表示） */}
-                    {isHovered && project.videoUrl && (
-                        <button
-                            onClick={handleToggleMute}
-                            className="absolute top-3 right-3 z-30 bg-black/60 hover:bg-black/80 text-white w-9 h-9 flex items-center justify-center rounded-full border border-gray-600 hover:border-neon-blue transition-all duration-200 backdrop-blur-sm"
-                            title={isMuted ? '音声をオンにする' : '音声をオフにする'}
-                        >
-                            {isMuted ? '🔇' : '🔊'}
-                        </button>
-                    )}
 
                     {/* Overlay Gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-bg to-transparent opacity-60"></div>
