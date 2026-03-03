@@ -4,28 +4,28 @@ import { motion } from 'framer-motion';
 const AxisSaveDiagram = ({ language = 'ja' }) => {
     const t = {
         ja: {
-            title: '責務分離アーキテクチャ',
+            title: '責務分離と状態制御アーキテクチャ',
             cinematic: 'CinematicManager',
             cinematicDesc: '演出処理（カメラ、UI、タイミング）',
             player: 'PlayerController',
             playerDesc: '入力処理・物理演算',
             playerDesc2: '（演出ロジックを持たない）',
-            lock: '状態制御API呼び出し\n( SetEventLock / SetInvincible )',
-            physicsWait: '物理干渉の停止処理\n・FixedUpdateの早期return\n・Physics.IgnoreLayerCollision',
-            asyncControl: 'UniTaskによる\nフレーム同期・時間制御',
-            conclusion: '演出は外部制御とし、ゲームロジックと直接結合させない構造を採用'
+            lock: '状態制御API呼び出し\n( m_IsEventLocked )',
+            physicsWait: '物理干渉の停止処理\n・FixedUpdateの早期return\n・Physics.IgnoreLayerCollision\n・UniTaskによる状態復帰保証',
+            asyncControl: 'CinemachineBlend動的制御\nMathf.Lerpによる時間的緩急設計',
+            conclusion: '「遷移優先度の明確化」と「終了保証設計」により、演出とロジックの競合を防止する構造を採用'
         },
         en: {
-            title: 'Separation of Responsibilities',
+            title: 'Separation of Responsibilities & State Architecture',
             cinematic: 'CinematicManager',
             cinematicDesc: 'Presentation (Camera, UI, Timing)',
             player: 'PlayerController',
             playerDesc: 'Input Processing & Physics',
             playerDesc2: '(No presentation logic)',
-            lock: 'State Control API Call\n( SetEventLock / SetInvincible )',
-            physicsWait: 'Physics Suspension\n・Early return in FixedUpdate\n・Physics.IgnoreLayerCollision',
-            asyncControl: 'Frame & Time Sync\nvia UniTask',
-            conclusion: 'Adopts a structure where presentation is externally controlled and not directly coupled with game logic.'
+            lock: 'State Control API Call\n( m_IsEventLocked )',
+            physicsWait: 'Physics Suspension\n・Early return in FixedUpdate\n・Physics.IgnoreLayerCollision\n・State recovery via UniTask',
+            asyncControl: 'Dynamic CinemachineBlend\nTemporal easing via Mathf.Lerp',
+            conclusion: 'Adopts a structure prioritizing transition clarity and guaranteed completion to prevent logic conflicts.'
         }
     };
     const content = t[language] || t.ja;
