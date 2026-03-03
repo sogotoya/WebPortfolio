@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { m_ProjectData } from '../constants/m_ProjectData';
@@ -14,6 +14,10 @@ const ProjectDetail = () => {
     const { id } = useParams();
     const { language } = useLanguage();
     const project = m_ProjectData.find((p) => p.id === parseInt(id));
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
 
     if (!project) {
         return (
