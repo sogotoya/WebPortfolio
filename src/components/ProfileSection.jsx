@@ -10,6 +10,7 @@ const ProfileSection = () => {
     const isEn = language === 'en';
 
     const skillCategories = [
+        // 行1左
         {
             category: isEn ? "Programming Languages" : "プログラミング言語",
             skills: [
@@ -18,12 +19,7 @@ const ProfileSection = () => {
                 { name: "C#", icon: <FileCode2 size={16} strokeWidth={1.5} /> },
             ]
         },
-        {
-            category: isEn ? "Game Engines" : "ゲームエンジン",
-            skills: [
-                { name: "Unity", icon: <Box size={16} strokeWidth={1.5} /> },
-            ]
-        },
+        // 行1右
         {
             category: isEn ? "Libraries" : "ライブラリ",
             skills: [
@@ -31,6 +27,14 @@ const ProfileSection = () => {
                 { name: "VRChat Creator Companion", icon: <Wrench size={16} strokeWidth={1.5} /> },
             ]
         },
+        // 行2左
+        {
+            category: isEn ? "Game Engines" : "ゲームエンジン",
+            skills: [
+                { name: "Unity", icon: <Box size={16} strokeWidth={1.5} /> },
+            ]
+        },
+        // 行2右
         {
             category: "IDE",
             skills: [
@@ -40,6 +44,7 @@ const ProfileSection = () => {
                 { name: "Claude Code", icon: <Bot size={16} strokeWidth={1.5} /> },
             ]
         },
+        // 行3左
         {
             category: isEn ? "Software" : "ソフトウェア",
             skills: [
@@ -49,6 +54,7 @@ const ProfileSection = () => {
             ]
         }
     ];
+
 
     const content = {
         ja: {
@@ -114,17 +120,17 @@ const ProfileSection = () => {
                             <span className="w-2 h-2 bg-neon-blue rounded-full animate-pulse-slow"></span>
                             {t.skillTitle}
                         </h3>
-                        <div className="space-y-3">
+                        <div className="grid grid-cols-2 gap-x-3 gap-y-2">
                             {skillCategories.map((categoryGroup, categoryIndex) => (
                                 <div key={categoryIndex}>
                                     <h4 className="text-[10px] text-gray-400 font-rajdhani tracking-wider mb-2 border-b border-gray-800/50 pb-1">
                                         {categoryGroup.category}
                                     </h4>
-                                    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-2">
+                                    <div className="grid grid-cols-4 gap-1.5">
                                         {categoryGroup.skills.map((skill, index) => (
                                             <div
                                                 key={index}
-                                                className="flex flex-col items-center justify-center p-1.5 border border-gray-800 bg-black/40 rounded-sm"
+                                                className="flex flex-col items-center justify-center p-1.5 h-14 border border-gray-800 bg-black/40 rounded-sm"
                                             >
                                                 <div className="text-gray-500 mb-1">
                                                     {skill.icon}

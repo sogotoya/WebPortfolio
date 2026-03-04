@@ -30,14 +30,6 @@ const Home = () => {
                 </motion.p>
             </header>
 
-            {/* プロフィールセクション */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-            >
-                <ProfileSection />
-            </motion.div>
 
             {/* ヒーロープロジェクト（Axis:Save） */}
             <motion.div
@@ -75,7 +67,18 @@ const Home = () => {
                     <ToolMonitor items={m_ToolData} />
                 </CollapsibleSection>
             </div>
+
+            {/* プロフィールセクション */}
+            <motion.div
+                className="mt-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+            >
+                <ProfileSection />
+            </motion.div>
         </Layout>
+
     );
 };
 
