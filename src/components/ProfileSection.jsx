@@ -13,39 +13,39 @@ const ProfileSection = () => {
         {
             category: isEn ? "Programming Languages" : "プログラミング言語",
             skills: [
-                { name: "C", icon: <Terminal size={24} strokeWidth={1.5} /> },
-                { name: "C++", icon: <Code2 size={24} strokeWidth={1.5} /> },
-                { name: "C#", icon: <FileCode2 size={24} strokeWidth={1.5} /> },
+                { name: "C", icon: <Terminal size={16} strokeWidth={1.5} /> },
+                { name: "C++", icon: <Code2 size={16} strokeWidth={1.5} /> },
+                { name: "C#", icon: <FileCode2 size={16} strokeWidth={1.5} /> },
             ]
         },
         {
             category: isEn ? "Game Engines" : "ゲームエンジン",
             skills: [
-                { name: "Unity", icon: <Box size={24} strokeWidth={1.5} /> },
+                { name: "Unity", icon: <Box size={16} strokeWidth={1.5} /> },
             ]
         },
         {
             category: isEn ? "Libraries" : "ライブラリ",
             skills: [
-                { name: "OpenGL", icon: <Layers size={24} strokeWidth={1.5} /> },
-                { name: "VRChat Creator Companion", icon: <Wrench size={24} strokeWidth={1.5} /> },
+                { name: "OpenGL", icon: <Layers size={16} strokeWidth={1.5} /> },
+                { name: "VRChat Creator Companion", icon: <Wrench size={16} strokeWidth={1.5} /> },
             ]
         },
         {
             category: "IDE",
             skills: [
-                { name: "Visual Studio 2022", icon: <MonitorPlay size={24} strokeWidth={1.5} /> },
-                { name: "Visual Studio Code", icon: <Code2 size={24} strokeWidth={1.5} /> },
-                { name: "Antigravity", icon: <Zap size={24} strokeWidth={1.5} /> },
-                { name: "Claude Code", icon: <Bot size={24} strokeWidth={1.5} /> },
+                { name: "Visual Studio 2022", icon: <MonitorPlay size={16} strokeWidth={1.5} /> },
+                { name: "Visual Studio Code", icon: <Code2 size={16} strokeWidth={1.5} /> },
+                { name: "Antigravity", icon: <Zap size={16} strokeWidth={1.5} /> },
+                { name: "Claude Code", icon: <Bot size={16} strokeWidth={1.5} /> },
             ]
         },
         {
             category: isEn ? "Software" : "ソフトウェア",
             skills: [
-                { name: "blender", icon: <Component size={24} strokeWidth={1.5} /> },
-                { name: "Gimp", icon: <Palette size={24} strokeWidth={1.5} /> },
-                { name: "DaVinci Resolve", icon: <Video size={24} strokeWidth={1.5} /> },
+                { name: "blender", icon: <Component size={16} strokeWidth={1.5} /> },
+                { name: "Gimp", icon: <Palette size={16} strokeWidth={1.5} /> },
+                { name: "DaVinci Resolve", icon: <Video size={16} strokeWidth={1.5} /> },
             ]
         }
     ];
@@ -60,7 +60,7 @@ const ProfileSection = () => {
             roleLabel: "ROLE",
             role: "プログラマ",
             skillTitle: "SKILLS",
-            philosophyTitle: "■ 設計思想",
+            philosophyTitle: "■ 制御設計",
         },
         en: {
             title: "PROFILE",
@@ -114,19 +114,19 @@ const ProfileSection = () => {
                             <span className="w-2 h-2 bg-neon-blue rounded-full animate-pulse-slow"></span>
                             {t.skillTitle}
                         </h3>
-                        <div className="space-y-6">
+                        <div className="space-y-3">
                             {skillCategories.map((categoryGroup, categoryIndex) => (
                                 <div key={categoryIndex}>
                                     <h4 className="text-[10px] text-gray-400 font-rajdhani tracking-wider mb-2 border-b border-gray-800/50 pb-1">
                                         {categoryGroup.category}
                                     </h4>
-                                    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3">
+                                    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-2">
                                         {categoryGroup.skills.map((skill, index) => (
                                             <div
                                                 key={index}
-                                                className="flex flex-col items-center justify-center p-2 border border-gray-800 bg-black/40 rounded-sm"
+                                                className="flex flex-col items-center justify-center p-1.5 border border-gray-800 bg-black/40 rounded-sm"
                                             >
-                                                <div className="text-gray-500 mb-2">
+                                                <div className="text-gray-500 mb-1">
                                                     {skill.icon}
                                                 </div>
                                                 <span className="text-[9px] font-rajdhani text-gray-400 text-center tracking-wider break-words w-full">
