@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const CollapsibleSection = ({ title, children, defaultOpen = false }) => {
+const CollapsibleSection = ({ title, children, defaultOpen = false, onToggle }) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
     const [isHovered, setIsHovered] = useState(false);
+
+    const handleToggle = () => {
+        const newState = !isOpen;
+        setIsOpen(newState);
+        if (onToggle) onToggle(newState);
+    };
 
     return (
         <div className="mt-10">
             {/* Header / Toggle Button */}
             <motion.button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={handleToggle}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 animate={{

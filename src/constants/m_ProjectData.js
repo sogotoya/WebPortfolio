@@ -65,6 +65,51 @@ export const m_ProjectData = [
         backgroundUrl: "/projects/DartsVR/DartsVRBack.png",
         technologies: ["Unity", "C#", "VR"],
     },
+    {
+        id: 5,
+        title: "Tsumitobu",
+        description: "新作ゲーム「Tsumitobu」の詳細情報を準備中です。",
+        descriptionEn: "Detailed information for the new game 'Tsumitobu' is being prepared.",
+        videoUrl: "",
+        imageUrls: ["https://placehold.jp/32/1a1a1a/cccccc/800x450.png?text=No%20Image"],
+        githubUrl: "",
+        downloadUrl: "",
+        backgroundUrl: "",
+        technologies: ["Unity", "C#"],
+    },
+];
+
+// クライアントワークス（案件作品）
+export const m_ClientWorksData = [
+    {
+        id: "cw-1",
+        title: "玉藻城",
+        description: "香川県高松市にある「玉藻城（高松城）」をテーマにした案件作品です。詳細は準備中です。",
+        descriptionEn: "A client project based on 'Tamamo Castle' (Takamatsu Castle) in Kagawa Prefecture. Details coming soon.",
+        videoUrl: "",
+        imageUrls: ["https://placehold.jp/32/1a1a1a/cccccc/800x450.png?text=No%20Image"],
+        githubUrl: "",
+        downloadUrl: "",
+        backgroundUrl: "",
+        technologies: ["Unity"],
+    },
+    {
+        id: "cw-2",
+        title: "SetouchiTreasureQuest",
+        description: "瀬戸内芸術祭用ゲーム。\n香川県さぬき市津田町周辺に設置されている絵を探し、そこに書かれている【パスワード】を見つけ出して該当する画像の入力フォームに打ち込むとクリア。全10問すべてクリアすると、津田の松原に設置されているパズルのピースが1つ追加されます。\n参加者全員で、パズルのピースを探し出し隠された3つの絵を完成させましょう!!\n\n<strong>開発元</strong> : 専門学校穴吹デザインカレッジ ゲームクリエイター学科XR専攻",
+        descriptionEn: "A game created for the Setouchi Art Festival.\nSearch for paintings placed around Tsuda Town, Sanuki City, Kagawa Prefecture, find the [PASSWORD] written on them, and enter it into the input form of the corresponding image to clear. Clearing all 10 questions adds a puzzle piece to the puzzle installed at Tsuda no Matsubara.\nLet all participants search for puzzle pieces and complete the 3 hidden paintings!!\n\n<strong>Developer</strong> : Anabuki Design College, Game Creator Department, XR Major",
+        videoUrl: "",
+        imageUrls: [
+            "/projects/Client/SetouchiTreasureQuest/SetouchiTreasureQuest1.png",
+            "/projects/Client/SetouchiTreasureQuest/SetouchiTreasureQuest2.png",
+            "/projects/Client/SetouchiTreasureQuest/SetouchiTreasureQuest0.png",
+        ],
+        githubUrl: "",
+        downloadUrl: "",
+        playUrl: "https://anabukigames.itch.io/setouchitreasurequest",
+        backgroundUrl: "/projects/Client/SetouchiTreasureQuest/SetouchiTreasureQuestBack.png",
+        technologies: ["Unity"],
+    }
 ];
 
 // ツール一覧
@@ -183,4 +228,32 @@ export const m_GameJamData = [
         githubUrl: "https://github.com/SanukiGameN108/ShotengaiGJ2024_TeamD",
         downloadUrl: "https://drive.google.com/drive/folders/1JMCisiSB07Oe4FoF3CWBAfveRvkJsGrf?usp=sharing",
     },
+];
+
+// VRChat ワールド作品 (おまけ)
+export const m_VRChatWorldsData = [
+    {
+        id: "vrc-1",
+        title: "Bar",
+        description: "VRChat用ワールド「Bar」の詳細。\n美しいライティングと雰囲気を重視して制作しました。",
+        descriptionEn: "Details of VRChat World 'Bar'.",
+        imageUrls: [
+            "/projects/VrC/Bar/BarBack.png", // 仮で背景画像を代用
+        ],
+        backgroundUrl: "/projects/VrC/Bar/BarBack.png",
+        technologies: ["Unity", "VRChat"],
+        downloadUrl: "https://vrchat.com/home/world/wrld_49194f3c-95d6-468f-86f5-ac7f697cf70f/info",
+    },
+    {
+        id: "vrc-2",
+        title: "Bill",
+        description: "VRChat用ワールド「Bill」の詳細。\n落ち着いた空間を目指して制作しました。",
+        descriptionEn: "Details of VRChat World 'Bill'.",
+        imageUrls: [
+            "/projects/VrC/Bill/BillBack.png",
+        ],
+        backgroundUrl: "/projects/VrC/Bill/BillBack.png",
+        technologies: ["Unity", "VRChat"],
+        downloadUrl: "https://vrchat.com/home/world/wrld_689ecf91-f27d-4128-855a-d0b10d237437/info",
+    }
 ];

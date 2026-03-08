@@ -128,17 +128,14 @@ const OrimichikunDiagram = ({ language = 'ja' }) => {
                 </div>
 
                 {/* Branching Arrows Container */}
-                <div className="flex w-full md:w-full justify-around relative h-10 -my-1">
-                    <div className="absolute left-[16.6%] top-0 w-[2px] h-full bg-yellow-500/50"></div>
-                    <div className="absolute left-[16.6%] bottom-0 transform -translate-x-1/2 w-0 h-0 border-x-[5px] border-x-transparent border-t-[8px] border-t-yellow-500"></div>
+                <div className="flex w-full relative h-10 -my-1">
+                    <div className="absolute left-1/4 top-0 transform -translate-x-1/2 w-[2px] h-full bg-yellow-500/50"></div>
+                    <div className="absolute left-1/4 bottom-0 transform -translate-x-1/2 w-0 h-0 border-x-[5px] border-x-transparent border-t-[8px] border-t-yellow-500"></div>
 
-                    <div className="absolute left-1/2 top-0 transform -translate-x-1/2 w-[2px] h-full bg-yellow-500/50"></div>
-                    <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-0 h-0 border-x-[5px] border-x-transparent border-t-[8px] border-t-yellow-500"></div>
+                    <div className="absolute left-3/4 top-0 transform -translate-x-1/2 w-[2px] h-full bg-yellow-500/50"></div>
+                    <div className="absolute left-3/4 bottom-0 transform -translate-x-1/2 w-0 h-0 border-x-[5px] border-x-transparent border-t-[8px] border-t-yellow-500"></div>
 
-                    <div className="absolute right-[16.6%] top-0 w-[2px] h-full bg-yellow-500/50"></div>
-                    <div className="absolute right-[16.6%] bottom-0 transform -translate-x-1/2 w-0 h-0 border-x-[5px] border-x-transparent border-t-[8px] border-t-yellow-500"></div>
-
-                    <div className="absolute top-0 left-[16.6%] right-[16.6%] h-[2px] bg-yellow-500/50"></div>
+                    <div className="absolute top-0 left-1/4 right-1/4 h-[2px] bg-yellow-500/50"></div>
                 </div>
 
                 {/* 3. Concrete States & Transitions */}
@@ -185,7 +182,7 @@ const OrimichikunDiagram = ({ language = 'ja' }) => {
 
                 {/* 4. Design Principles (The core differentiator) */}
                 <div className="w-full mt-6 bg-gradient-to-r from-gray-900/90 via-gray-800/80 to-gray-900/90 border-l-4 border-l-orange-500 rounded-r-md p-5 shadow-lg relative overflow-hidden">
-                    <div className="absolute -right-4 -top-4 text-gray-800/30 font-orbitron text-6xl font-black pointer-events-none">ARCHITECTURE</div>
+
                     <h4 className="text-orange-400 text-lg font-bold font-orbitron mb-4 flex items-center">
                         <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                         {content.principlesTitle}

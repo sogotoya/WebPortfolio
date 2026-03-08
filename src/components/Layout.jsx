@@ -1,10 +1,11 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Twitter, Github, Volume2, VolumeX } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useAudio } from '../contexts/AudioContext';
 import AudioPermissionModal from './AudioPermissionModal';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, backgroundImage }) => {
     const { language, toggleLanguage } = useLanguage();
     const { isAudioEnabled, toggleAudio } = useAudio();
 
@@ -12,7 +13,17 @@ const Layout = ({ children }) => {
         <div className="min-h-screen bg-dark-bg text-gray-200 font-rajdhani relative overflow-hidden">
             {/* Background Elements */}
             <div className="fixed inset-0 bg-cyber-grid opacity-20 pointer-events-none z-0"></div>
-            <div className="fixed inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent pointer-events-none z-0"></div>
+            {backgroundImage && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.3 }}
+                    transition={{ duration: 0.8 }}
+                    className="fixed inset-0 z-0"
+                >
+                    <img src={backgroundImage} alt="Background" className="w-full h-full object-cover" />
+                </motion.div>
+            )}
+            <div className="fixed inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/80 to-transparent pointer-events-none z-0"></div>
 
             {/* Scanline Effect */}
             <div className="fixed inset-0 pointer-events-none z-50 bg-[url('https://transparenttextures.com/patterns/black-scales.png')] opacity-5 mix-blend-overlay"></div>

@@ -76,7 +76,7 @@ const PlanetariumVRDiagram = ({ language = 'ja' }) => {
                         <div className="w-0 h-0 border-x-[5px] border-x-transparent border-t-[8px] border-t-cyan-400 mt-[-2px]"></div>
                     </div>
                     <div className="hidden md:flex items-center w-full">
-                        <div className="h-[2px] w-6 bg-gradient-to-r from-purple-500 to-cyan-400"></div>
+                        <div className="h-[2px] w-24 bg-gradient-to-r from-purple-500 to-cyan-400"></div>
                         <div className="w-0 h-0 border-y-[5px] border-y-transparent border-l-[8px] border-l-cyan-400 ml-[-2px]"></div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@ const PlanetariumVRDiagram = ({ language = 'ja' }) => {
                         <div className="w-0 h-0 border-x-[5px] border-x-transparent border-t-[8px] border-t-emerald-400 mt-[-2px]"></div>
                     </div>
                     <div className="hidden md:flex items-center w-full">
-                        <div className="h-[2px] w-6 bg-gradient-to-r from-cyan-400 to-emerald-400"></div>
+                        <div className="h-[2px] w-24 bg-gradient-to-r from-cyan-400 to-emerald-400"></div>
                         <div className="w-0 h-0 border-y-[5px] border-y-transparent border-l-[8px] border-l-emerald-400 ml-[-2px]"></div>
                     </div>
                 </div>

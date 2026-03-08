@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import {
     Terminal, FileCode2, Code2, Box, Wrench, Layers,
-    MonitorPlay, Video, Palette, Component, Zap, Bot
+    MonitorPlay, Video, Palette, Component, Zap, Bot, Package, Music, Github
 } from 'lucide-react';
 
 const ProfileSection = () => {
@@ -24,7 +24,6 @@ const ProfileSection = () => {
             category: isEn ? "Libraries" : "ライブラリ",
             skills: [
                 { name: "OpenGL", icon: <Layers size={16} strokeWidth={1.5} /> },
-                { name: "VRChat Creator Companion", icon: <Wrench size={16} strokeWidth={1.5} /> },
             ]
         },
         // 行2左
@@ -36,10 +35,13 @@ const ProfileSection = () => {
         },
         // 行2右
         {
-            category: "IDE",
+            category: "IDE / Tools",
+            gridClass: "grid-cols-3",
             skills: [
                 { name: "Visual Studio 2022", icon: <MonitorPlay size={16} strokeWidth={1.5} /> },
                 { name: "Visual Studio Code", icon: <Code2 size={16} strokeWidth={1.5} /> },
+                { name: "GitHub", icon: <Github size={16} strokeWidth={1.5} /> },
+                { name: "VRChat Creator\nCompanion", icon: <Wrench size={16} strokeWidth={1.5} /> },
                 { name: "Antigravity", icon: <Zap size={16} strokeWidth={1.5} /> },
                 { name: "Claude Code", icon: <Bot size={16} strokeWidth={1.5} /> },
             ]
@@ -48,9 +50,20 @@ const ProfileSection = () => {
         {
             category: isEn ? "Software" : "ソフトウェア",
             skills: [
-                { name: "blender", icon: <Component size={16} strokeWidth={1.5} /> },
-                { name: "Gimp", icon: <Palette size={16} strokeWidth={1.5} /> },
+                { name: "Blender", icon: <Component size={16} strokeWidth={1.5} /> },
+                { name: "GIMP", icon: <Palette size={16} strokeWidth={1.5} /> },
+                { name: "Studio One", icon: <Music size={16} strokeWidth={1.5} /> },
                 { name: "DaVinci Resolve", icon: <Video size={16} strokeWidth={1.5} /> },
+            ]
+        },
+        // 行3右
+        {
+            category: isEn ? "Unity Packages" : "Unityパッケージ",
+            skills: [
+                { name: "UniTask", icon: <Package size={16} strokeWidth={1.5} /> },
+                { name: "Netcode for\nGameObjects", icon: <Package size={16} strokeWidth={1.5} /> },
+                { name: "DOTween", icon: <Package size={16} strokeWidth={1.5} /> },
+                { name: "Cinemachine", icon: <Package size={16} strokeWidth={1.5} /> },
             ]
         }
     ];
@@ -126,7 +139,7 @@ const ProfileSection = () => {
                                     <h4 className="text-[10px] text-gray-400 font-rajdhani tracking-wider mb-2 border-b border-gray-800/50 pb-1">
                                         {categoryGroup.category}
                                     </h4>
-                                    <div className="grid grid-cols-4 gap-1.5">
+                                    <div className={`grid gap-1.5 ${categoryGroup.gridClass || "grid-cols-4"}`}>
                                         {categoryGroup.skills.map((skill, index) => (
                                             <div
                                                 key={index}
@@ -135,7 +148,7 @@ const ProfileSection = () => {
                                                 <div className="text-gray-500 mb-1">
                                                     {skill.icon}
                                                 </div>
-                                                <span className="text-[9px] font-rajdhani text-gray-400 text-center tracking-wider break-words w-full">
+                                                <span className="text-[9px] font-rajdhani text-gray-400 text-center tracking-wider break-words w-full whitespace-pre-line leading-tight">
                                                     {skill.name}
                                                 </span>
                                             </div>

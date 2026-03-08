@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import ProfileSection from '../components/ProfileSection';
 import ProjectCard from '../components/ProjectCard';
 import CollapsibleSection from '../components/CollapsibleSection';
 import GameJamMonitor from '../components/GameJamMonitor';
 import ToolMonitor from '../components/ToolMonitor';
-import { m_ProjectData, m_ToolData, m_GameJamData } from '../constants/m_ProjectData';
+import VRChatWorldMonitor from '../components/VRChatWorldMonitor';
+import { m_ProjectData, m_ToolData, m_GameJamData, m_ClientWorksData, m_VRChatWorldsData } from '../constants/m_ProjectData';
 import { motion } from 'framer-motion';
 
 const Home = () => {
+    const [vrchatBgImage, setVrchatBgImage] = useState(null);
+
     return (
-        <Layout>
+        <Layout backgroundImage={vrchatBgImage}>
             <header className="mb-8 text-center border-b border-gray-800 pb-8">
                 <motion.h1
                     className="text-2xl md:text-3xl font-orbitron font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-500 mb-3"
@@ -41,14 +44,63 @@ const Home = () => {
                 <ProjectCard project={m_ProjectData[0]} isHero={true} />
             </motion.div>
 
-            {/* その他のプロジェクト */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {m_ProjectData.slice(1).map((project, index) => (
+            {/* -- PERSONAL WORKS -- */}
+            <div className="mt-12 mb-6 flex items-center overflow-hidden">
+                <h2 className="text-lg md:text-xl font-orbitron font-bold text-gray-400 tracking-widest whitespace-nowrap mr-4">
+                    -- PERSONAL WORKS
+                </h2>
+                <div className="flex-1 border-b border-dashed border-gray-700"></div>
+            </div>
+
+            {/* Game Category */}
+            <h3 className="text-md font-orbitron font-semibold text-gray-500 mb-4 ml-2">GAME</h3>
+            <div className="flex flex-wrap justify-center gap-8 mb-8">
+                {m_ProjectData.filter(p => !p.technologies.includes("VR") && p.id !== 1).map((project, index) => (
                     <motion.div
                         key={project.id}
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                        className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.33rem)]"
+                    >
+                        <ProjectCard project={project} />
+                    </motion.div>
+                ))}
+            </div>
+
+            {/* VR Category */}
+            <h3 className="text-md font-orbitron font-semibold text-gray-500 mb-4 ml-2">VR</h3>
+            <div className="flex flex-wrap justify-center gap-8 mb-12">
+                {m_ProjectData.filter(p => p.technologies.includes("VR")).map((project, index) => (
+                    <motion.div
+                        key={project.id}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                        className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.33rem)]"
+                    >
+                        <ProjectCard project={project} />
+                    </motion.div>
+                ))}
+            </div>
+
+            {/* -- CLIENT WORKS -- */}
+            <div className="mt-12 mb-6 flex items-center overflow-hidden">
+                <h2 className="text-lg md:text-xl font-orbitron font-bold text-gray-400 tracking-widest whitespace-nowrap mr-4">
+                    -- CLIENT WORKS
+                </h2>
+                <div className="flex-1 border-b border-dashed border-gray-700"></div>
+            </div>
+
+            {/* Changed from grid to flex to allow centering of items when they don't fill the row */}
+            <div className="flex flex-wrap justify-center gap-8 mb-12">
+                {m_ClientWorksData.map((project, index) => (
+                    <motion.div
+                        key={project.id}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                        className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.33rem)]"
                     >
                         <ProjectCard project={project} />
                     </motion.div>
@@ -56,7 +108,7 @@ const Home = () => {
             </div>
 
             {/* ゲームジャム & ツール — 横2列 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 {/* 左: ゲームジャム作品 */}
                 <CollapsibleSection title="GAME JAM">
                     <GameJamMonitor items={m_GameJamData} />
@@ -65,6 +117,22 @@ const Home = () => {
                 {/* 右: ツール一覧 */}
                 <CollapsibleSection title="TOOLS">
                     <ToolMonitor items={m_ToolData} />
+                </CollapsibleSection>
+            </div>
+
+            {/* VRChat ワールド (おまけ) — フル横幅または中央 */}
+            <div className="mb-12">
+                <CollapsibleSection
+                    title="VRCHAT WORLDS"
+                    onToggle={(isOpen) => {
+                        if (!isOpen) setVrchatBgImage(null);
+                        else setVrchatBgImage(m_VRChatWorldsData[0].backgroundUrl);
+                    }}
+                >
+                    <VRChatWorldMonitor
+                        items={m_VRChatWorldsData}
+                        onItemSelect={(index) => setVrchatBgImage(m_VRChatWorldsData[index].backgroundUrl)}
+                    />
                 </CollapsibleSection>
             </div>
 
