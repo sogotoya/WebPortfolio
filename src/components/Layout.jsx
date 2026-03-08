@@ -23,7 +23,7 @@ const Layout = ({ children, backgroundImage }) => {
                     <img src={backgroundImage} alt="Background" className="w-full h-full object-cover" />
                 </motion.div>
             )}
-            <div className="fixed inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/80 to-transparent pointer-events-none z-0"></div>
+            <div className="fixed inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/70 to-transparent pointer-events-none z-0"></div>
 
             {/* Scanline Effect */}
             <div className="fixed inset-0 pointer-events-none z-50 bg-[url('https://transparenttextures.com/patterns/black-scales.png')] opacity-5 mix-blend-overlay"></div>

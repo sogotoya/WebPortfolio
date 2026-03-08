@@ -41,8 +41,8 @@ const ProjectDetail = () => {
                             className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
                             style={{ backgroundImage: `url(${project.backgroundUrl})` }}
                         />
-                        <div className="fixed inset-0 z-0 bg-dark-bg/40" />
-                        <div className="fixed inset-0 z-0 bg-gradient-to-t from-dark-bg via-dark-bg/80 to-transparent" />
+                        <div className="fixed inset-0 z-0 bg-dark-bg/30" />
+                        <div className="fixed inset-0 z-0 bg-gradient-to-t from-dark-bg via-dark-bg/60 to-transparent" />
                     </>
                 )}
 
