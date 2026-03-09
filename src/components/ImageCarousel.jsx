@@ -14,7 +14,7 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
     const [isAutoPlaying, setIsAutoPlaying] = useState(!hasVideo);
     const [slideDirection, setSlideDirection] = useState(1); // 1: next, -1: prev
     const [videoEnded, setVideoEnded] = useState(false);
-    const [isVideoPaused, setIsVideoPaused] = useState(true); // ユーザー設定に関わらず最初は一時停止状態から開始
+    const [isVideoPaused, setIsVideoPaused] = useState(false); // 自動再生: 最初から再生状態にする
     const [isFullscreen, setIsFullscreen] = useState(false); // フルスクリーン状態
 
     // マウスドラッグ用ローカル変数
@@ -60,6 +60,17 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
         document.addEventListener('fullscreenchange', handleFullscreenChange);
         return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
     }, []);
+
+    // 動画の自動再生 (マウント時)
+    useEffect(() => {
+        if (hasVideo && videoRef.current) {
+            videoRef.current.play().catch(() => {
+                // ブラウザポリシーで自動再生が拒否された場合はボタンを表示
+                setIsVideoPaused(true);
+            });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [hasVideo]);
 
     // 次の画像へ
     const nextImage = useCallback(() => {

@@ -9,6 +9,7 @@ import AxisSaveDiagram from '../components/AxisSaveDiagram';
 import PlanetariumVRDiagram from '../components/PlanetariumVRDiagram';
 import OrimichikunDiagram from '../components/OrimichikunDiagram';
 import { useLanguage } from '../contexts/LanguageContext';
+import MarkdownDocument from '../components/MarkdownDocument';
 
 const ProjectDetail = () => {
     const { id } = useParams();
@@ -82,6 +83,10 @@ const ProjectDetail = () => {
                     {project.id === 1 && <AxisSaveDiagram language={language} />}
                     {project.id === 2 && <PlanetariumVRDiagram language={language} />}
                     {project.id === 4 && <OrimichikunDiagram language={language} />}
+
+                    {project.markdownUrl && (
+                        <MarkdownDocument url={project.markdownUrl} />
+                    )}
 
                     <div className="flex gap-4 justify-end">
                         {project.playUrl && (

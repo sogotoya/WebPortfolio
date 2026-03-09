@@ -72,7 +72,7 @@ const ProjectCard = ({ project, isHero = false }) => {
                         />
                     )}
                     <img
-                        src={project.imageUrls[isHovered && !project.videoUrl ? hoverImageIndex : project.imageUrls.length - 1]}
+                        src={project.imageUrls[isHovered && !project.videoUrl ? hoverImageIndex : (project.thumbnailIndex ?? project.imageUrls.length - 1)]}
                         alt={project.title}
                         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered && project.videoUrl ? 'opacity-0' : 'opacity-100'}`}
                     />

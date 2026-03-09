@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Download } from 'lucide-react';
+import { Github, Download, Gamepad2 } from 'lucide-react';
 
 // ===== スワイプ検知フック =====
 const useSwipe = (onSwipeLeft, onSwipeRight, threshold = 50) => {
@@ -415,8 +415,21 @@ const GameJamMonitor = ({ items }) => {
                                                 </span>
                                             ))}
                                         </div>
-                                        {(activeBackgroundItem.githubUrl || activeBackgroundItem.downloadUrl) && (
-                                            <div className="flex gap-3 mr-1 mt-0.5">
+                                        {(activeBackgroundItem.playUrl || activeBackgroundItem.githubUrl || activeBackgroundItem.downloadUrl) && (
+                                            <div className="flex items-center gap-3 mr-1 mt-0.5">
+                                                {activeBackgroundItem.playUrl && (
+                                                    <a
+                                                        href={activeBackgroundItem.playUrl}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className="group flex items-center gap-1.5 px-3 py-1 border border-neon-blue text-neon-blue text-[11px] font-orbitron tracking-wider hover:bg-neon-blue hover:text-black transition-all duration-200"
+                                                        title="Play on Web"
+                                                    >
+                                                        <Gamepad2 size={13} />
+                                                        <span>Play</span>
+                                                    </a>
+                                                )}
                                                 {activeBackgroundItem.githubUrl && (
                                                     <a
                                                         href={activeBackgroundItem.githubUrl}
