@@ -126,7 +126,7 @@ const MarkdownDocument = ({ url, tag = "Provided by School", tagEn = "Base Envir
             <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2 text-gray-500 text-xs">
                     <FileText size={14} />
-                    <span className="font-mono">engine_analysis.md</span>
+                    <span className="font-mono">{url ? url.split('/').pop() : 'document.md'}</span>
                 </div>
                 <div className="flex gap-2">
                     <span className="text-xs text-gray-600 bg-gray-800 border border-gray-700 px-2 py-0.5 rounded-sm">

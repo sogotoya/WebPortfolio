@@ -10,14 +10,14 @@ const VRChatWorldMonitor = ({ items, onItemSelect }) => {
     };
 
     return (
-        <div className="flex flex-col h-[500px] border border-gray-800 bg-black/60 relative overflow-hidden">
+        <div className="flex flex-col h-[600px] md:h-[500px] border border-gray-800 bg-black/60 relative overflow-hidden">
             {/* Edge Decorations */}
             <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-neon-blue z-20"></div>
             <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-neon-blue z-20"></div>
 
-            <div className="flex h-full">
+            <div className="flex flex-col md:flex-row h-full">
                 {/* Left Side: List */}
-                <div className="w-1/3 border-r border-gray-800 flex flex-col items-stretch overflow-y-auto custom-scrollbar bg-black/40">
+                <div className="w-full md:w-1/3 h-1/3 md:h-full border-b md:border-b-0 md:border-r border-gray-800 flex flex-col items-stretch overflow-y-auto custom-scrollbar bg-black/40">
                     {items.map((item, index) => (
                         <button
                             key={item.id}
@@ -40,7 +40,7 @@ const VRChatWorldMonitor = ({ items, onItemSelect }) => {
                 </div>
 
                 {/* Right Side: Preview */}
-                <div className="w-2/3 h-full relative bg-dark-bg p-4 flex flex-col">
+                <div className="w-full md:w-2/3 h-2/3 md:h-full relative bg-dark-bg p-4 flex flex-col">
                     <AnimatePresence mode="popLayout">
                         <motion.div
                             key={activeIndex}
