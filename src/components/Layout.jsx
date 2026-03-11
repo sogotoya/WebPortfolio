@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import AudioPermissionModal from './AudioPermissionModal';
+
 import { Twitter, Github, Volume2, VolumeX } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useAudio } from '../contexts/AudioContext';
@@ -78,7 +78,7 @@ const Layout = ({ children, backgroundImage }) => {
 
             {/* Main Content */}
             <main className="relative z-10 px-4 pb-8 max-w-7xl mx-auto">
-                <AudioPermissionModal language={language} />
+
                 {children}
             </main>
         </div>
