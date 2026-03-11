@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Layout from '../components/Layout';
 import ProfileSection from '../components/ProfileSection';
@@ -12,6 +12,28 @@ import { m_ProjectData, m_ToolData, m_GameJamData, m_ClientWorksData, m_VRChatWo
 
 const Home = () => {
     const [vrchatBgImage, setVrchatBgImage] = useState(null);
+
+    // スクロール位置の復元と保存
+    useEffect(() => {
+        // マウント時に前回のスクロール位置を復元
+        const savedPosition = sessionStorage.getItem('homeScrollPosition');
+        if (savedPosition) {
+            // 少し遅延させないと、DOMのレンダリング前にスクロールしてしまいトップに戻ってしまう場合がある
+            setTimeout(() => {
+                window.scrollTo(0, parseInt(savedPosition, 10));
+            }, 0);
+        }
+
+        // スクロールイベントで位置を保存
+        const handleScroll = () => {
+            sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        // アンマウント時にイベントリスナーを解除
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <Layout backgroundImage={vrchatBgImage}>

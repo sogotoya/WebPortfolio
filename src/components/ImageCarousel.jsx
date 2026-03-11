@@ -3,13 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, Pause, Maximize, Minimize, Volume2, VolumeX } from 'lucide-react';
 import { useAudio } from '../contexts/AudioContext';
 
-const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
+const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
     const { isAudioEnabled } = useAudio();
     // 動画がある場合、スライド配列の先頭に動画を挿入
     const hasVideo = videoUrl && videoUrl.length > 0 && !videoUrl.startsWith('http');
     const totalSlides = hasVideo ? images.length + 1 : images.length;
 
     const [currentIndex, setCurrentIndex] = useState(0);
+    // 現在のスライドが動画かどうか
+    const isVideoSlide = hasVideo && currentIndex === 0;
+
     // 動画がある場合は自動再生OFF、動画が終わってからON
     const [isAutoPlaying, setIsAutoPlaying] = useState(!hasVideo);
     const [slideDirection, setSlideDirection] = useState(1); // 1: next, -1: prev
@@ -56,9 +59,6 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
     const isDragging = useRef(false);
     const containerRef = useRef(null);
     const videoRef = useRef(null);
-
-    // 現在のスライドが動画かどうか
-    const isVideoSlide = hasVideo && currentIndex === 0;
 
     // 動画の再生/一時停止切り替え
     const toggleVideo = useCallback(() => {

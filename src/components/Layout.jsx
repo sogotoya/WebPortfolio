@@ -54,19 +54,19 @@ const Layout = ({ children, backgroundImage }) => {
                 </div>
 
                 {/* Right: Language & Audio Toggle */}
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-6 drop-shadow-md">
                     <button
                         onClick={toggleLanguage}
                         className="flex items-center gap-1 text-sm font-orbitron font-bold tracking-wider transition-colors"
                     >
-                        <span className={language === 'ja' ? 'text-neon-blue' : 'text-gray-500'}>JP</span>
-                        <span className="text-gray-600">/</span>
-                        <span className={language === 'en' ? 'text-neon-blue' : 'text-gray-500'}>EN</span>
+                        <span className={language === 'ja' ? 'text-neon-blue' : 'text-gray-400'}>JP</span>
+                        <span className="text-gray-500">/</span>
+                        <span className={language === 'en' ? 'text-neon-blue' : 'text-gray-400'}>EN</span>
                     </button>
 
                     <button
                         onClick={toggleAudio}
-                        className={`transition-colors duration-200 ${isAudioEnabled ? 'text-neon-blue hover:text-white' : 'text-gray-500 hover:text-gray-300'}`}
+                        className={`transition-colors duration-200 ${isAudioEnabled ? 'text-neon-blue hover:text-white' : 'text-gray-400 hover:text-gray-200'}`}
                         title={isAudioEnabled ? (language === 'ja' ? '音声をオフにする' : 'Mute Audio') : (language === 'ja' ? '音声をオンにする' : 'Enable Audio')}
                     >
                         {isAudioEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
