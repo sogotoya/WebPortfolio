@@ -49,7 +49,7 @@ export const m_ProjectData = [
         ],
         githubUrl: "https://github.com/sogotoya/Orimichikun",
         downloadUrl: "https://drive.google.com/file/d/17AjwSIBC5E0qQm1ME8txIx4mbA7m5UvG/view?usp=drive_link",
-        videoUrl: "/projects/Orimichikun/Orimichikun.mp4",
+        videoUrl: "/projects/Orimichikun/OrimichikunMovie.mp4",
         backgroundUrl: "/projects/Orimichikun/OrimichikunBack.png",
         thumbnailIndex: 5,
         technologies: ["Unity", "C#"],
@@ -74,7 +74,7 @@ export const m_ProjectData = [
         title: "Tsumitobu",
         description: "<strong>■ ゲーム概要</strong>\nプレイヤー操作担当とブロック操作担当の 2人で協力してゴールを目指す2Dアクションゲーム。\nブロックを回転・配置して足場を作りながらステージを進んでいく協力型ゲームとして制作しました。\n\n<strong>■ 実装した要素（地形による移動挙動の変化）</strong>\nプレイヤーの移動処理では摩擦係数（friction）を用いて速度を制御し、ステージごとに値を変更することで地形による移動感の違いを表現しました。\n\n▸ 通常ステージ: friction = 0.7\n▸ 氷ステージ: friction = 0.9（滑りやすくなる）\n▸ 砂ステージ: friction = 0.63（減速しやすくなる）\n\nまた、移動速度が過剰に増加しないよう最大速度を設定してクランプ処理を行っています。\n\n<strong>■ 苦労した点（プレイヤーがブロックに挟まる問題の解決）</strong>\nプレイヤーとマップの衝突処理ではX軸とY軸を分離した判定を行っています。\nしかし、ジャンプ時や狭い隙間でプレイヤーがブロックに挟まり動けなくなる問題が発生しました。\n\nそこで、衝突処理後に再度Collision判定を行い、重なりが残っていた場合はプレイヤーを1マス分押し出す処理を追加することで、挟まりバグを解消しました。",
         descriptionEn: "<strong>■ Game Overview</strong>\nA 2D action game where two players cooperate to reach the goal—one controls the character, and the other controls blocks.\nDeveloped as a cooperative game where players progress by rotating and placing blocks to create footholds.\n\n<strong>■ Implemented Features (Movement based on Terrain)</strong>\nMovement speed is controlled using a friction coefficient, changing values per stage to express different movement feels:\n\n▸ Normal stage: friction = 0.7\n▸ Ice stage: friction = 0.9 (slippery)\n▸ Sand stage: friction = 0.63 (easy to decelerate)\n\nAdditionally, a maximum speed clamp is applied to prevent excessive acceleration.\n\n<strong>■ Challenges Overcome (Solving the Block Stuck Issue)</strong>\nCollision detection between the player and the map separates the X and Y axes.\nHowever, an issue occurred where the player would get stuck in blocks during jumps or in narrow gaps.\n\nTo resolve this, I added a process to \"perform another collision check after the initial collision handling, and if an overlap remains, push the player out by one tile space,\" effectively eliminating the stuck bug.",
-        videoUrl: "/projects/Tsumitobu/Tsumitobu.mp4",
+        videoUrl: "",
         imageUrls: [
             "/projects/Tsumitobu/Tsumitobu1.png",
             "/projects/Tsumitobu/Tsumitobu2.png",
