@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { FileText } from 'lucide-react';
 
 /**
- * Markdownテキストを簡易パースして、スタイル付きのHTML要素を返す
+ * MarkdownチE��ストを簡易パースして、スタイル付きのHTML要素を返す
  */
 const parseMarkdown = (text) => {
     const lines = text.split('\n');
@@ -36,7 +36,7 @@ const parseMarkdown = (text) => {
                 </h3>
             );
         }
-        // リスト項目
+        // リスト頁E��
         else if (line.match(/^\* /)) {
             const listItems = [];
             while (i < lines.length && lines[i].match(/^\* /)) {
@@ -54,11 +54,11 @@ const parseMarkdown = (text) => {
             );
             continue;
         }
-        // 空行
+        // 空衁E
         else if (line.trim() === '') {
             // skip
         }
-        // 通常テキスト
+        // 通常チE��スチE
         else {
             elements.push(
                 <p key={i} className="text-gray-400 text-sm leading-relaxed mb-2">
@@ -74,7 +74,7 @@ const parseMarkdown = (text) => {
 };
 
 /**
- * インラインMarkdown（**bold**, `code`）を処理する
+ * インラインMarkdown�E�E*bold**, `code`�E�を処琁E��めE
  */
 const parseInline = (text) => {
     // **bold** と `code` をパース
@@ -92,16 +92,22 @@ const parseInline = (text) => {
 
 /**
  * MarkdownDocument
- * GitHubのREADMEのような「書類」スタイルでMarkdownを表示するコンポーネント
+ * GitHubのREADMEのような「書類」スタイルでMarkdownを表示するコンポ�EネンチE
  */
 const MarkdownDocument = ({ url, tag = "Provided by School", tagEn = "Base Environment" }) => {
     const [content, setContent] = useState(null);
     const [error, setError] = useState(false);
+    const [prevUrl, setPrevUrl] = useState(url);
+
+    if (url !== prevUrl) {
+        setPrevUrl(url);
+        setContent(null);
+        setError(false);
+    }
 
     useEffect(() => {
         if (!url) return;
-        setContent(null);
-        setError(false);
+
         fetch(url)
             .then((res) => {
                 if (!res.ok) throw new Error('Failed to load');
@@ -138,7 +144,7 @@ const MarkdownDocument = ({ url, tag = "Provided by School", tagEn = "Base Envir
                 </div>
             </div>
 
-            {/* 本文：引用ライン付きドキュメント */}
+            {/* 本斁E��引用ライン付きドキュメンチE*/}
             <div
                 style={{ backgroundColor: '#1e1e1e' }}
                 className="border border-gray-700 border-l-4 border-l-gray-500 p-5 font-mono"
