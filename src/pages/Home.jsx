@@ -1,4 +1,5 @@
 ﻿import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Layout from '../components/Layout';
 import ProfileSection from '../components/ProfileSection';
 import ProjectCard from '../components/ProjectCard';
