@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, Pause, Maximize, Minimize } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Pause, Maximize, Minimize, Volume2, VolumeX } from 'lucide-react';
 import { useAudio } from '../contexts/AudioContext';
 
 const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
@@ -16,6 +16,40 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
     const [videoEnded, setVideoEnded] = useState(false);
     const [isVideoPaused, setIsVideoPaused] = useState(false); // 自動再生: 最初から再生状態にする
     const [isFullscreen, setIsFullscreen] = useState(false); // フルスクリーン状態
+
+    // 音量コントロール用
+    const [volume, setVolume] = useState(isAudioEnabled ? 1 : 0);
+    const [isMuted, setIsMuted] = useState(!isAudioEnabled);
+
+    // グローバルな音声設定が変更されたらローカルのミュート状態も同期する
+    useEffect(() => {
+        setIsMuted(!isAudioEnabled);
+        if (isAudioEnabled && volume === 0) setVolume(1);
+    }, [isAudioEnabled]);
+
+    // ボリューム変更処理
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.volume = volume;
+            videoRef.current.muted = isMuted;
+        }
+    }, [volume, isMuted, isVideoSlide]);
+
+    const handleVolumeChange = useCallback((e) => {
+        const newVolume = parseFloat(e.target.value);
+        setVolume(newVolume);
+        setIsMuted(newVolume === 0);
+    }, []);
+
+    const toggleMute = useCallback((e) => {
+        e.stopPropagation();
+        if (isMuted) {
+            setIsMuted(false);
+            if (volume === 0) setVolume(1);
+        } else {
+            setIsMuted(true);
+        }
+    }, [isMuted, volume]);
 
     // マウスドラッグ用ローカル変数
     const dragStartX = useRef(0);
@@ -213,7 +247,6 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
                             ref={videoRef}
                             src={videoUrl}
                             className="w-full h-full object-cover cursor-pointer"
-                            muted={!isAudioEnabled}
                             playsInline
                             onEnded={handleVideoEnded}
                         />
@@ -234,6 +267,25 @@ const ImageCarousel = ({ images, videoUrl, autoPlayInterval = 3000 }) => {
                                         <Pause size={48} fill="currentColor" />
                                     )}
                                 </button>
+                            </div>
+
+                            {/* ボリュームコントロール (左下) - ホバー時に表示 */}
+                            <div
+                                className={`pointer-events-auto absolute bottom-4 left-4 flex items-center gap-2 bg-black/60 text-white px-3 py-2 rounded-full border border-gray-500 backdrop-blur-sm transition-opacity duration-300 ${isVideoPaused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+                                onClick={(e) => e.stopPropagation()}
+                                onMouseDown={(e) => e.stopPropagation()}
+                                onMouseUp={(e) => e.stopPropagation()}
+                            >
+                                <button onClick={toggleMute} className="hover:text-neon-blue transition-colors outline-none cursor-pointer">
+                                    {isMuted || volume === 0 ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                                </button>
+                                <input
+                                    type="range"
+                                    min="0" max="1" step="0.05"
+                                    value={isMuted ? 0 : volume}
+                                    onChange={handleVolumeChange}
+                                    className="w-16 md:w-24 accent-neon-blue cursor-pointer"
+                                />
                             </div>
 
                             {/* フルスクリーンボタン (右下) - ホバー時に表示 */}
