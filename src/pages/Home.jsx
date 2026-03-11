@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import ProfileSection from '../components/ProfileSection';
 import ProjectCard from '../components/ProjectCard';
@@ -7,7 +7,7 @@ import GameJamMonitor from '../components/GameJamMonitor';
 import ToolMonitor from '../components/ToolMonitor';
 import VRChatWorldMonitor from '../components/VRChatWorldMonitor';
 import { m_ProjectData, m_ToolData, m_GameJamData, m_ClientWorksData, m_VRChatWorldsData } from '../constants/m_ProjectData';
-import { motion } from 'framer-motion';
+
 
 const Home = () => {
     const [vrchatBgImage, setVrchatBgImage] = useState(null);
@@ -107,7 +107,7 @@ const Home = () => {
                 ))}
             </div>
 
-            {/* ゲームジャム & ツール — 横2列 */}
+            {/* ゲームジャム & ツール - 横2列 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 {/* 左: ゲームジャム作品 */}
                 <CollapsibleSection title="GAME JAM">
@@ -120,7 +120,7 @@ const Home = () => {
                 </CollapsibleSection>
             </div>
 
-            {/* VRChat ワールド (おまけ) — フル横幅または中央 */}
+            {/* VRChat ワールド (おまけ) - フル横幅または中央 */}
             <div className="mb-12">
                 <CollapsibleSection
                     title="VRCHAT WORLDS"
