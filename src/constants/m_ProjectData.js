@@ -48,7 +48,7 @@ export const m_ProjectData = [
             "/projects/Orimichikun/OrimichikunTitle.png",
         ],
         githubUrl: "https://github.com/sogotoya/Orimichikun",
-        downloadUrl: "https://drive.google.com/file/d/17AjwSIBC5E0qQm1ME8txIx4mbA7m5UvG/view?usp=drive_link",
+        downloadUrl: "https://drive.google.com/drive/folders/1xEAsCMCRCop58vf_M3RzBoVBekWlsWDD?usp=sharing",
         videoUrl: "/projects/Orimichikun/OrimichikunMovie.mp4",
         backgroundUrl: "/projects/Orimichikun/OrimichikunBack.png",
         thumbnailIndex: 5,
