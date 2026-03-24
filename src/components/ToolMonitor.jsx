@@ -76,9 +76,9 @@ const ImageCarouselSwipeable = ({ imageUrls, title }) => {
             <AnimatePresence initial={false} mode="wait" custom={slideDirection}>
                 <motion.img
                     key={imageIndex}
-                    src={imageUrls[imageIndex]}
+                    src={typeof imageUrls[imageIndex] === 'string' ? imageUrls[imageIndex] : imageUrls[imageIndex].url}
                     alt={title}
-                    className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                    className={`absolute inset-0 w-full h-full pointer-events-none ${typeof imageUrls[imageIndex] === 'object' && imageUrls[imageIndex].fit === 'cover' ? 'object-cover' : 'object-contain'}`}
                     variants={variants}
                     initial="enter"
                     animate="center"
@@ -158,7 +158,7 @@ const MobileListItem = ({ item, index }) => {
                 {/* サムネイル */}
                 {hasImages ? (
                     <div className="w-12 h-12 flex-shrink-0 border border-gray-700 overflow-hidden rounded-sm">
-                        <img src={item.imageUrls[0]} alt={item.title}
+                        <img src={typeof item.imageUrls[0] === 'string' ? item.imageUrls[0] : item.imageUrls[0].url} alt={item.title}
                             className="w-full h-full object-cover" />
                     </div>
                 ) : (
@@ -337,7 +337,7 @@ const ToolMonitor = ({ items }) => {
                                 <div className="flex items-center gap-3">
                                     {item.imageUrls && item.imageUrls.length > 0 ? (
                                         <div className="w-10 h-10 flex-shrink-0 border border-gray-700 overflow-hidden">
-                                            <img src={item.imageUrls[0]} alt={item.title} className="w-full h-full object-cover" />
+                                            <img src={typeof item.imageUrls[0] === 'string' ? item.imageUrls[0] : item.imageUrls[0].url} alt={item.title} className="w-full h-full object-cover" />
                                         </div>
                                     ) : (
                                         <span className={`text-[10px] font-orbitron w-10 h-10 flex items-center justify-center

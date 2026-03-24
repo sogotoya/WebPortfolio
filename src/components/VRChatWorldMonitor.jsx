@@ -56,9 +56,9 @@ const VRChatWorldMonitor = ({ items, onItemSelect }) => {
                                 <div className="absolute inset-0 pointer-events-none z-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] z-20 opacity-30"></div>
 
                                 <img
-                                    src={items[activeIndex].imageUrls[0]}
+                                    src={typeof items[activeIndex].imageUrls[0] === 'string' ? items[activeIndex].imageUrls[0] : items[activeIndex].imageUrls[0].url}
                                     alt={items[activeIndex].title}
-                                    className="w-full h-full object-cover opacity-90"
+                                    className={`w-full h-full opacity-90 ${typeof items[activeIndex].imageUrls[0] === 'object' && items[activeIndex].imageUrls[0].fit === 'contain' ? 'object-contain' : 'object-cover'}`}
                                 />
 
                                 {/* Subtle glow on image edges */}

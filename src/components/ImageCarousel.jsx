@@ -307,9 +307,9 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
                 ) : (
                     <motion.img
                         key={currentIndex}
-                        src={images[getImageIndex(currentIndex)]}
+                        src={typeof images[getImageIndex(currentIndex)] === 'string' ? images[getImageIndex(currentIndex)] : images[getImageIndex(currentIndex)].url}
                         alt={`Slide ${currentIndex + 1}`}
-                        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                        className={`absolute inset-0 w-full h-full pointer-events-none ${typeof images[getImageIndex(currentIndex)] === 'object' && images[getImageIndex(currentIndex)].fit === 'contain' ? 'object-contain' : 'object-cover'}`}
                         variants={variants}
                         initial="enter"
                         animate="center"

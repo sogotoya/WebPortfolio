@@ -72,9 +72,15 @@ const ProjectCard = ({ project, isHero = false }) => {
                         />
                     )}
                     <img
-                        src={project.imageUrls[isHovered && !project.videoUrl ? hoverImageIndex : (project.thumbnailIndex ?? project.imageUrls.length - 1)]}
+                        src={(() => {
+                            const img = project.imageUrls[isHovered && !project.videoUrl ? hoverImageIndex : (project.thumbnailIndex ?? project.imageUrls.length - 1)];
+                            return typeof img === 'string' ? img : img.url;
+                        })()}
                         alt={project.title}
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered && project.videoUrl ? 'opacity-0' : 'opacity-100'}`}
+                        className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${isHovered && project.videoUrl ? 'opacity-0' : 'opacity-100'} ${(() => {
+                            const img = project.imageUrls[isHovered && !project.videoUrl ? hoverImageIndex : (project.thumbnailIndex ?? project.imageUrls.length - 1)];
+                            return typeof img === 'object' && img.fit === 'contain' ? 'object-contain' : 'object-cover';
+                        })()}`}
                     />
 
                     {/* Overlay Gradient */}
