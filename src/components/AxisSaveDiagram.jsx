@@ -8,24 +8,24 @@ const AxisSaveDiagram = ({ language = 'ja' }) => {
             cinematic: 'CinematicManager',
             cinematicDesc: '演出処理（カメラ、UI、タイミング）',
             player: 'PlayerController',
-            playerDesc: '入力処理・物理演算',
-            playerDesc2: '（演出ロジックを持たない）',
-            lock: '状態制御API呼び出し\n( m_IsEventLocked )',
+            playerDesc: '入力処理・物理演算・HP管理・状態制御',
+            playerDesc2: '（責務集中の課題あり）',
+            lock: '操作ロックAPI呼び出し\n( m_IsEventLocked )',
             physicsWait: '物理干渉の停止処理\n・FixedUpdateの早期return\n・Physics.IgnoreLayerCollision\n・UniTaskによる状態復帰保証',
             asyncControl: 'CinemachineBlend動的制御\nMathf.Lerpによる時間的緩急設計',
-            conclusion: '「遷移優先度の明確化」と「終了保証設計」により、演出とロジックの競合を防止する構造を採用'
+            conclusion: '「状態競合の防止」「処理順序の保証」「責務分離」により演出とロジックの競合を防止。フラグ制御で安定性を確保しつつ、状態管理パターンへの移行で拡張性向上を検討'
         },
         en: {
             title: 'Separation of Responsibilities & State Architecture',
             cinematic: 'CinematicManager',
             cinematicDesc: 'Presentation (Camera, UI, Timing)',
             player: 'PlayerController',
-            playerDesc: 'Input Processing & Physics',
-            playerDesc2: '(No presentation logic)',
-            lock: 'State Control API Call\n( m_IsEventLocked )',
+            playerDesc: 'Input / Physics / HP / State Control',
+            playerDesc2: '(Responsibility concentration noted)',
+            lock: 'Operation Lock API Call\n( m_IsEventLocked )',
             physicsWait: 'Physics Suspension\n・Early return in FixedUpdate\n・Physics.IgnoreLayerCollision\n・State recovery via UniTask',
             asyncControl: 'Dynamic CinemachineBlend\nTemporal easing via Mathf.Lerp',
-            conclusion: 'Adopts a structure prioritizing transition clarity and guaranteed completion to prevent logic conflicts.'
+            conclusion: 'Prevents logic conflicts via "state conflict prevention," "guaranteed processing order," and "separation of responsibilities." Stability secured via flag control; migration to state management pattern planned for extensibility.'
         }
     };
     const content = t[language] || t.ja;
