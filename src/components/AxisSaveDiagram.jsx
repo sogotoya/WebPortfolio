@@ -12,7 +12,7 @@ const AxisSaveDiagram = ({ language = 'ja' }) => {
             playerDesc2: '（演出ロジックを持たない）',
             lock: '状態制御API呼び出し\n( m_IsEventLocked )',
             physicsWait: '物理干渉の停止処理\n・FixedUpdateの早期return\n・Physics.IgnoreLayerCollision\n・UniTaskによる状態復帰保証',
-            asyncControl: 'CinemachineBlend動的制御\nMathf.Lerpによる時間的緩急設計',
+            asyncControl: 'CinemachineBlend動的制御\nMathf.Lerpによる線形FOV補間',
             conclusion: '「遷移優先度の明確化」と「終了保証設計」により、演出とロジックの競合を防止する構造を採用'
         },
         en: {
@@ -24,7 +24,7 @@ const AxisSaveDiagram = ({ language = 'ja' }) => {
             playerDesc2: '(No presentation logic)',
             lock: 'State Control API Call\n( m_IsEventLocked )',
             physicsWait: 'Physics Suspension\n・Early return in FixedUpdate\n・Physics.IgnoreLayerCollision\n・State recovery via UniTask',
-            asyncControl: 'Dynamic CinemachineBlend\nTemporal easing via Mathf.Lerp',
+            asyncControl: 'Dynamic CinemachineBlend\nLinear FOV transition via Mathf.Lerp',
             conclusion: 'Adopts a structure prioritizing transition clarity and guaranteed completion to prevent logic conflicts.'
         }
     };

@@ -79,7 +79,7 @@ const ProfileSection = () => {
             roleLabel: "ROLE",
             role: "プログラマ",
             skillTitle: "SKILLS",
-            philosophyTitle: "■ 制御設計",
+            philosophyTitle: "■ 設計ポリシー",
         },
         en: {
             title: "PROFILE",
@@ -172,15 +172,22 @@ const ProfileSection = () => {
                         </h3>
                         <div className="text-[13px] md:text-sm text-gray-400 leading-relaxed font-rajdhani whitespace-pre-line space-y-4">
                             <p className="text-gray-300">
-                                {isEn ? "I adhere to the following design principles:" : "以下を設計原則としています。"}
+                                {isEn
+                                    ? "In this portfolio, I apply \"prevention of state conflicts\" and \"ensuring extensibility through separation of responsibilities\" as design principles in situations involving increasing state complexity or concurrent processing."
+                                    : "本ポートフォリオでは、状態数の増加や並行処理が発生する状況において、「状態競合の防止」と「責務分離による拡張性確保」を設計方針としています。"}
                             </p>
 
                             <ul className="list-disc list-inside space-y-1 my-4 ml-2 text-gray-300">
-                                <li>{isEn ? "Explicit state transitions (defining state priorities)" : "状態遷移の明示化（ステート優先順位の定義）"}</li>
-                                <li>{isEn ? "Guaranteed completion design for TimeScale changes and presentation locks" : "TimeScale変更や演出ロックに対する終了保証設計"}</li>
-                                <li>{isEn ? "Separation of responsibilities across Input, Physics, Presentation, and UI" : "入力／物理／演出／UIの責務分離"}</li>
-                                <li>{isEn ? "Structural design predicated on ease of integration" : "統合容易性を前提とした構造設計"}</li>
+                                <li>{isEn ? "Explicit state transition management to prevent state conflicts" : "状態競合を防ぐための明示的な状態遷移管理"}</li>
+                                <li>{isEn ? "Ensuring extensibility and maintainability through separation of responsibilities" : "責務分離による拡張性および保守性の確保"}</li>
+                                <li>{isEn ? "Execution-order-aware control design (Update / FixedUpdate separation)" : "実行順序を考慮した制御設計（Update / FixedUpdateの分離）"}</li>
                             </ul>
+
+                            <p className="text-gray-300 mt-2">
+                                {isEn
+                                    ? "These design principles enable localization of bugs caused by state conflicts, limitation of impact scope during feature additions, and safe parallel implementation in team development."
+                                    : "これらの設計方針により、状態競合による不具合の局所化と、機能追加時の影響範囲の限定を実現し、チーム開発における安全な並行実装を可能にしています。"}
+                            </p>
 
                             <div className="mt-6 p-4 border border-neon-blue/40 bg-neon-blue/10 rounded-sm shadow-[0_0_15px_rgba(0,243,255,0.1)]">
                                 <p className="text-neon-blue font-bold text-center tracking-wide text-sm md:text-base">
@@ -190,6 +197,14 @@ const ProfileSection = () => {
                                             <span className="inline-block">「完成確率の最大化」を優先しています。</span>
                                         </>
                                     )}
+                                </p>
+                            </div>
+
+                            <div className="mt-4 p-3 border-l-2 border-gray-600 bg-black/30">
+                                <p className="text-gray-500 text-[12px] md:text-[13px] leading-relaxed">
+                                    {isEn
+                                        ? "On the other hand, prioritizing design abstraction has sometimes slowed initial implementation speed, particularly leading to over-engineering in short-term development. I have since improved my approach by allowing simplified implementations during prototyping and applying full design rigor after specifications are finalized."
+                                        : "一方で、設計の抽象度を優先するあまり初期実装速度が低下する傾向があり、特に短期開発では過剰設計となるケースがありました。そのため現在は、プロトタイピング段階では簡易実装を許容し、仕様確定後に設計を適用する運用へ改善しています。"}
                                 </p>
                             </div>
                         </div>
