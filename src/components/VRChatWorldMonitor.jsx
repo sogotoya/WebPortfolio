@@ -70,9 +70,7 @@ const VRChatWorldMonitor = ({ items, onItemSelect }) => {
                                 <h3 className="text-lg font-orbitron font-bold text-gray-200 mb-2 tracking-wider">
                                     {items[activeIndex].title}
                                 </h3>
-                                <p className="text-sm text-gray-400 font-rajdhani whitespace-pre-wrap leading-relaxed">
-                                    {items[activeIndex].description}
-                                </p>
+                                <p className="text-sm text-gray-400 font-rajdhani whitespace-pre-wrap leading-relaxed" dangerouslySetInnerHTML={{ __html: items[activeIndex].description.replace(/\n/g, '<br/>') }} />
 
                                 {/* Links (if available) */}
                                 {(items[activeIndex].githubUrl || items[activeIndex].downloadUrl) && (

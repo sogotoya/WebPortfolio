@@ -209,9 +209,8 @@ const MobileListItem = ({ item, index }) => {
                         className="overflow-hidden border-t border-gray-700/50"
                     >
                         <ImageCarouselSwipeable imageUrls={item.imageUrls} title={item.title} />
-                        {/* 説明テキスト */}
                         <div className="px-3 py-2 bg-black/40">
-                            <p className="text-xs text-gray-500 font-rajdhani whitespace-pre-line">{item.description}</p>
+                            <p className="text-xs text-gray-500 font-rajdhani whitespace-pre-line" dangerouslySetInnerHTML={{ __html: item.description.replace(/\n/g, '<br/>') }} />
                         </div>
                     </motion.div>
                 )}
@@ -403,9 +402,7 @@ const GameJamMonitor = ({ items }) => {
                                         <h3 className="text-base font-orbitron font-bold text-white tracking-wide">
                                             {activeBackgroundItem.title}
                                         </h3>
-                                        <p className="text-xs text-gray-500 mt-1.5 font-rajdhani whitespace-pre-line leading-relaxed">
-                                            {activeBackgroundItem.description}
-                                        </p>
+                                        <p className="text-xs text-gray-500 mt-1.5 font-rajdhani whitespace-pre-line leading-relaxed" dangerouslySetInnerHTML={{ __html: activeBackgroundItem.description.replace(/\n/g, '<br/>') }} />
                                     </div>
                                     <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
                                         <div className="flex gap-1.5 flex-wrap justify-end max-w-[120px]">
