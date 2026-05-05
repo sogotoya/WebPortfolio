@@ -1,35 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const AxisSaveDiagram = ({ language = 'ja' }) => {
-    const t = {
-        ja: {
-            title: '責務分離と状態制御アーキテクチャ',
-            cinematic: 'CinematicManager',
-            cinematicDesc: '演出処理（カメラ、UI、タイミング）',
-            player: 'PlayerController',
-            playerDesc: '入力処理・物理演算',
-            playerDesc2: '（演出ロジックを持たない）',
-            lock: '状態制御API呼び出し\n( m_IsEventLocked )',
-            physicsWait: '物理干渉の停止処理\n・FixedUpdateの早期return\n・Physics.IgnoreLayerCollision\n・UniTaskによる状態復帰保証',
-            asyncControl: 'CinemachineBlend動的制御\nMathf.Lerpによる線形FOV補間',
-            conclusion: '「遷移優先度の明確化」と「終了保証設計」により、演出とロジックの競合を防止する構造を採用'
-        },
-        en: {
-            title: 'Separation of Responsibilities & State Architecture',
-            cinematic: 'CinematicManager',
-            cinematicDesc: 'Presentation (Camera, UI, Timing)',
-            player: 'PlayerController',
-            playerDesc: 'Input Processing & Physics',
-            playerDesc2: '(No presentation logic)',
-            lock: 'State Control API Call\n( m_IsEventLocked )',
-            physicsWait: 'Physics Suspension\n・Early return in FixedUpdate\n・Physics.IgnoreLayerCollision\n・State recovery via UniTask',
-            asyncControl: 'Dynamic CinemachineBlend\nLinear FOV transition via Mathf.Lerp',
-            conclusion: 'Adopts a structure prioritizing transition clarity and guaranteed completion to prevent logic conflicts.'
-        }
-    };
-    const content = t[language] || t.ja;
-
+const AxisSaveDiagram = () => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -42,7 +14,7 @@ const AxisSaveDiagram = ({ language = 'ja' }) => {
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-neon-blue/5 blur-[60px] rounded-full pointer-events-none"></div>
 
             <h3 className="text-neon-blue text-2xl mb-10 font-orbitron font-bold text-center tracking-widest uppercase relative z-10">
-                {content.title}
+                責務分離と状態制御アーキテクチャ
                 <div className="h-0.5 w-24 bg-neon-blue/50 mx-auto mt-3"></div>
             </h3>
 
@@ -50,13 +22,13 @@ const AxisSaveDiagram = ({ language = 'ja' }) => {
                 {/* CinematicManager */}
                 <div className="flex-1 flex flex-col border border-neon-pink/40 hover:border-neon-pink bg-gradient-to-br from-neon-pink/5 to-transparent p-6 rounded-md relative group transition-all duration-300">
                     <div className="absolute -top-3 left-4 bg-dark-bg px-3 text-neon-pink text-xs font-bold font-orbitron tracking-wider">Presentation</div>
-                    <h4 className="text-white text-xl font-bold mb-3 font-orbitron text-center">{content.cinematic}</h4>
+                    <h4 className="text-white text-xl font-bold mb-3 font-orbitron text-center">CinematicManager</h4>
                     <p className="text-gray-300 text-sm text-center mb-6 flex-grow leading-relaxed">
-                        {content.cinematicDesc}
+                        演出処理（カメラ、UI、タイミング）
                     </p>
                     <div className="bg-gray-900/80 border border-gray-700/50 rounded py-3 px-4 text-center text-xs text-gray-300 mt-auto shadow-inner">
-                        <span className="text-neon-pink block mb-2 font-bold tracking-wider">■ {language === 'en' ? 'Sequence Control' : 'シーケンス制御'}</span>
-                        <span className="whitespace-pre-line leading-relaxed">{content.asyncControl}</span>
+                        <span className="text-neon-pink block mb-2 font-bold tracking-wider">■ シーケンス制御</span>
+                        <span className="whitespace-pre-line leading-relaxed">CinemachineBlend動的制御{'\n'}Mathf.Lerpによる線形FOV補間</span>
                     </div>
                 </div>
 
@@ -68,7 +40,7 @@ const AxisSaveDiagram = ({ language = 'ja' }) => {
                         transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
                         className="text-neon-pink text-[12px] font-bold mb-2 text-center whitespace-pre-line bg-gray-900/90 px-3 py-2 rounded border border-gray-700 shadow-[0_0_15px_rgba(255,42,109,0.2)]"
                     >
-                        {content.lock}
+                        状態制御API呼び出し{'\n'}( m_IsEventLocked )
                     </motion.div>
                     <div className="flex flex-col md:flex-row items-center w-full justify-center">
                         {/* Horizontal Arrow Setup for Desktop */}
@@ -87,23 +59,23 @@ const AxisSaveDiagram = ({ language = 'ja' }) => {
                 {/* PlayerController */}
                 <div className="flex-1 flex flex-col border border-neon-blue/40 hover:border-neon-blue bg-gradient-to-bl from-neon-blue/5 to-transparent p-6 rounded-md relative group transition-all duration-300">
                     <div className="absolute -top-3 left-4 bg-dark-bg px-3 text-neon-blue text-xs font-bold font-orbitron tracking-wider">Game Logic</div>
-                    <h4 className="text-white text-xl font-bold mb-3 font-orbitron text-center">{content.player}</h4>
+                    <h4 className="text-white text-xl font-bold mb-3 font-orbitron text-center">PlayerController</h4>
                     <p className="text-gray-300 text-sm text-center mb-1 flex-grow leading-relaxed">
-                        {content.playerDesc}
+                        入力処理・物理演算
                     </p>
                     <p className="text-neon-pink/80 text-xs text-center mb-6 font-bold tracking-wide">
-                        {content.playerDesc2}
+                        （演出ロジックを持たない）
                     </p>
                     <div className="bg-gray-900/80 border border-red-500/20 rounded py-3 px-4 text-center text-xs text-gray-300 mt-auto shadow-inner">
-                        <span className="text-red-400 block mb-2 font-bold tracking-wider">■ {language === 'en' ? 'Interference Prevention' : '干渉防止処理'}</span>
-                        <span className="whitespace-pre-line leading-relaxed">{content.physicsWait}</span>
+                        <span className="text-red-400 block mb-2 font-bold tracking-wider">■ 干渉防止処理</span>
+                        <span className="whitespace-pre-line leading-relaxed">物理干渉の停止処理{'\n'}・FixedUpdateの早期return{'\n'}・Physics.IgnoreLayerCollision{'\n'}・UniTaskによる状態復帰保証</span>
                     </div>
                 </div>
             </div>
 
             <div className="mt-8 text-center relative z-10 w-full">
                 <p className="inline-block text-gray-300 text-sm md:text-base border-l-[3px] border-neon-blue pl-4 py-1 italic">
-                    {content.conclusion}
+                    「遷移優先度の明確化」と「終了保証設計」により、演出とロジックの競合を防止する構造を採用
                 </p>
             </div>
 
@@ -112,3 +84,4 @@ const AxisSaveDiagram = ({ language = 'ja' }) => {
 };
 
 export default AxisSaveDiagram;
+

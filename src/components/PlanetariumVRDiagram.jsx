@@ -1,41 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const PlanetariumVRDiagram = ({ language = 'ja' }) => {
-    const t = {
-        ja: {
-            title: '責務分離と終了保証アーキテクチャ',
-            input: 'Spatial Recognition',
-            inputDesc: 'Vector3.Dot による視線計算',
-            inputDetail: '・プレイヤーの視線方向\n・オブジェクトの座標',
-            audioManager: 'Audio & Visual Controller',
-            audioManagerDesc: '視線連動・空間音響制御',
-            audioDetail: '・Mathf.Lerp による音量補間\n・AudioSource (Spatial Blend 1.0)',
-            sequenceManager: 'Event Sequence Manager',
-            sequenceManagerDesc: '音声終了をトリガーとする進行制御',
-            sequenceDetail: '・WaitWhile() で音声終了を明示的に待機\n・終了保証による表示不整合の防止',
-            ui: 'VR UI System',
-            uiDesc: 'Quaternion.LookRotation / Time.timeフェード制御',
-            conclusion: '「状態遷移の明示化」と「終了保証設計」により、進行破綻を防ぎ自然な視線誘導を実現'
-        },
-        en: {
-            title: 'Separation of Responsibilities & Guaranteed Completion',
-            input: 'Spatial Recognition',
-            inputDesc: 'Gaze calculation via Vector3.Dot',
-            inputDetail: '・Player gaze direction\n・Object coordinates',
-            audioManager: 'Audio & Visual Controller',
-            audioManagerDesc: 'Gaze-linked spatial audio control',
-            audioDetail: '・Volume interpolation via Mathf.Lerp\n・AudioSource (Spatial Blend 1.0)',
-            sequenceManager: 'Event Sequence Manager',
-            sequenceManagerDesc: 'Audio completion triggered progression',
-            sequenceDetail: '・Explicit WaitWhile() for audio completion\n・Preventing display inconsistencies via guaranteed completion',
-            ui: 'VR UI System',
-            uiDesc: 'Quaternion.LookRotation / Time.time fade control',
-            conclusion: 'Achieves natural gaze guidance and prevents progression breakdowns via explicit state transitions and guaranteed completion design.'
-        }
-    };
-    const content = t[language] || t.ja;
-
+const PlanetariumVRDiagram = () => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -48,7 +14,7 @@ const PlanetariumVRDiagram = ({ language = 'ja' }) => {
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-cyan-500/5 blur-[60px] rounded-full pointer-events-none"></div>
 
             <h3 className="text-cyan-400 text-2xl mb-10 font-orbitron font-bold text-center tracking-widest uppercase relative z-10">
-                {content.title}
+                責務分離と終了保証アーキテクチャ
                 <div className="h-0.5 w-24 bg-cyan-400/50 mx-auto mt-3"></div>
             </h3>
 
@@ -57,12 +23,12 @@ const PlanetariumVRDiagram = ({ language = 'ja' }) => {
                 {/* 1. Gaze Recognition (Input layer) */}
                 <div className="flex-1 flex flex-col border border-purple-500/40 hover:border-purple-500 bg-gradient-to-br from-purple-500/5 to-transparent p-5 rounded-md relative group transition-all duration-300">
                     <div className="absolute -top-3 left-4 bg-dark-bg px-3 text-purple-400 text-xs font-bold font-orbitron tracking-wider">Spatial Layer</div>
-                    <h4 className="text-white text-lg font-bold mb-2 font-orbitron text-center">{content.input}</h4>
+                    <h4 className="text-white text-lg font-bold mb-2 font-orbitron text-center">Spatial Recognition</h4>
                     <p className="text-gray-300 text-sm text-center mb-4 flex-grow leading-relaxed">
-                        {content.inputDesc}
+                        Vector3.Dot による視線計算
                     </p>
                     <div className="bg-gray-900/80 border border-gray-700/50 rounded py-2 px-3 text-center text-xs text-gray-300 mt-auto shadow-inner">
-                        <span className="whitespace-pre-line leading-relaxed">{content.inputDetail}</span>
+                        <span className="whitespace-pre-line leading-relaxed">・プレイヤーの視線方向{'\n'}・オブジェクトの座標</span>
                     </div>
                 </div>
 
@@ -84,18 +50,18 @@ const PlanetariumVRDiagram = ({ language = 'ja' }) => {
                 {/* 2. Audio & Visual Controller (Presentation link) */}
                 <div className="flex-1 flex flex-col border border-cyan-400/40 hover:border-cyan-400 bg-gradient-to-b from-cyan-400/5 to-transparent p-5 rounded-md relative group transition-all duration-300">
                     <div className="absolute -top-3 left-4 bg-dark-bg px-3 text-cyan-400 text-xs font-bold font-orbitron tracking-wider">Audio / Visual Layer</div>
-                    <h4 className="text-white text-lg font-bold mb-2 font-orbitron text-center">{content.audioManager}</h4>
+                    <h4 className="text-white text-lg font-bold mb-2 font-orbitron text-center">Audio & Visual Controller</h4>
                     <p className="text-gray-300 text-sm text-center mb-4 flex-grow leading-relaxed">
-                        {content.audioManagerDesc}
+                        視線連動・空間音響制御
                     </p>
                     <div className="bg-gray-900/80 border border-gray-700/50 rounded py-2 px-3 text-center text-xs text-gray-300 mt-auto shadow-inner">
-                        <span className="whitespace-pre-line leading-relaxed">{content.audioDetail}</span>
+                        <span className="whitespace-pre-line leading-relaxed">・Mathf.Lerp による音量補間{'\n'}・AudioSource (Spatial Blend 1.0)</span>
                     </div>
 
                     {/* UI Note attached below Audio node */}
                     <div className="mt-3 bg-gray-900/40 border border-cyan-700/30 rounded py-2 px-2 text-center text-[11px] text-gray-400">
-                        <span className="text-cyan-500 font-bold block mb-1">{content.ui}</span>
-                        {content.uiDesc}
+                        <span className="text-cyan-500 font-bold block mb-1">VR UI System</span>
+                        Quaternion.LookRotation / Time.timeフェード制御
                     </div>
                 </div>
 
@@ -122,12 +88,12 @@ const PlanetariumVRDiagram = ({ language = 'ja' }) => {
                 {/* 3. Event Sequence Manager (Logic Layer) */}
                 <div className="flex-1 flex flex-col border border-emerald-500/40 hover:border-emerald-500 bg-gradient-to-bl from-emerald-500/5 to-transparent p-5 rounded-md relative group transition-all duration-300">
                     <div className="absolute -top-3 left-4 bg-dark-bg px-3 text-emerald-400 text-xs font-bold font-orbitron tracking-wider">Logic Layer</div>
-                    <h4 className="text-white text-lg font-bold mb-2 font-orbitron text-center">{content.sequenceManager}</h4>
+                    <h4 className="text-white text-lg font-bold mb-2 font-orbitron text-center">Event Sequence Manager</h4>
                     <p className="text-gray-300 text-sm text-center mb-4 flex-grow leading-relaxed">
-                        {content.sequenceManagerDesc}
+                        音声終了をトリガーとする進行制御
                     </p>
                     <div className="bg-gray-900/80 border border-emerald-800/30 rounded py-2 px-3 text-center text-xs text-gray-300 mt-auto shadow-inner">
-                        <span className="whitespace-pre-line leading-relaxed">{content.sequenceDetail}</span>
+                        <span className="whitespace-pre-line leading-relaxed">・WaitWhile() で音声終了を明示的に待機{'\n'}・終了保証による表示不整合の防止</span>
                     </div>
                 </div>
 
@@ -135,7 +101,7 @@ const PlanetariumVRDiagram = ({ language = 'ja' }) => {
 
             <div className="mt-8 text-center relative z-10 w-full">
                 <p className="inline-block text-gray-300 text-sm md:text-base border-l-[3px] border-cyan-400 pl-4 py-1 italic">
-                    {content.conclusion}
+                    「状態遷移の明示化」と「終了保証設計」により、進行破綻を防ぎ自然な視線誘導を実現
                 </p>
             </div>
 

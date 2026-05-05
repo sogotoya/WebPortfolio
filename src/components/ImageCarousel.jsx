@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, Pause, Maximize, Minimize, Volume2, VolumeX } from 'lucide-react';
-import { useAudio } from '../contexts/AudioContext';
 
 const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
-    const { isAudioEnabled } = useAudio();
     // 動画がある場合、スライド配列の先頭に動画を挿入
     const hasVideo = videoUrl && videoUrl.length > 0 && !videoUrl.startsWith('http');
     const totalSlides = hasVideo ? images.length + 1 : images.length;
@@ -21,14 +19,8 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
     const [isFullscreen, setIsFullscreen] = useState(false); // フルスクリーン状態
 
     // 音量コントロール用
-    const [volume, setVolume] = useState(isAudioEnabled ? 1 : 0);
-    const [isMuted, setIsMuted] = useState(!isAudioEnabled);
-
-    // グローバルな音声設定が変更されたらローカルのミュート状態も同期する
-    useEffect(() => {
-        setIsMuted(!isAudioEnabled);
-        if (isAudioEnabled && volume === 0) setVolume(1);
-    }, [isAudioEnabled]);
+    const [volume, setVolume] = useState(0);
+    const [isMuted, setIsMuted] = useState(true);
 
     // ボリューム変更処理
     useEffect(() => {

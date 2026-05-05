@@ -166,7 +166,7 @@ export const m_ToolData = [
 export const m_GameJamData = [
     {
         id: "gj-1",
-        title: "Global",
+        title: "グローバルゲームジャム2026",
         description: "開発人数：2名（双方途中参加） / 制作期間：36時間\n担当：ゲームシーン設計・実装全般\n\n<strong>■ やったこと</strong>\n途中参加の制約下で、既存構造を把握→仕様再定義→ロジック再構築→完成まで担当。\n\n<strong>■ 設計の核心</strong>\n▸ NPC生成（ScreenEdgeSpawner）・個体制御（PersonController）・イベント管理（RandomEventManager）を責務分離\n▸ 3種の経路パターンを確率ベースで割り当て\n▸ 雨イベントによる状態割り込み時の競合防止処理\n▸ CharacterCreatorEditor（Editor拡張）で設定作業を自動化\n\n<strong>■ 学び</strong>\n▸ 36時間の制約下で「何を省略し、何を守るか」の判断を実践\n▸ 抽象化は省略しつつもロジックの安定性を最優先にした",
         descriptionEn: "Team Size: 2 (both joined mid-development) / Development Time: 36 hours\nRole: Game scene design & full implementation\n\n<strong>■ What I Did</strong>\nJoined mid-development: grasped existing structure → redefined specs → reconstructed logic → completed.\n\n<strong>■ Core Design</strong>\n▸ Separated NPC generation (ScreenEdgeSpawner), individual control (PersonController), and event management (RandomEventManager)\n▸ 3 route patterns assigned via probability at spawn\n▸ State conflict prevention during rain event interruptions\n▸ CharacterCreatorEditor (Editor extension) to automate setup\n\n<strong>■ Learnings</strong>\n▸ Practiced 'what to omit and what to protect' decisions under 36-hour constraint\n▸ Prioritized logic stability while intentionally omitting abstraction layers",
         imageUrls: [
@@ -176,6 +176,7 @@ export const m_GameJamData = [
             "/projects/GameJam/GlobalGameJam/GlobalGameJam4.png",
         ],
         backgroundUrl: "/projects/GameJam/GlobalGameJam/GlobalGameJamBack.png",
+        thumbnailIndex: 0,
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/MKTkakumei/GGJ2026_01",
         downloadUrl: "https://drive.google.com/drive/folders/1zqc_DEku_vkQqIurhKQhbbz50RdoKSxb?usp=sharing",
@@ -183,7 +184,7 @@ export const m_GameJamData = [
     },
     {
         id: "gj-2",
-        title: "Takahashi",
+        title: "ゲームジャム高梁2025",
         description: "ゲームジャム高梁 参加作品\nプログラムリーダー・キャラクター実装担当 / 36時間 / 6名\n\n<strong>■ やったこと</strong>\n自作State Patternベースのステートマシンでキャラクター制御基盤を設計。GitHubブランチ運用で並列開発。\n\n<strong>■ 発生した問題</strong>\n▸ 遷移優先度・キャンセルフレーム・アニメーションイベントの事前合意不足\n▸ → 統合時にアニメと判定のズレ、状態競合が発生（統合設計ミス）\n\n<strong>■ この経験からの学び</strong>\n▸ 実装前にステート遷移図＋優先度を明文化する\n▸ 2〜3時間単位で統合テスト\n▸ 設計基準を「速度最大化」→「統合容易性と完成確率の最大化」へ転換\n▸ この失敗が、現在の状態競合防止設計方針の直接の契機",
         descriptionEn: "Game Jam Takahashi Entry\nProgram Leader & Character Implementation / 36 hours / 6 members\n\n<strong>■ What I Did</strong>\nDesigned character control foundation using custom State Pattern-based state machine. Parallel development via GitHub branches.\n\n<strong>■ Problem Encountered</strong>\n▸ Lack of prior agreement on transition priorities, cancelable frames, and animation events\n▸ → Animation-hitbox misalignment and state conflicts during integration (integration design failure)\n\n<strong>■ Learnings</strong>\n▸ Document state transition diagrams + priorities before implementation\n▸ Integration tests every 2-3 hours\n▸ Shifted design standard from 'maximizing speed' → 'maximizing ease of integration and completion probability'\n▸ This failure became the direct catalyst for my current state conflict prevention design policy",
         imageUrls: [
@@ -193,6 +194,7 @@ export const m_GameJamData = [
             "/projects/GameJam/GameJamTakahashi/GameJamTakahashi4.png",
         ],
         backgroundUrl: "/projects/GameJam/GameJamTakahashi/GameJamTakahashiBack.png",
+        thumbnailIndex: 0,
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/Hamster-jpg/mistshooter",
         downloadUrl: "https://drive.google.com/drive/folders/18Ln0c9baNiyWdGVi3LZ3yTVFrFlPXg9k?usp=sharing",
@@ -200,7 +202,7 @@ export const m_GameJamData = [
     },
     {
         id: "gj-3",
-        title: "BitSummit",
+        title: "ビットサミットゲームジャム2025",
         description: "BitSummit GameJam 参加作品\nスコア全般・リザルト画面全般",
         descriptionEn: "Game Jam entry",
         imageUrls: [
@@ -210,13 +212,14 @@ export const m_GameJamData = [
             "/projects/GameJam/BitSummitGameJam/BitSummitGameJam4.png",
         ],
         backgroundUrl: "/projects/GameJam/BitSummitGameJam/BitSummitGameJamBack.jpg",
+        thumbnailIndex: 0,
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/hy0by0/Bug_Cord",
         downloadUrl: "https://drive.google.com/drive/folders/1mp87IbYL_i7KyUzruZjmDjG0Ns4ulh1v?usp=sharing",
     },
     {
         id: "gj-4",
-        title: "Saikyou",
+        title: "最強ゲームジャム2025",
         description: "最強ゲームジャム 参加作品\nタイトル画面全般",
         descriptionEn: "Game Jam entry",
         imageUrls: [
@@ -226,6 +229,7 @@ export const m_GameJamData = [
             "/projects/GameJam/SaikyouGameJam/SaikyouGameJam4.png",
         ],
         backgroundUrl: "/projects/GameJam/SaikyouGameJam/SaikyouGameJamBack.png",
+        thumbnailIndex: 0,
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/kayinazlost/ExcellentTeam",
         downloadUrl: "https://drive.google.com/drive/folders/1oc61BSOcm2yNSzKaiYQrBK2_w6dQYO-7?usp=sharing",
@@ -233,7 +237,7 @@ export const m_GameJamData = [
     },
     {
         id: "gj-5",
-        title: "Shoutengai",
+        title: "商店街ゲームジャム2024",
         description: "商店街ゲームジャム 参加作品\n左上のうんちバーの配置",
         descriptionEn: "Game Jam entry",
         imageUrls: [
@@ -243,6 +247,7 @@ export const m_GameJamData = [
             "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJam4.png",
         ],
         backgroundUrl: "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJamBack.png",
+        thumbnailIndex: 0,
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/SanukiGameN108/ShotengaiGJ2024_TeamD",
         downloadUrl: "https://drive.google.com/drive/folders/1JMCisiSB07Oe4FoF3CWBAfveRvkJsGrf?usp=sharing",

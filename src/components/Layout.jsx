@@ -1,14 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import { Twitter, Github, Volume2, VolumeX } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { useAudio } from '../contexts/AudioContext';
-import AudioPermissionModal from './AudioPermissionModal';
+import { Github } from 'lucide-react';
 
 const Layout = ({ children, backgroundImage }) => {
-    const { language, toggleLanguage } = useLanguage();
-    const { isAudioEnabled, toggleAudio } = useAudio();
 
     return (
         <div className="min-h-screen bg-dark-bg text-gray-200 font-rajdhani relative overflow-hidden">
@@ -34,15 +29,6 @@ const Layout = ({ children, backgroundImage }) => {
                 {/* Left: SNS Icons */}
                 <div className="flex items-center gap-4">
                     <a
-                        href="https://x.com/hiragi_ty"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-neon-blue transition-colors"
-                        title="X (Twitter)"
-                    >
-                        <Twitter size={22} />
-                    </a>
-                    <a
                         href="https://github.com/sogotoya"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -53,28 +39,7 @@ const Layout = ({ children, backgroundImage }) => {
                     </a>
                 </div>
 
-                {/* Right: Language & Audio Toggle */}
-                <div className="flex items-center gap-6 drop-shadow-md">
-                    <button
-                        onClick={toggleLanguage}
-                        className="flex items-center gap-1 text-sm font-orbitron font-bold tracking-wider transition-colors"
-                    >
-                        <span className={language === 'ja' ? 'text-neon-blue' : 'text-gray-400'}>JP</span>
-                        <span className="text-gray-500">/</span>
-                        <span className={language === 'en' ? 'text-neon-blue' : 'text-gray-400'}>EN</span>
-                    </button>
-
-                    <button
-                        onClick={toggleAudio}
-                        className={`transition-colors duration-200 ${isAudioEnabled ? 'text-neon-blue hover:text-white' : 'text-gray-400 hover:text-gray-200'}`}
-                        title={isAudioEnabled ? (language === 'ja' ? '音声をオフにする' : 'Mute Audio') : (language === 'ja' ? '音声をオンにする' : 'Enable Audio')}
-                    >
-                        {isAudioEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
-                    </button>
-                </div>
             </nav>
-
-            <AudioPermissionModal language={language} />
 
             {/* Main Content */}
             <main className="relative z-10 px-4 pb-8 max-w-7xl mx-auto">

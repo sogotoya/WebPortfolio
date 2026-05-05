@@ -8,12 +8,12 @@ import ImageCarousel from '../components/ImageCarousel';
 import AxisSaveDiagram from '../components/AxisSaveDiagram';
 import PlanetariumVRDiagram from '../components/PlanetariumVRDiagram';
 import OrimichikunDiagram from '../components/OrimichikunDiagram';
-import { useLanguage } from '../contexts/LanguageContext';
+
 import MarkdownDocument from '../components/MarkdownDocument';
 
 const ProjectDetail = () => {
     const { id } = useParams();
-    const { language } = useLanguage();
+
     const allProjects = [...m_ProjectData, ...m_ClientWorksData];
     const project = allProjects.find((p) => String(p.id) === id);
 
@@ -77,12 +77,12 @@ const ProjectDetail = () => {
 
                     <p
                         className="text-gray-300 text-lg leading-relaxed mb-8 font-rajdhani"
-                        dangerouslySetInnerHTML={{ __html: (language === 'en' && project.descriptionEn ? project.descriptionEn : project.description).replace(/\n/g, '<br/>') }}
+                        dangerouslySetInnerHTML={{ __html: project.description.replace(/\n/g, '<br/>') }}
                     />
 
-                    {project.id === 1 && <AxisSaveDiagram language={language} />}
-                    {project.id === 2 && <PlanetariumVRDiagram language={language} />}
-                    {project.id === 4 && <OrimichikunDiagram language={language} />}
+                    {project.id === 1 && <AxisSaveDiagram />}
+                    {project.id === 2 && <PlanetariumVRDiagram />}
+                    {project.id === 4 && <OrimichikunDiagram />}
 
                     {project.markdownUrl && (
                         <MarkdownDocument url={project.markdownUrl} />
