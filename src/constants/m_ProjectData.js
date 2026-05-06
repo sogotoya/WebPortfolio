@@ -106,6 +106,7 @@ export const m_ClientWorksData = [
         imageUrls: ["/projects/Client/Tamamo/TamamoSamune.png"],
         githubUrl: "",
         downloadUrl: "",
+        playUrl: "https://vrchat.com/home/world/wrld_01e7d57d-1224-4138-bcc3-915a9560bdd1/info",
         backgroundUrl: "/projects/Client/Tamamo/TamamoSamune.png",
         technologies: ["Unity"],
     },
@@ -267,7 +268,7 @@ export const m_VRChatWorldsData = [
         ],
         backgroundUrl: "/projects/VrC/Bar/BarBack.png",
         technologies: ["Unity", "VRChat"],
-        downloadUrl: "https://vrchat.com/home/world/wrld_49194f3c-95d6-468f-86f5-ac7f697cf70f/info",
+        playUrl: "https://vrchat.com/home/world/wrld_49194f3c-95d6-468f-86f5-ac7f697cf70f/info",
     },
     {
         id: "vrc-2",
@@ -280,6 +281,6 @@ export const m_VRChatWorldsData = [
         ],
         backgroundUrl: "/projects/VrC/Bill/BillBack.png",
         technologies: ["Unity", "VRChat"],
-        downloadUrl: "https://vrchat.com/home/world/wrld_689ecf91-f27d-4128-855a-d0b10d237437/info",
+        playUrl: "https://vrchat.com/home/world/wrld_689ecf91-f27d-4128-855a-d0b10d237437/info",
     }
 ];

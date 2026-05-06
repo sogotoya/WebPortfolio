@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Layout from '../components/Layout';
-import { m_ProjectData, m_ClientWorksData } from '../constants/m_ProjectData';
+import { m_ProjectData, m_ToolData, m_GameJamData, m_ClientWorksData, m_VRChatWorldsData } from '../constants/m_ProjectData';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Github, ExternalLink, Download } from 'lucide-react';
 import ImageCarousel from '../components/ImageCarousel';
@@ -14,7 +14,13 @@ import MarkdownDocument from '../components/MarkdownDocument';
 const ProjectDetail = () => {
     const { id } = useParams();
 
-    const allProjects = [...m_ProjectData, ...m_ClientWorksData];
+    const allProjects = [
+        ...m_ProjectData, 
+        ...m_ClientWorksData, 
+        ...m_ToolData, 
+        ...m_GameJamData, 
+        ...m_VRChatWorldsData
+    ];
     const project = allProjects.find((p) => String(p.id) === id);
 
     useEffect(() => {
