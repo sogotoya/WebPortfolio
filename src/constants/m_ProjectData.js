@@ -260,8 +260,8 @@ export const m_VRChatWorldsData = [
     {
         id: "vrc-1",
         title: "Bar",
-        description: "VRChat用ワールド「Bar」の詳細。\n美しいライティングと雰囲気を重視して制作しました。",
-        descriptionEn: "Details of VRChat World 'Bar'.",
+        description: "美しいライティングと雰囲気を重視して制作しました。",
+        descriptionEn: "Focuses on beautiful lighting and atmosphere.",
         videoUrl: "/projects/VrC/Bar/Bar.mp4",
         imageUrls: [
             "/projects/VrC/Bar/BarBack.png", // 仮で背景画像を代用
@@ -273,8 +273,8 @@ export const m_VRChatWorldsData = [
     {
         id: "vrc-2",
         title: "Bill",
-        description: "VRChat用ワールド「Bill」の詳細。\n落ち着いた空間を目指して制作しました。",
-        descriptionEn: "Details of VRChat World 'Bill'.",
+        description: "落ち着いた空間を目指して制作しました。",
+        descriptionEn: "Designed with a focus on creating a calm, relaxing space.",
         videoUrl: "/projects/VrC/Bill/Bill.mp4",
         imageUrls: [
             "/projects/VrC/Bill/BillBack.png",
