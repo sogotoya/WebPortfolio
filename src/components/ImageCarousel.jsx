@@ -295,59 +295,63 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
                                 </button>
                             </div>
 
-                            {/* シークバー (下部中央) */}
-                            <div
-                                className={`pointer-events-auto absolute bottom-16 left-1/2 -translate-x-1/2 w-[90%] flex items-center gap-3 bg-black/60 text-white px-4 py-2 rounded-full border border-gray-500 backdrop-blur-sm transition-opacity duration-300 ${isVideoPaused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
-                                onClick={(e) => e.stopPropagation()}
-                                onMouseDown={(e) => e.stopPropagation()}
-                                onMouseUp={(e) => e.stopPropagation()}
-                            >
-                                <span className="text-[10px] md:text-xs font-mono min-w-[35px] text-center">{formatTime(currentTime)}</span>
-                                <input
-                                    type="range"
-                                    min="0"
-                                    max={duration || 0}
-                                    step="0.1"
-                                    value={currentTime}
-                                    onChange={handleSeek}
-                                    className="flex-1 accent-neon-pink cursor-pointer h-1 rounded-lg appearance-none bg-gray-600"
-                                />
-                                <span className="text-[10px] md:text-xs font-mono min-w-[35px] text-center">{formatTime(duration)}</span>
-                            </div>
+                            {/* YouTube風コントロールバー (下部) */}
+                            <div className={`pointer-events-auto absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 transition-opacity duration-300 ${isVideoPaused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                
+                                {/* シークバー (上段) */}
+                                <div className="flex items-center gap-3 mb-2">
+                                    <span className="text-[10px] md:text-xs font-mono min-w-[35px] text-gray-300">{formatTime(currentTime)}</span>
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max={duration || 0}
+                                        step="0.1"
+                                        value={currentTime}
+                                        onChange={handleSeek}
+                                        onMouseDown={(e) => e.stopPropagation()}
+                                        onMouseUp={(e) => e.stopPropagation()}
+                                        className="flex-1 accent-neon-pink cursor-pointer h-1 rounded-lg appearance-none bg-gray-600/50 hover:h-1.5 transition-all"
+                                    />
+                                    <span className="text-[10px] md:text-xs font-mono min-w-[35px] text-gray-300">{formatTime(duration)}</span>
+                                </div>
 
-                            {/* ボリュームコントロール (左下) - ホバー時に表示 */}
-                            <div
-                                className={`pointer-events-auto absolute bottom-4 left-4 flex items-center gap-2 bg-black/60 text-white px-3 py-2 rounded-full border border-gray-500 backdrop-blur-sm transition-opacity duration-300 ${isVideoPaused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
-                                onClick={(e) => e.stopPropagation()}
-                                onMouseDown={(e) => e.stopPropagation()}
-                                onMouseUp={(e) => e.stopPropagation()}
-                            >
-                                <button onClick={toggleMute} className="hover:text-neon-blue transition-colors outline-none cursor-pointer">
-                                    {isMuted || volume === 0 ? <VolumeX size={20} /> : <Volume2 size={20} />}
-                                </button>
-                                <input
-                                    type="range"
-                                    min="0" max="1" step="0.05"
-                                    value={isMuted ? 0 : volume}
-                                    onChange={handleVolumeChange}
-                                    className="w-16 md:w-24 accent-neon-blue cursor-pointer"
-                                />
-                            </div>
+                                {/* ボタン類 (下段) */}
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center gap-4">
+                                        {/* 音声コントロール */}
+                                        <div className="flex items-center gap-2 group/volume">
+                                            <button 
+                                                onClick={toggleMute} 
+                                                onMouseDown={(e) => e.stopPropagation()}
+                                                onMouseUp={(e) => e.stopPropagation()}
+                                                className="text-white hover:text-neon-blue transition-colors outline-none cursor-pointer"
+                                            >
+                                                {isMuted || volume === 0 ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                                            </button>
+                                            <input
+                                                type="range"
+                                                min="0" max="1" step="0.05"
+                                                value={isMuted ? 0 : volume}
+                                                onChange={handleVolumeChange}
+                                                onMouseDown={(e) => e.stopPropagation()}
+                                                onMouseUp={(e) => e.stopPropagation()}
+                                                className="w-0 group-hover/volume:w-20 md:group-hover/volume:w-24 transition-all duration-300 accent-white cursor-pointer h-1 rounded-lg appearance-none bg-gray-600"
+                                            />
+                                        </div>
+                                    </div>
 
-                            {/* フルスクリーンボタン (右下) - ホバー時に表示 */}
-                            <button
-                                onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
-                                onMouseDown={(e) => e.stopPropagation()}
-                                onMouseUp={(e) => e.stopPropagation()}
-                                className={`pointer-events-auto absolute bottom-4 right-4 bg-black/60 text-white p-2 rounded-full border border-gray-500 hover:border-neon-blue hover:text-neon-blue backdrop-blur-sm transition-opacity duration-300 ${isVideoPaused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
-                                title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
-                            >
-                                {isFullscreen ? (
-                                    <Minimize size={20} />
-                                ) : (
-                                    <Maximize size={20} />
-                                )}
-                            </button>
+                                    {/* 右側：フルスクリーン */}
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
+                                        onMouseDown={(e) => e.stopPropagation()}
+                                        onMouseUp={(e) => e.stopPropagation()}
+                                        className="text-white hover:text-neon-blue transition-colors outline-none cursor-pointer"
+                                        title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+                                    >
+                                        {isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </motion.div>
                 ) : (
