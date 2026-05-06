@@ -19,8 +19,8 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
     const [isFullscreen, setIsFullscreen] = useState(false); // フルスクリーン状態
 
     // 音量コントロール用
-    const [volume, setVolume] = useState(0);
-    const [isMuted, setIsMuted] = useState(true);
+    const [volume, setVolume] = useState(1);
+    const [isMuted, setIsMuted] = useState(false);
 
     // ボリューム変更処理
     useEffect(() => {
