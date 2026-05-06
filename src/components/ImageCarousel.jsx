@@ -22,6 +22,38 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
     const [volume, setVolume] = useState(1);
     const [isMuted, setIsMuted] = useState(false);
 
+    // シークバー用
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+
+    const handleTimeUpdate = () => {
+        if (videoRef.current) {
+            setCurrentTime(videoRef.current.currentTime);
+        }
+    };
+
+    const handleLoadedMetadata = () => {
+        if (videoRef.current) {
+            setDuration(videoRef.current.duration);
+        }
+    };
+
+    const handleSeek = useCallback((e) => {
+        e.stopPropagation();
+        const time = parseFloat(e.target.value);
+        if (videoRef.current) {
+            videoRef.current.currentTime = time;
+            setCurrentTime(time);
+        }
+    }, []);
+
+    // 時間フォーマット (00:00)
+    const formatTime = (time) => {
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time % 60);
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    };
+
     // ボリューム変更処理
     useEffect(() => {
         if (videoRef.current) {
@@ -241,6 +273,8 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
                             className="w-full h-full object-cover cursor-pointer"
                             playsInline
                             onEnded={handleVideoEnded}
+                            onTimeUpdate={handleTimeUpdate}
+                            onLoadedMetadata={handleLoadedMetadata}
                         />
                         {/* 再生/一時停止ボタンオーバーレイ */}
                         <div className={`absolute inset-0 transition-colors duration-500 pointer-events-none ${isVideoPaused ? 'bg-black/40' : 'bg-transparent'}`}>
@@ -259,6 +293,26 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
                                         <Pause size={48} fill="currentColor" />
                                     )}
                                 </button>
+                            </div>
+
+                            {/* シークバー (下部中央) */}
+                            <div
+                                className={`pointer-events-auto absolute bottom-16 left-1/2 -translate-x-1/2 w-[90%] flex items-center gap-3 bg-black/60 text-white px-4 py-2 rounded-full border border-gray-500 backdrop-blur-sm transition-opacity duration-300 ${isVideoPaused ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+                                onClick={(e) => e.stopPropagation()}
+                                onMouseDown={(e) => e.stopPropagation()}
+                                onMouseUp={(e) => e.stopPropagation()}
+                            >
+                                <span className="text-[10px] md:text-xs font-mono min-w-[35px] text-center">{formatTime(currentTime)}</span>
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max={duration || 0}
+                                    step="0.1"
+                                    value={currentTime}
+                                    onChange={handleSeek}
+                                    className="flex-1 accent-neon-pink cursor-pointer h-1 rounded-lg appearance-none bg-gray-600"
+                                />
+                                <span className="text-[10px] md:text-xs font-mono min-w-[35px] text-center">{formatTime(duration)}</span>
                             </div>
 
                             {/* ボリュームコントロール (左下) - ホバー時に表示 */}
