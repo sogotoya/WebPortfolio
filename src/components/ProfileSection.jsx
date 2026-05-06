@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-    Terminal, FileCode2, Code2, Box, Wrench, Layers,
+    Terminal, FileCode2, Code2, Box, Wrench, Layers, Glasses,
     MonitorPlay, Video, Palette, Component, Zap, Bot, Package, Music, Github
 } from 'lucide-react';
-import { SiC, SiCplusplus, SiGithub, SiUnity, SiBlender } from 'react-icons/si';
+import { SiC, SiCplusplus, SiGithub, SiUnity, SiUnrealengine } from 'react-icons/si';
 import { TbBrandCSharp } from 'react-icons/tb';
 import { DiVisualstudio } from 'react-icons/di';
 import { VscVscode } from 'react-icons/vsc';
@@ -13,16 +13,14 @@ const ProfileSection = () => {
     const skillCategories = [
         {
             category: "プログラミング言語",
-            gridClass: "grid-cols-3",
             skills: [
-                { name: "C", icon: <SiC size={18} /> },
-                { name: "C++", icon: <SiCplusplus size={18} /> },
-                { name: "C#", icon: <TbBrandCSharp size={18} /> },
+                { name: "C", icon: <SiC size={18} />, period: "半年" },
+                { name: "C++", icon: <SiCplusplus size={18} />, period: "半年" },
+                { name: "C#", icon: <TbBrandCSharp size={18} />, period: "1年半" },
             ]
         },
         {
             category: "IDE",
-            gridClass: "grid-cols-2",
             skills: [
                 { name: "Visual Studio", icon: <DiVisualstudio size={18} /> },
                 { name: "VS Code", icon: <VscVscode size={18} /> },
@@ -30,33 +28,29 @@ const ProfileSection = () => {
         },
         {
             category: "ライブラリ",
-            gridClass: "grid-cols-2",
             skills: [
-                { name: "OpenGL", icon: <Layers size={18} /> },
-            ]
-        },
-        {
-            category: "Tools",
-            gridClass: "grid-cols-2 md:grid-cols-5",
-            containerClass: "md:col-span-3 lg:col-span-3",
-            skills: [
-                { name: "GitHub", icon: <SiGithub size={18} /> },
-                { name: "Blender", icon: <SiBlender size={18} /> },
-                { name: "VRChat CC", icon: <Wrench size={18} /> },
-                { name: "Antigravity", icon: <Zap size={18} /> },
-                { name: "Claude Code", icon: <Bot size={18} /> },
+                { name: "OpenGL", icon: <Layers size={18} />, period: "1年" },
             ]
         },
         {
             category: "ゲームエンジン",
-            gridClass: "grid-cols-2",
             skills: [
-                { name: "Unity", icon: <SiUnity size={18} /> },
+                { name: "Unity", icon: <SiUnity size={18} />, period: "1年半" },
+                { name: "Unreal Engine", icon: <SiUnrealengine size={18} />, period: "半年未満" },
+            ]
+        },
+        {
+            category: "Tools",
+            skills: [
+                { name: "GitHub Desktop", icon: <SiGithub size={18} />, period: "2年" },
+                { name: "XREAL", icon: <Glasses size={18} />, period: "半年未満" },
+                { name: "VRChat CC", icon: <Wrench size={18} />, period: "半年" },
+                { name: "Antigravity", icon: <Zap size={18} />, period: "半年" },
+                { name: "Claude Code", icon: <Bot size={18} />, period: "半年" },
             ]
         },
         {
             category: "Unityパッケージ",
-            gridClass: "grid-cols-3",
             skills: [
                 { name: "UniTask", icon: <Package size={18} /> },
                 { name: "Netcode", icon: <Package size={18} /> },
@@ -114,24 +108,29 @@ const ProfileSection = () => {
                             <span className="w-2 h-2 bg-neon-blue rounded-full animate-pulse-slow"></span>
                             {t.skillTitle}
                         </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-x-4 gap-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
                             {skillCategories.map((categoryGroup, categoryIndex) => (
-                                <div key={categoryIndex} className={categoryGroup.containerClass || ""}>
-                                    <h4 className="text-xs text-gray-400 font-rajdhani tracking-wider mb-2 border-b border-gray-800/50 pb-1">
+                                <div key={categoryIndex} className="flex flex-col">
+                                    <h4 className="text-xs text-neon-blue/60 font-orbitron tracking-widest mb-3 border-l-2 border-neon-blue/30 pl-2 py-0.5">
                                         {categoryGroup.category}
                                     </h4>
-                                    <div className={`grid gap-1.5 ${categoryGroup.gridClass || "grid-cols-4"}`}>
+                                    <div className="flex flex-wrap gap-2.5">
                                         {categoryGroup.skills.map((skill, index) => (
                                             <div
                                                 key={index}
-                                                className="flex flex-col items-center justify-center p-2 h-16 border border-gray-800 bg-black/40 rounded-sm"
+                                                className="flex items-center gap-2.5 px-3 py-2.5 min-w-[100px] h-[44px] border border-gray-800 bg-black/40 rounded hover:border-neon-blue/40 transition-colors group"
                                             >
-                                                <div className="text-gray-400 mb-1">
+                                                <div className="text-gray-400 group-hover:text-neon-blue transition-colors flex-shrink-0">
                                                     {skill.icon}
                                                 </div>
-                                                <span className="text-[10px] md:text-[11px] font-rajdhani text-gray-400 text-center tracking-wider break-words w-full whitespace-pre-line leading-tight">
+                                                <span className="text-xs font-rajdhani text-gray-300 tracking-wider whitespace-nowrap group-hover:text-gray-100 transition-colors">
                                                     {skill.name}
                                                 </span>
+                                                {skill.period && (
+                                                    <span className="text-[10px] font-rajdhani text-neon-blue/70 ml-auto pl-2 whitespace-nowrap border-l border-gray-700">
+                                                        {skill.period}
+                                                    </span>
+                                                )}
                                             </div>
                                         ))}
                                     </div>

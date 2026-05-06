@@ -12,7 +12,14 @@ import { m_ProjectData, m_ToolData, m_GameJamData, m_ClientWorksData, m_VRChatWo
 const Home = () => {
     const [vrchatBgImage, setVrchatBgImage] = useState(null);
     const [activeTab, setActiveTab] = useState("Game");
-    const tabs = ["Game", "VR", "VRChat", "Tool", "GameJam"];
+    const tabs = [
+        { id: "Game", label: "ゲーム" },
+        { id: "VR", label: "VR" },
+        { id: "VRChat", label: "VRChat" },
+        { id: "Tool", label: "ツール" },
+        { id: "GameJam", label: "ゲームジャム" },
+        { id: "Client", label: "案件" },
+    ];
 
     // タブ切り替え時の背景画像制御
     useEffect(() => {
@@ -92,15 +99,15 @@ const Home = () => {
                 <div className="flex gap-2 md:gap-4 overflow-x-auto pb-2 scrollbar-hide w-full md:w-auto px-4 md:px-0">
                     {tabs.map((tab) => (
                         <button
-                            key={tab}
-                            onClick={() => setActiveTab(tab)}
+                            key={tab.id}
+                            onClick={() => setActiveTab(tab.id)}
                             className={`px-4 md:px-8 py-2 font-orbitron text-sm md:text-base tracking-widest transition-all duration-300 whitespace-nowrap ${
-                                activeTab === tab
+                                activeTab === tab.id
                                     ? "text-neon-blue border-b-2 border-neon-blue bg-neon-blue/10 font-bold"
                                     : "text-gray-500 hover:text-gray-300 hover:bg-gray-800/50 border-b-2 border-transparent"
                             }`}
                         >
-                            {tab}
+                            {tab.label}
                         </button>
                     ))}
                 </div>
@@ -131,7 +138,7 @@ const Home = () => {
                                         <div className="mb-12">
                                             <div className="flex items-center mb-6">
                                                 <h3 className="text-lg md:text-xl font-orbitron font-bold text-gray-300 tracking-widest mr-4">
-                                                    2nd Year
+                                                    2年次
                                                 </h3>
                                                 <div className="flex-1 border-b border-gray-700"></div>
                                             </div>
@@ -156,7 +163,7 @@ const Home = () => {
                                         <div className="mb-12">
                                             <div className="flex items-center mb-6">
                                                 <h3 className="text-lg md:text-xl font-orbitron font-bold text-gray-300 tracking-widest mr-4">
-                                                    1st Year
+                                                    1年次
                                                 </h3>
                                                 <div className="flex-1 border-b border-gray-700"></div>
                                             </div>
@@ -180,78 +187,134 @@ const Home = () => {
                         })()}
 
                         {activeTab === "VR" && (
-                            <div className="flex flex-wrap justify-center gap-8 mb-12">
-                                {m_ProjectData.filter(p => p.technologies.includes("VR") && p.id !== 3).map((project, index) => (
-                                    <motion.div
-                                        key={project.id}
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
-                                        className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
-                                    >
-                                        <ProjectCard project={project} />
-                                    </motion.div>
-                                ))}
+                            <div className="mb-12">
+                                <div className="flex items-center mb-6">
+                                    <h3 className="text-lg md:text-xl font-orbitron font-bold text-gray-300 tracking-widest mr-4">
+                                        2年次
+                                    </h3>
+                                    <div className="flex-1 border-b border-gray-700"></div>
+                                </div>
+                                <div className="flex flex-wrap justify-center gap-8">
+                                    {m_ProjectData.filter(p => p.technologies.includes("VR") && p.id !== 3).map((project, index) => (
+                                        <motion.div
+                                            key={project.id}
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                                            className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
+                                        >
+                                            <ProjectCard project={project} />
+                                        </motion.div>
+                                    ))}
+                                </div>
                             </div>
                         )}
 
                         {activeTab === "VRChat" && (
-                            <div className="flex flex-wrap justify-center gap-8 mb-12">
-                                {/* 玉藻城 */}
-                                <motion.div
-                                    key="cw-1"
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration: 0.5 }}
-                                    className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
-                                >
-                                    <ProjectCard project={m_ClientWorksData.find(cw => cw.id === "cw-1")} />
-                                </motion.div>
-                                
-                                {/* VRChat Worlds */}
-                                {m_VRChatWorldsData.map((project, index) => (
+                            <div className="mb-12">
+                                <div className="flex items-center mb-6">
+                                    <h3 className="text-lg md:text-xl font-orbitron font-bold text-gray-300 tracking-widest mr-4">
+                                        2年次
+                                    </h3>
+                                    <div className="flex-1 border-b border-gray-700"></div>
+                                </div>
+                                <div className="flex flex-wrap justify-center gap-8">
+                                    {/* 玉藻城 */}
                                     <motion.div
-                                        key={project.id}
+                                        key="cw-1"
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                                        transition={{ duration: 0.5 }}
                                         className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
                                     >
-                                        <ProjectCard project={project} />
+                                        <ProjectCard project={m_ClientWorksData.find(cw => cw.id === "cw-1")} />
                                     </motion.div>
-                                ))}
+                                    
+                                    {/* VRChat Worlds */}
+                                    {m_VRChatWorldsData.map((project, index) => (
+                                        <motion.div
+                                            key={project.id}
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                                            className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
+                                        >
+                                            <ProjectCard project={project} />
+                                        </motion.div>
+                                    ))}
+                                </div>
                             </div>
                         )}
 
                         {activeTab === "Tool" && (
-                            <div className="flex flex-wrap justify-center gap-8 mb-12">
-                                {m_ToolData.map((project, index) => (
-                                    <motion.div
-                                        key={project.id}
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
-                                        className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
-                                    >
-                                        <ProjectCard project={project} />
-                                    </motion.div>
-                                ))}
+                            <div className="mb-12">
+                                <div className="flex items-center mb-6">
+                                    <h3 className="text-lg md:text-xl font-orbitron font-bold text-gray-300 tracking-widest mr-4">
+                                        2年次
+                                    </h3>
+                                    <div className="flex-1 border-b border-gray-700"></div>
+                                </div>
+                                <div className="flex flex-wrap justify-center gap-8">
+                                    {m_ToolData.map((project, index) => (
+                                        <motion.div
+                                            key={project.id}
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                                            className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
+                                        >
+                                            <ProjectCard project={project} />
+                                        </motion.div>
+                                    ))}
+                                </div>
                             </div>
                         )}
 
                         {activeTab === "GameJam" && (
-                            <div className="flex flex-wrap justify-center gap-8 mb-12">
-                                {m_GameJamData.map((project, index) => (
-                                    <motion.div
-                                        key={project.id}
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
-                                        className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
-                                    >
-                                        <ProjectCard project={project} />
-                                    </motion.div>
-                                ))}
+                            <div className="mb-12">
+                                <div className="flex items-center mb-6">
+                                    <h3 className="text-lg md:text-xl font-orbitron font-bold text-gray-300 tracking-widest mr-4">
+                                        2年次
+                                    </h3>
+                                    <div className="flex-1 border-b border-gray-700"></div>
+                                </div>
+                                <div className="flex flex-wrap justify-center gap-8">
+                                    {m_GameJamData.map((project, index) => (
+                                        <motion.div
+                                            key={project.id}
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                                            className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
+                                        >
+                                            <ProjectCard project={project} />
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === "Client" && (
+                            <div className="mb-12">
+                                <div className="flex items-center mb-6">
+                                    <h3 className="text-lg md:text-xl font-orbitron font-bold text-gray-300 tracking-widest mr-4">
+                                        2年次
+                                    </h3>
+                                    <div className="flex-1 border-b border-gray-700"></div>
+                                </div>
+                                <div className="flex flex-wrap justify-center gap-8">
+                                    {m_ClientWorksData.map((project, index) => (
+                                        <motion.div
+                                            key={project.id}
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                                            className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
+                                        >
+                                            <ProjectCard project={project} />
+                                        </motion.div>
+                                    ))}
+                                </div>
                             </div>
                         )}
                     </motion.div>

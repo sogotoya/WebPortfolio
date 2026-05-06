@@ -102,16 +102,16 @@ export const m_ClientWorksData = [
         title: "玉藻城",
         description: "香川県高松市にある「玉藻城（高松城）」をテーマにした案件作品です。詳細は準備中です。",
         descriptionEn: "A client project based on 'Tamamo Castle' (Takamatsu Castle) in Kagawa Prefecture. Details coming soon.",
-        videoUrl: "",
-        imageUrls: ["https://placehold.jp/32/1a1a1a/cccccc/800x450.png?text=No%20Image"],
+        videoUrl: "/projects/Client/Tamamo/Tamamo.mp4",
+        imageUrls: ["/projects/Client/Tamamo/TamamoSamune.png"],
         githubUrl: "",
         downloadUrl: "",
-        backgroundUrl: "",
+        backgroundUrl: "/projects/Client/Tamamo/TamamoSamune.png",
         technologies: ["Unity"],
     },
     {
         id: "cw-2",
-        title: "SetouchiTreasureQuest",
+        title: "瀬戸内お宝マウンテン",
         description: "瀬戸内芸術祭用ゲーム。\n香川県さぬき市津田町周辺に設置されている絵を探し、そこに書かれている【パスワード】を見つけ出して該当する画像の入力フォームに打ち込むとクリア。全10問すべてクリアすると、津田の松原に設置されているパズルのピースが1つ追加されます。\n参加者全員で、パズルのピースを探し出し隠された3つの絵を完成させましょう!!\n\n<strong>開発元</strong> : 専門学校穴吹デザインカレッジ ゲームクリエイター学科XR専攻",
         descriptionEn: "A game created for the Setouchi Art Festival.\nSearch for paintings placed around Tsuda Town, Sanuki City, Kagawa Prefecture, find the [PASSWORD] written on them, and enter it into the input form of the corresponding image to clear. Clearing all 10 questions adds a puzzle piece to the puzzle installed at Tsuda no Matsubara.\nLet all participants search for puzzle pieces and complete the 3 hidden paintings!!\n\n<strong>Developer</strong> : Anabuki Design College, Game Creator Department, XR Major",
         videoUrl: "",
@@ -261,6 +261,7 @@ export const m_VRChatWorldsData = [
         title: "Bar",
         description: "VRChat用ワールド「Bar」の詳細。\n美しいライティングと雰囲気を重視して制作しました。",
         descriptionEn: "Details of VRChat World 'Bar'.",
+        videoUrl: "/projects/VrC/Bar/Bar.mp4",
         imageUrls: [
             "/projects/VrC/Bar/BarBack.png", // 仮で背景画像を代用
         ],
@@ -273,6 +274,7 @@ export const m_VRChatWorldsData = [
         title: "Bill",
         description: "VRChat用ワールド「Bill」の詳細。\n落ち着いた空間を目指して制作しました。",
         descriptionEn: "Details of VRChat World 'Bill'.",
+        videoUrl: "/projects/VrC/Bill/Bill.mp4",
         imageUrls: [
             "/projects/VrC/Bill/BillBack.png",
         ],
