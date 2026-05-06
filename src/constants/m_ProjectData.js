@@ -182,6 +182,7 @@ export const m_GameJamData = [
         githubUrl: "https://github.com/MKTkakumei/GGJ2026_01",
         downloadUrl: "https://drive.google.com/drive/folders/1zqc_DEku_vkQqIurhKQhbbz50RdoKSxb?usp=sharing",
         playUrl: "https://unityroom.com/games/no-mitsu",
+        year: 2,
     },
     {
         id: "gj-2",
@@ -200,6 +201,7 @@ export const m_GameJamData = [
         githubUrl: "https://github.com/Hamster-jpg/mistshooter",
         downloadUrl: "https://drive.google.com/drive/folders/18Ln0c9baNiyWdGVi3LZ3yTVFrFlPXg9k?usp=sharing",
         playUrl: "https://unityroom.com/games/mist_shooter",
+        year: 2,
     },
     {
         id: "gj-3",
@@ -217,6 +219,7 @@ export const m_GameJamData = [
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/hy0by0/Bug_Cord",
         downloadUrl: "https://drive.google.com/drive/folders/1mp87IbYL_i7KyUzruZjmDjG0Ns4ulh1v?usp=sharing",
+        year: 2,
     },
     {
         id: "gj-4",
@@ -235,6 +238,7 @@ export const m_GameJamData = [
         githubUrl: "https://github.com/kayinazlost/ExcellentTeam",
         downloadUrl: "https://drive.google.com/drive/folders/1oc61BSOcm2yNSzKaiYQrBK2_w6dQYO-7?usp=sharing",
         playUrl: "https://unityroom.com/games/saikyogamejam2025_eteam",
+        year: 2,
     },
     {
         id: "gj-5",
@@ -252,7 +256,19 @@ export const m_GameJamData = [
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/SanukiGameN108/ShotengaiGJ2024_TeamD",
         downloadUrl: "https://drive.google.com/drive/folders/1JMCisiSB07Oe4FoF3CWBAfveRvkJsGrf?usp=sharing",
+        year: 2,
     },
+    {
+        id: "gj-6",
+        title: "最強ゲームジャム2026",
+        description: "最強ゲームジャム2026 参加作品。\n開発人数：4名 / 制作期間：36時間\n詳細は準備中です。",
+        descriptionEn: "Saikyou Game Jam 2026 entry.\nTeam Size: 4 / Duration: 36 hours\nDetails coming soon.",
+        videoUrl: "/projects/GameJam/SaikyouGameJam2026/SaikyouGameJam2026.mp4",
+        imageUrls: ["/projects/GameJam/SaikyouGameJam2026/SaikyouGameJam2026.mp4"],
+        backgroundUrl: "",
+        technologies: ["Unity", "C#"],
+        year: 3,
+    }
 ];
 
 // VRChat ワールド作品 (おまけ)

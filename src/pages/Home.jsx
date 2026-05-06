@@ -275,25 +275,51 @@ const Home = () => {
                         )}
 
                         {activeTab === "GameJam" && (
-                            <div className="mb-12">
-                                <div className="flex items-center mb-6">
-                                    <h3 className="text-lg md:text-xl font-orbitron font-bold text-gray-300 tracking-widest mr-4">
-                                        2年次
-                                    </h3>
-                                    <div className="flex-1 border-b border-gray-700"></div>
+                            <div className="space-y-12">
+                                {/* 3年次 */}
+                                <div>
+                                    <div className="flex items-center mb-6">
+                                        <h3 className="text-lg md:text-xl font-orbitron font-bold text-neon-pink tracking-widest mr-4">
+                                            3年次
+                                        </h3>
+                                        <div className="flex-1 border-b border-gray-700"></div>
+                                    </div>
+                                    <div className="flex flex-wrap justify-center gap-8">
+                                        {m_GameJamData.filter(p => p.year === 3).map((project, index) => (
+                                            <motion.div
+                                                key={project.id}
+                                                initial={{ opacity: 0, scale: 0.9 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                                                className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
+                                            >
+                                                <ProjectCard project={project} />
+                                            </motion.div>
+                                        ))}
+                                    </div>
                                 </div>
-                                <div className="flex flex-wrap justify-center gap-8">
-                                    {m_GameJamData.map((project, index) => (
-                                        <motion.div
-                                            key={project.id}
-                                            initial={{ opacity: 0, scale: 0.9 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
-                                            className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
-                                        >
-                                            <ProjectCard project={project} />
-                                        </motion.div>
-                                    ))}
+
+                                {/* 2年次 */}
+                                <div>
+                                    <div className="flex items-center mb-6">
+                                        <h3 className="text-lg md:text-xl font-orbitron font-bold text-gray-300 tracking-widest mr-4">
+                                            2年次
+                                        </h3>
+                                        <div className="flex-1 border-b border-gray-700"></div>
+                                    </div>
+                                    <div className="flex flex-wrap justify-center gap-8">
+                                        {m_GameJamData.filter(p => p.year === 2 || !p.year).map((project, index) => (
+                                            <motion.div
+                                                key={project.id}
+                                                initial={{ opacity: 0, scale: 0.9 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                transition={{ duration: 0.5, delay: (index + 1) * 0.1 }}
+                                                className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)]"
+                                            >
+                                                <ProjectCard project={project} />
+                                            </motion.div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         )}
