@@ -310,7 +310,7 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
                                         onChange={handleSeek}
                                         onMouseDown={(e) => e.stopPropagation()}
                                         onMouseUp={(e) => e.stopPropagation()}
-                                        className="flex-1 accent-neon-pink cursor-pointer h-1 rounded-lg appearance-none bg-gray-600/50 hover:h-1.5 transition-all"
+                                        className="flex-1 custom-range cursor-pointer bg-gray-600/50 hover:h-1.5 transition-all"
                                     />
                                     <span className="text-[10px] md:text-xs font-mono min-w-[35px] text-gray-300">{formatTime(duration)}</span>
                                 </div>
@@ -335,7 +335,7 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
                                                 onChange={handleVolumeChange}
                                                 onMouseDown={(e) => e.stopPropagation()}
                                                 onMouseUp={(e) => e.stopPropagation()}
-                                                className="w-0 group-hover/volume:w-20 md:group-hover/volume:w-24 transition-all duration-300 accent-white cursor-pointer h-1 rounded-lg appearance-none bg-gray-600"
+                                                className="w-0 group-hover/volume:w-20 md:group-hover/volume:w-24 transition-all duration-300 custom-range cursor-pointer"
                                             />
                                         </div>
                                     </div>
