@@ -11,7 +11,9 @@ import { m_ProjectData, m_ToolData, m_GameJamData, m_ClientWorksData, m_VRChatWo
 
 const Home = () => {
     const [vrchatBgImage, setVrchatBgImage] = useState(null);
-    const [activeTab, setActiveTab] = useState("Game");
+    const [activeTab, setActiveTab] = useState(() => {
+        return sessionStorage.getItem('activeTab') || "Game";
+    });
     const tabs = [
         { id: "Game", label: "ゲーム" },
         { id: "VR", label: "VR" },
@@ -28,6 +30,8 @@ const Home = () => {
         } else {
             setVrchatBgImage(null);
         }
+        // タブの状態を保存
+        sessionStorage.setItem('activeTab', activeTab);
     }, [activeTab]);
 
     // スクロール位置の復元と保存
