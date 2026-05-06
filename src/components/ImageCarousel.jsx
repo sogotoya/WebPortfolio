@@ -310,7 +310,10 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
                                         onChange={handleSeek}
                                         onMouseDown={(e) => e.stopPropagation()}
                                         onMouseUp={(e) => e.stopPropagation()}
-                                        className="flex-1 custom-range cursor-pointer bg-gray-600/50 hover:h-1.5 transition-all"
+                                        className="flex-1 custom-range cursor-pointer transition-all"
+                                        style={{
+                                            background: `linear-gradient(to right, #ff00ff ${(currentTime / (duration || 1)) * 100}%, rgba(255,255,255,0.2) ${(currentTime / (duration || 1)) * 100}%)`
+                                        }}
                                     />
                                     <span className="text-[10px] md:text-xs font-mono min-w-[35px] text-gray-300">{formatTime(duration)}</span>
                                 </div>
@@ -324,7 +327,7 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
                                                 onClick={toggleMute} 
                                                 onMouseDown={(e) => e.stopPropagation()}
                                                 onMouseUp={(e) => e.stopPropagation()}
-                                                className="text-white hover:text-neon-blue transition-colors outline-none cursor-pointer"
+                                                className="text-neon-blue hover:text-white transition-colors outline-none cursor-pointer"
                                             >
                                                 {isMuted || volume === 0 ? <VolumeX size={20} /> : <Volume2 size={20} />}
                                             </button>
@@ -336,6 +339,9 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
                                                 onMouseDown={(e) => e.stopPropagation()}
                                                 onMouseUp={(e) => e.stopPropagation()}
                                                 className="w-0 group-hover/volume:w-20 md:group-hover/volume:w-24 transition-all duration-300 custom-range cursor-pointer"
+                                                style={{
+                                                    background: `linear-gradient(to right, white ${volume * 100}%, rgba(255,255,255,0.2) ${volume * 100}%)`
+                                                }}
                                             />
                                         </div>
                                     </div>

@@ -65,41 +65,29 @@ body {
   border-right: 2px solid #00f3ff;
   pointer-events: none;
 }
-/* Custom Range Slider */
+
+/* Custom Range Slider (YouTube Style) */
 .custom-range {
   -webkit-appearance: none;
   appearance: none;
+  height: 8px;
+  border-radius: 0;
   outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 .custom-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 12px;
-  height: 12px;
-  background: #ffffff;
-  border-radius: 50%;
-  cursor: pointer;
+  width: 0;
+  height: 0;
   opacity: 0;
-  transition: opacity 0.2s;
 }
 
-.custom-range:hover::-webkit-slider-thumb {
-  opacity: 1;
-}
-
-/* Firefox support */
 .custom-range::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
-  background: #ffffff;
-  border-radius: 50%;
-  cursor: pointer;
+  width: 0;
+  height: 0;
   border: none;
   opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.custom-range:hover::-moz-range-thumb {
-  opacity: 1;
 }
