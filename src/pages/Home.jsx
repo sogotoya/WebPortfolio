@@ -147,6 +147,7 @@ const Home = () => {
                         {activeTab === "Game" && (
                             <div className="space-y-4">
                                 {renderProjectSection("2年次", [
+                                    m_ProjectData.find(p => p.id === 1),
                                     ...m_ProjectData.filter(p => !p.technologies.includes("VR") && p.id !== 5 && p.id !== 1),
                                     ...m_ClientWorksData.filter(cw => cw.id !== "cw-1")
                                 ])}
