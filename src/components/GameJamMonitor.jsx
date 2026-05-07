@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Download, Gamepad2 } from 'lucide-react';
+import { Github, Download, Gamepad2, ExternalLink } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 // ===== スワイプ検知フック =====
 const useSwipe = (onSwipeLeft, onSwipeRight, threshold = 50) => {
@@ -229,6 +230,8 @@ const GameJamMonitor = ({ items }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const isMobile = useIsMobile();
+    const navigate = useNavigate();
+    const videoRef = useRef(null);
 
     const selectedItem = items[selectedIndex] || null;
 
@@ -241,6 +244,12 @@ const GameJamMonitor = ({ items }) => {
 
     const handleSelectItem = (index) => {
         setSelectedIndex(index);
+    };
+
+    const handleMonitorClick = () => {
+        if (activeBackgroundItem) {
+            navigate(`/project/${activeBackgroundItem.id}`);
+        }
     };
 
     if (!items || items.length === 0) {
@@ -392,17 +401,41 @@ const GameJamMonitor = ({ items }) => {
                         <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-neon-blue z-10" />
                         <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-neon-blue z-10" />
 
-                        {/* メイン表示エリア（スワイプ対応カルーセル） */}
-                        {hasActiveImages ? (
-                            <ImageCarouselSwipeable key={activeBackgroundItem.id} imageUrls={activeBackgroundItem.imageUrls} title={activeBackgroundItem.title} />
-                        ) : (
-                            <div className="relative aspect-video bg-black/60 flex flex-col items-center justify-center">
-                                <div className="absolute inset-0 pointer-events-none"
-                                    style={{ background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,243,255,0.03) 2px, rgba(0,243,255,0.03) 4px)' }} />
-                                <div className="text-neon-blue/30 font-orbitron text-2xl md:text-3xl tracking-[0.5em] mb-2">NO DATA</div>
-                                <div className="text-gray-600 font-rajdhani text-xs tracking-widest">AWAITING IMAGE INPUT</div>
+                        {/* メイン表示エリア（動画優先 -> スワイプ対応カルーセル） */}
+                        <div 
+                            className="relative aspect-video bg-black/60 flex flex-col items-center justify-center cursor-pointer group/monitor"
+                            onClick={handleMonitorClick}
+                        >
+                            {activeBackgroundItem?.videoUrl ? (
+                                <video
+                                    key={activeBackgroundItem.videoUrl}
+                                    ref={videoRef}
+                                    src={activeBackgroundItem.videoUrl}
+                                    className="w-full h-full object-cover"
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                />
+                            ) : hasActiveImages ? (
+                                <ImageCarouselSwipeable key={activeBackgroundItem.id} imageUrls={activeBackgroundItem.imageUrls} title={activeBackgroundItem.title} />
+                            ) : (
+                                <>
+                                    <div className="absolute inset-0 pointer-events-none"
+                                        style={{ background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,243,255,0.03) 2px, rgba(0,243,255,0.03) 4px)' }} />
+                                    <div className="text-neon-blue/30 font-orbitron text-2xl md:text-3xl tracking-[0.5em] mb-2">NO DATA</div>
+                                    <div className="text-gray-600 font-rajdhani text-xs tracking-widest">AWAITING IMAGE INPUT</div>
+                                </>
+                            )}
+                            
+                            {/* ホバー時のオーバーレイ（詳細を見る） */}
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/monitor:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+                                <div className="flex items-center gap-2 px-4 py-2 border border-neon-blue bg-black/60 text-neon-blue font-orbitron text-sm tracking-widest">
+                                    <ExternalLink size={16} />
+                                    VIEW DETAILS
+                                </div>
                             </div>
-                        )}
+                        </div>
 
                         {/* モニター下部 */}
                         {activeBackgroundItem && (
