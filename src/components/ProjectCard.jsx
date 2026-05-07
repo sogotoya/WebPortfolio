@@ -36,6 +36,24 @@ const ProjectCard = ({ project, isHero = false }) => {
         setHoverImageIndex(0);
     };
 
+    // 特殊なサムネイル切り替え：訪問回数ベース（確実に交互になる）
+    const getVisitCount = () => {
+        if (!project.alternatingThumbnail) return 0;
+        return parseInt(sessionStorage.getItem(`visitCount_${project.id}`) || "0", 10);
+    };
+    const altIndex = project.alternatingThumbnail ? getVisitCount() % project.imageUrls.length : 0;
+
+    const handleCardClick = () => {
+        // スクロール位置をクリック時に確実に保存
+        sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+
+        // 訪問回数をインクリメント（次回Home表示時にサムネが切り替わる）
+        if (project.alternatingThumbnail) {
+            const count = getVisitCount();
+            sessionStorage.setItem(`visitCount_${project.id}`, (count + 1).toString());
+        }
+    };
+
     // コンポーネントアンマウント時にタイマーをクリア
     useEffect(() => {
         return () => {
@@ -46,7 +64,7 @@ const ProjectCard = ({ project, isHero = false }) => {
     }, []);
 
     return (
-        <Link to={`/project/${project.id}`}>
+        <Link to={`/project/${project.id}`} onClick={handleCardClick}>
             <motion.div
                 className="relative bg-cyber-gray border border-gray-800 overflow-hidden group cursor-pointer"
                 whileHover={{ scale: 0.98 }}
@@ -73,12 +91,26 @@ const ProjectCard = ({ project, isHero = false }) => {
                     )}
                     <img
                         src={(() => {
-                            const img = project.imageUrls[isHovered && !project.videoUrl ? hoverImageIndex : (project.thumbnailIndex ?? project.imageUrls.length - 1)];
+                            if (!project.imageUrls || project.imageUrls.length === 0) return '';
+                            let index = isHovered && !project.videoUrl ? hoverImageIndex : (project.thumbnailIndex ?? project.imageUrls.length - 1);
+                            // 特殊切り替え対象かつ非ホバー時は sessionStorage のインデックスを優先
+                            if (project.alternatingThumbnail && !isHovered) {
+                                index = altIndex;
+                            }
+                            // インデックスの境界チェック
+                            const safeIndex = Math.max(0, Math.min(index, project.imageUrls.length - 1));
+                            const img = project.imageUrls[safeIndex];
                             return typeof img === 'string' ? img : img.url;
                         })()}
                         alt={project.title}
                         className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${isHovered && project.videoUrl ? 'opacity-0' : 'opacity-100'} ${(() => {
-                            const img = project.imageUrls[isHovered && !project.videoUrl ? hoverImageIndex : (project.thumbnailIndex ?? project.imageUrls.length - 1)];
+                            if (!project.imageUrls || project.imageUrls.length === 0) return 'object-cover';
+                            let index = isHovered && !project.videoUrl ? hoverImageIndex : (project.thumbnailIndex ?? project.imageUrls.length - 1);
+                            if (project.alternatingThumbnail && !isHovered) {
+                                index = altIndex;
+                            }
+                            const safeIndex = Math.max(0, Math.min(index, project.imageUrls.length - 1));
+                            const img = project.imageUrls[safeIndex];
                             return typeof img === 'object' && img.fit === 'contain' ? 'object-contain' : 'object-cover';
                         })()}`}
                     />

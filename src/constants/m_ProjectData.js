@@ -23,7 +23,7 @@ export const m_ProjectData = [
         title: "PlanetariumVR",
         description: "<strong>■ やったこと</strong>\nVR空間でのプラネタリウム体験アプリ。音声・UI・進行が連動するプレゼンテーションシーケンスを設計しました。\n\n<strong>■ 設計の核心</strong>\n▸ フラグ依存の進行管理 → UniTask.WaitWhile() によるイベントベースの非同期シーケンスへ再構築\n▸ 音響制御・UI制御・進行管理をクラス単位で責務分離\n▸ Vector3.Dot で視線方向を算出し、音量補間による自然な視線誘導を実装\n\n<strong>■ 成果</strong>\n▸ 音声とフェードの完了タイミングを保証し、進行破綻をゼロに\n▸ 本作での非同期制御経験が Axis:Save の UniTask設計の基盤に\n\n※ 詳細な構造は下図を参照してください。\n\n<strong>制作期間</strong> : 3日 &emsp; <strong>チーム人数</strong> : 個人制作 &emsp; <strong>プラットフォーム</strong> : VR",
         descriptionEn: "<strong>■ What I Did</strong>\nA planetarium experience app in VR. Designed a presentation sequence where audio, UI, and progression are synchronized.\n\n<strong>■ Core Design</strong>\n▸ Rebuilt flag-dependent progression → event-based async sequence using UniTask.WaitWhile()\n▸ Separated audio control, UI control, and progression management at class level\n▸ Calculated gaze direction via Vector3.Dot; implemented natural gaze guidance through volume interpolation\n\n<strong>■ Results</strong>\n▸ Guaranteed audio and fade completion timing — zero progression breakdowns\n▸ Async control experience here became the foundation for UniTask design in Axis:Save\n\n※ See the diagram below for detailed architecture.\n\n<strong>Duration</strong> : 3 days &emsp; <strong>Team</strong> : Solo &emsp; <strong>Platform</strong> : VR",
-        videoUrl: "",
+        videoUrl: "/projects/PlanetariumVR/PlanetariumVr.mp4",
         imageUrls: [
             "/projects/PlanetariumVR/PlanetariumVR1.png",
             "/projects/PlanetariumVR/Planetarium2.png",
@@ -136,14 +136,14 @@ export const m_ToolData = [
         title: "BatchProcessAutomation",
         description: "このツールは、プロジェクトの健康診断（エラーチェック）や各種の自動処理を、複数まとめて一気に実行できる便利な機能です。\nビルド前（ゲームを書き出す前）の最終チェックなどに活用できます。",
         descriptionEn: "Unity Editor Extension",
+        videoUrl: "/projects/Tools/BatchProcessAutomation/BatchProcessAutomation.mp4",
         imageUrls: [
             "/projects/Tools/BatchProcessAutomation/BatchProcessAutomation1.png",
-            "/projects/Tools/BatchProcessAutomation/BatchProcessAutomation2.png",
             "/projects/Tools/BatchProcessAutomation/BatchProcessAutomation3.png",
         ],
         backgroundUrl: "/projects/Tools/BatchProcessAutomation/BatchProcessAutomation1.png",
         technologies: ["Unity", "C#"],
-        githubUrl: "#",
+        githubUrl: "",
         downloadUrl: "https://drive.google.com/drive/folders/1Bs2oXTUNJAlu1QVL9lsFN-VkI8JHCImW?usp=sharing",
     },
     {
@@ -158,7 +158,7 @@ export const m_ToolData = [
         ],
         backgroundUrl: "/projects/Tools/AssetDependencyVisualizer/AssetDependencyVisualizer1.png",
         technologies: ["Unity", "C#"],
-        githubUrl: "#",
+        githubUrl: "",
         downloadUrl: "https://drive.google.com/drive/folders/1WGPgiF_Zeddhv4zD2E1y0kbZG9-2qNsW?usp=sharing",
     },
 ];
@@ -256,7 +256,7 @@ export const m_GameJamData = [
         technologies: ["Unity", "C#"],
         githubUrl: "https://github.com/SanukiGameN108/ShotengaiGJ2024_TeamD",
         downloadUrl: "https://drive.google.com/drive/folders/1JMCisiSB07Oe4FoF3CWBAfveRvkJsGrf?usp=sharing",
-        year: 2,
+        year: 1,
     },
     {
         id: "gj-6",
@@ -264,10 +264,14 @@ export const m_GameJamData = [
         description: "最強ゲームジャム2026 参加作品。\n開発人数：4名 / 制作期間：36時間\n詳細は準備中です。",
         descriptionEn: "Saikyou Game Jam 2026 entry.\nTeam Size: 4 / Duration: 36 hours\nDetails coming soon.",
         videoUrl: "/projects/GameJam/SaikyouGameJam2026/SaikyouGameJam2026.mp4",
-        imageUrls: ["/projects/GameJam/SaikyouGameJam2026/SaikyouGameJam2026.mp4"],
-        backgroundUrl: "",
+        imageUrls: [
+            "/projects/GameJam/SaikyouGameJam2026/SaikyouGameJam2026Samune1.png",
+            "/projects/GameJam/SaikyouGameJam2026/SaikyouGameJam2026Samune2.png",
+        ],
+        backgroundUrl: "/projects/GameJam/SaikyouGameJam2026/SaikyouGameJam2026Samune1.png",
         technologies: ["Unity", "C#"],
         year: 3,
+        alternatingThumbnail: true,
     }
 ];
 

@@ -27,6 +27,10 @@ const ProjectDetail = () => {
         window.scrollTo(0, 0);
     }, [id]);
 
+    // 動画がある場合: -1 + 1 = 0 (Video slide)、動画がない場合: 0 (最初の画像)
+    const hasProjectVideo = project?.videoUrl && project.videoUrl.length > 0;
+    const initialImageIndex = hasProjectVideo ? -1 : 0;
+
     if (!project) {
         return (
             <Layout>
@@ -42,16 +46,30 @@ const ProjectDetail = () => {
         <Layout>
             <div className="max-w-4xl mx-auto">
                 {/* プロジェクト背景画像 */}
-                {project.backgroundUrl && (
-                    <>
-                        <div
-                            className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
-                            style={{ backgroundImage: `url(${project.backgroundUrl})` }}
-                        />
-                        <div className="fixed inset-0 z-0 bg-dark-bg/30" />
-                        <div className="fixed inset-0 z-0 bg-gradient-to-t from-dark-bg via-dark-bg/60 to-transparent" />
-                    </>
-                )}
+                {(() => {
+                    let bgUrl = project.backgroundUrl;
+
+                    // 交互サムネイル対象: visitCountはクリック時に+1済みなので、-1で「見ていた方」を取得
+                    if (project.alternatingThumbnail && project.imageUrls.length > 1) {
+                        const count = parseInt(sessionStorage.getItem(`visitCount_${project.id}`) || "1", 10);
+                        const shownIdx = (count - 1) % project.imageUrls.length;
+                        const img = project.imageUrls[shownIdx];
+                        bgUrl = typeof img === 'string' ? img : img.url;
+                    }
+
+                    if (!bgUrl) return null;
+
+                    return (
+                        <>
+                            <div
+                                className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+                                style={{ backgroundImage: `url(${bgUrl})` }}
+                            />
+                            <div className="fixed inset-0 z-0 bg-dark-bg/30" />
+                            <div className="fixed inset-0 z-0 bg-gradient-to-t from-dark-bg via-dark-bg/60 to-transparent" />
+                        </>
+                    );
+                })()}
 
                 <Link to="/" className="relative z-10 inline-flex items-center text-gray-400 hover:text-neon-blue mb-8 transition-colors">
                     <ArrowLeft size={20} className="mr-2" /> Back to Works
@@ -68,7 +86,7 @@ const ProjectDetail = () => {
                     <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-neon-pink z-20"></div>
 
                     <div className="aspect-video mb-8 overflow-hidden bg-black relative rounded-lg border border-gray-800">
-                        <ImageCarousel images={project.imageUrls} videoUrl={project.videoUrl} />
+                        <ImageCarousel images={project.imageUrls} videoUrl={project.videoUrl} initialImageIndex={initialImageIndex} />
                     </div>
 
                     <h1 className="text-4xl md:text-5xl font-orbitron font-bold text-white mb-4">{project.title}</h1>

@@ -2,12 +2,16 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, Pause, Maximize, Minimize, Volume2, VolumeX } from 'lucide-react';
 
-const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000 }) => {
+const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000, initialImageIndex = 0 }) => {
     // 動画がある場合、スライド配列の先頭に動画を挿入
     const hasVideo = videoUrl && videoUrl.length > 0 && !videoUrl.startsWith('http');
     const totalSlides = hasVideo ? images.length + 1 : images.length;
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+    // 初期インデックスの設定（動画がある場合は+1する、ただし動画を優先する場合はそのまま0など調整が必要）
+    // ユーザーの要望「クリックしたら1を表示」に合わせるため、画像インデックスを考慮
+    const [currentIndex, setCurrentIndex] = useState(() => {
+        return hasVideo ? initialImageIndex + 1 : initialImageIndex;
+    });
     // 現在のスライドが動画かどうか
     const isVideoSlide = hasVideo && currentIndex === 0;
 
