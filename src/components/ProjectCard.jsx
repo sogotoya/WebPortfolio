@@ -93,6 +93,11 @@ const ProjectCard = ({ project, isHero = false }) => {
                                 <span className="text-yellow-400 text-xs">🏆</span> {project.status.awards}
                             </span>
                         )}
+                        {project.status?.media && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold tracking-wider bg-blue-900/80 text-blue-100 border border-blue-500/60 backdrop-blur-sm shadow-[0_0_8px_rgba(59,130,246,0.4)] whitespace-nowrap">
+                                <span className="text-blue-400 text-xs">📢</span> {project.status.media}
+                            </span>
+                        )}
                     </div>
                     {/* Image / Video */}
                     {project.videoUrl && (
