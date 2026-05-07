@@ -89,7 +89,7 @@ const ProjectCard = ({ project, isHero = false }) => {
                             playsInline
                         />
                     )}
-                    <img
+                    <img loading="lazy" decoding="async"
                         src={(() => {
                             if (!project.imageUrls || project.imageUrls.length === 0) return '';
                             let index = isHovered && !project.videoUrl ? hoverImageIndex : (project.thumbnailIndex ?? project.imageUrls.length - 1);

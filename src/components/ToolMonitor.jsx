@@ -74,7 +74,7 @@ const ImageCarouselSwipeable = ({ imageUrls, title }) => {
             {...swipeHandlers}
         >
             <AnimatePresence initial={false} mode="wait" custom={slideDirection}>
-                <motion.img
+                <motion.img loading="lazy" decoding="async"
                     key={imageIndex}
                     src={typeof imageUrls[imageIndex] === 'string' ? imageUrls[imageIndex] : imageUrls[imageIndex].url}
                     alt={title}
@@ -158,7 +158,7 @@ const MobileListItem = ({ item, index }) => {
                 {/* サムネイル */}
                 {hasImages ? (
                     <div className="w-12 h-12 flex-shrink-0 border border-gray-700 overflow-hidden rounded-sm">
-                        <img src={typeof item.imageUrls[0] === 'string' ? item.imageUrls[0] : item.imageUrls[0].url} alt={item.title}
+                        <img loading="lazy" decoding="async" src={typeof item.imageUrls[0] === 'string' ? item.imageUrls[0] : item.imageUrls[0].url} alt={item.title}
                             className="w-full h-full object-cover" />
                     </div>
                 ) : (
@@ -274,7 +274,7 @@ const ToolMonitor = ({ items }) => {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <img src={backgroundImageUrl} alt="" className="w-full h-full object-cover" />
+                        <img loading="lazy" decoding="async" src={backgroundImageUrl} alt="" className="w-full h-full object-cover" />
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -336,7 +336,7 @@ const ToolMonitor = ({ items }) => {
                                 <div className="flex items-center gap-3">
                                     {item.imageUrls && item.imageUrls.length > 0 ? (
                                         <div className="w-10 h-10 flex-shrink-0 border border-gray-700 overflow-hidden">
-                                            <img src={typeof item.imageUrls[0] === 'string' ? item.imageUrls[0] : item.imageUrls[0].url} alt={item.title} className="w-full h-full object-cover" />
+                                            <img loading="lazy" decoding="async" src={typeof item.imageUrls[0] === 'string' ? item.imageUrls[0] : item.imageUrls[0].url} alt={item.title} className="w-full h-full object-cover" />
                                         </div>
                                     ) : (
                                         <span className={`text-[10px] font-orbitron w-10 h-10 flex items-center justify-center

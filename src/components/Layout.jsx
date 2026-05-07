@@ -16,7 +16,7 @@ const Layout = ({ children, backgroundImage }) => {
                     transition={{ duration: 0.8 }}
                     className="fixed inset-0 z-0"
                 >
-                    <img src={backgroundImage} alt="Background" className="w-full h-full object-cover" />
+                    <img loading="lazy" decoding="async" src={backgroundImage} alt="Background" className="w-full h-full object-cover" />
                 </motion.div>
             )}
             <div className="fixed inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/70 to-transparent pointer-events-none z-0"></div>

@@ -365,7 +365,7 @@ const ImageCarousel = ({ images = [], videoUrl, autoPlayInterval = 3000, initial
                         </div>
                     </motion.div>
                 ) : (
-                    <motion.img
+                    <motion.img loading="lazy" decoding="async"
                         key={currentIndex}
                         src={typeof images[getImageIndex(currentIndex)] === 'string' ? images[getImageIndex(currentIndex)] : images[getImageIndex(currentIndex)].url}
                         alt={`Slide ${currentIndex + 1}`}
