@@ -172,8 +172,13 @@ const MobileListItem = ({ item, index }) => {
 
                 {/* タイトル + タグ */}
                 <div className="flex-1 min-w-0 text-left">
-                    <div className="text-sm font-orbitron text-gray-200 truncate tracking-wide">
-                        {item.title}
+                    <div className="flex items-center gap-2 mb-0.5">
+                        <div className="text-sm font-orbitron text-gray-200 truncate tracking-wide">
+                            {item.title}
+                        </div>
+                        {item.isFeatured && <span className="text-[8px] bg-purple-900/80 text-purple-200 px-1 py-0.5 border border-purple-500/50 rounded-sm whitespace-nowrap">★ 注目</span>}
+                        {item.isNew && <span className="text-[8px] bg-pink-900/80 text-pink-200 px-1 py-0.5 border border-pink-500/60 rounded-sm whitespace-nowrap">▶ 最新作</span>}
+                        {item.status?.awards && <span className="text-[8px] bg-yellow-900/80 text-yellow-200 px-1 py-0.5 border border-yellow-500/50 rounded-sm whitespace-nowrap">🏆 {item.status.awards}</span>}
                     </div>
                     <div className="flex flex-wrap gap-1 mt-1">
                         {item.technologies.slice(0, 3).map((tech, i) => (
@@ -345,9 +350,14 @@ const GameJamMonitor = ({ items }) => {
                                         </span>
                                     )}
                                     <div className="flex-1 min-w-0">
-                                        <div className={`text-sm font-orbitron truncate tracking-wide
-                                            ${isActive ? 'text-neon-blue' : 'text-gray-300 group-hover:text-white'}`}>
-                                            {item.title}
+                                        <div className="flex items-center gap-2 mb-0.5">
+                                            <div className={`text-sm font-orbitron truncate tracking-wide
+                                                ${isActive ? 'text-neon-blue' : 'text-gray-300 group-hover:text-white'}`}>
+                                                {item.title}
+                                            </div>
+                                            {item.isFeatured && <span className="text-[8px] bg-purple-900/80 text-purple-200 px-1 py-0.5 border border-purple-500/50 rounded-sm whitespace-nowrap">★ 注目</span>}
+                                            {item.isNew && <span className="text-[8px] bg-pink-900/80 text-pink-200 px-1 py-0.5 border border-pink-500/60 rounded-sm whitespace-nowrap">▶ 最新作</span>}
+                                            {item.status?.awards && <span className="text-[8px] bg-yellow-900/80 text-yellow-200 px-1 py-0.5 border border-yellow-500/50 rounded-sm whitespace-nowrap">🏆</span>}
                                         </div>
                                         <div className="flex flex-wrap gap-1 mt-1">
                                             {item.technologies.slice(0, 3).map((tech, i) => (
@@ -399,9 +409,14 @@ const GameJamMonitor = ({ items }) => {
                             <div className="px-4 py-3 border-t border-gray-700/50 bg-black/50 h-[280px] overflow-y-auto custom-scrollbar">
                                 <div className="flex items-start justify-between">
                                     <div className="flex-1 pr-4">
-                                        <h3 className="text-base font-orbitron font-bold text-white tracking-wide">
-                                            {activeBackgroundItem.title}
-                                        </h3>
+                                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                                            <h3 className="text-base font-orbitron font-bold text-white tracking-wide">
+                                                {activeBackgroundItem.title}
+                                            </h3>
+                                            {activeBackgroundItem.isFeatured && <span className="text-[9px] bg-purple-900/80 text-purple-200 px-1.5 py-0.5 border border-purple-500/50 rounded-sm whitespace-nowrap shadow-[0_0_5px_rgba(168,85,247,0.4)]">★ 注目作品</span>}
+                                            {activeBackgroundItem.isNew && <span className="text-[9px] bg-pink-900/80 text-pink-100 px-1.5 py-0.5 border border-pink-500/60 rounded-sm whitespace-nowrap shadow-[0_0_8px_rgba(236,72,153,0.5)]">▶ 最新作</span>}
+                                            {activeBackgroundItem.status?.awards && <span className="text-[9px] bg-yellow-900/80 text-yellow-200 px-1.5 py-0.5 border border-yellow-500/50 rounded-sm whitespace-nowrap shadow-[0_0_5px_rgba(234,179,8,0.4)]">🏆 {activeBackgroundItem.status.awards}</span>}
+                                        </div>
                                         <p className="text-xs text-gray-500 mt-1.5 font-rajdhani whitespace-pre-line leading-relaxed" dangerouslySetInnerHTML={{ __html: activeBackgroundItem.description.replace(/\n/g, '<br/>') }} />
                                     </div>
                                     <div className="flex flex-col items-end gap-1.5 flex-shrink-0">

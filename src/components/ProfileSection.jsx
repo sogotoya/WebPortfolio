@@ -45,6 +45,7 @@ const ProfileSection = () => {
                 { name: "GitHub Desktop", icon: <SiGithub size={18} />, period: "2年" },
                 { name: "XREAL", icon: <Glasses size={18} />, period: "半年未満" },
                 { name: "VRChat CC", icon: <Wrench size={18} />, period: "半年" },
+                { name: "Meta Quest", icon: <Glasses size={18} />, period: "半年" },
                 { name: "Antigravity", icon: <Zap size={18} />, period: "半年" },
                 { name: "Claude Code", icon: <Bot size={18} />, period: "半年" },
             ]
@@ -118,12 +119,12 @@ const ProfileSection = () => {
                                         {categoryGroup.skills.map((skill, index) => (
                                             <div
                                                 key={index}
-                                                className="flex items-center gap-2.5 px-3 py-2.5 min-w-[100px] h-[44px] border border-gray-800 bg-black/40 rounded hover:border-neon-blue/40 transition-colors group"
+                                                className="flex items-center gap-2.5 px-3 py-2.5 min-w-[100px] h-[44px] border border-gray-800 bg-black/40 rounded cursor-default select-none"
                                             >
-                                                <div className="text-gray-400 group-hover:text-neon-blue transition-colors flex-shrink-0">
+                                                <div className="text-gray-400 flex-shrink-0">
                                                     {skill.icon}
                                                 </div>
-                                                <span className="text-xs font-rajdhani text-gray-300 tracking-wider whitespace-nowrap group-hover:text-gray-100 transition-colors">
+                                                <span className="text-xs font-rajdhani text-gray-300 tracking-wider whitespace-nowrap">
                                                     {skill.name}
                                                 </span>
                                                 {skill.period && (

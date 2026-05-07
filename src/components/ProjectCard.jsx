@@ -78,6 +78,22 @@ const ProjectCard = ({ project, isHero = false }) => {
 
                 {/* Content Container */}
                 <div className="relative aspect-video">
+                    {/* Badges */}
+                    <div className="absolute top-2 left-2 z-30 flex flex-col items-start gap-1.5 pointer-events-none">
+                        {project.isFeatured && (
+                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-orbitron font-bold tracking-widest bg-purple-900/80 text-purple-200 border border-purple-500/50 backdrop-blur-sm shadow-[0_0_8px_rgba(168,85,247,0.5)]">
+                                <span className="text-purple-400 text-xs">★</span> 注目作品</span>
+                        )}
+                        {project.isNew && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold tracking-widest bg-pink-900/80 text-pink-100 border border-pink-500/60 backdrop-blur-sm shadow-[0_0_8px_rgba(236,72,153,0.5)]">
+                                <span className="text-pink-400 text-xs">▶</span> 最新作</span>
+                        )}
+                        {project.status?.awards && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold tracking-wider bg-yellow-900/80 text-yellow-100 border border-yellow-500/60 backdrop-blur-sm shadow-[0_0_8px_rgba(234,179,8,0.4)] whitespace-nowrap">
+                                <span className="text-yellow-400 text-xs">🏆</span> {project.status.awards}
+                            </span>
+                        )}
+                    </div>
                     {/* Image / Video */}
                     {project.videoUrl && (
                         <video

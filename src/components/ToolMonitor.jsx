@@ -172,8 +172,13 @@ const MobileListItem = ({ item, index }) => {
 
                 {/* タイトル + タグ */}
                 <div className="flex-1 min-w-0 text-left">
-                    <div className="text-sm font-orbitron text-gray-200 truncate tracking-wide">
-                        {item.title}
+                    <div className="flex items-center gap-2 mb-0.5">
+                        <div className="text-sm font-orbitron text-gray-200 truncate tracking-wide">
+                            {item.title}
+                        </div>
+                        {item.isFeatured && <span className="text-[8px] bg-purple-900/80 text-purple-200 px-1 py-0.5 border border-purple-500/50 rounded-sm whitespace-nowrap">★ 注目</span>}
+                        {item.isNew && <span className="text-[8px] bg-pink-900/80 text-pink-200 px-1 py-0.5 border border-pink-500/60 rounded-sm whitespace-nowrap">▶ 最新作</span>}
+                        {item.status?.awards && <span className="text-[8px] bg-yellow-900/80 text-yellow-200 px-1 py-0.5 border border-yellow-500/50 rounded-sm whitespace-nowrap">🏆 {item.status.awards}</span>}
                     </div>
                     <div className="flex flex-wrap gap-1 mt-1">
                         {item.technologies.slice(0, 3).map((tech, i) => (
@@ -345,9 +350,14 @@ const ToolMonitor = ({ items }) => {
                                         </span>
                                     )}
                                     <div className="flex-1 min-w-0">
-                                        <div className={`text-sm font-orbitron truncate tracking-wide
-                                            ${isActive ? 'text-neon-blue' : 'text-gray-300 group-hover:text-white'}`}>
-                                            {item.title}
+                                        <div className="flex items-center gap-2 mb-0.5">
+                                            <div className={`text-sm font-orbitron truncate tracking-wide
+                                                ${isActive ? 'text-neon-blue' : 'text-gray-300 group-hover:text-white'}`}>
+                                                {item.title}
+                                            </div>
+                                            {item.isFeatured && <span className="text-[8px] bg-purple-900/80 text-purple-200 px-1 py-0.5 border border-purple-500/50 rounded-sm whitespace-nowrap">★ 注目</span>}
+                                            {item.isNew && <span className="text-[8px] bg-pink-900/80 text-pink-200 px-1 py-0.5 border border-pink-500/60 rounded-sm whitespace-nowrap">▶ 最新作</span>}
+                                            {item.status?.awards && <span className="text-[8px] bg-yellow-900/80 text-yellow-200 px-1 py-0.5 border border-yellow-500/50 rounded-sm whitespace-nowrap">🏆</span>}
                                         </div>
                                         <div className="flex flex-wrap gap-1 mt-1">
                                             {item.technologies.slice(0, 3).map((tech, i) => (

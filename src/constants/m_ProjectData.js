@@ -2,6 +2,7 @@ export const m_ProjectData = [
     {
         id: 1,
         title: "Axis:Save",
+        isFeatured: true,
         description: "<strong>■ やったこと</strong>\n3Dアクションゲームにおいて、10以上の状態（攻撃・被ダメ・死亡・演出ロック等）を持つプレイヤーの状態管理と、演出中の物理挙動の破綻防止を設計しました。\n\n<strong>■ 設計の核心</strong>\n▸ PlayerController（入力・物理）と CinematicManager（演出）を責務分離\n▸ 状態遷移に優先度を設定し、「割り込める状態」と「割り込めない状態」を設計段階で定義\n▸ 演出中は FixedUpdate早期return ＋ Physics.IgnoreLayerCollision で物理干渉を停止\n▸ UniTaskでFixedUpdateタイミングの状態復帰を保証（コルーチンではUpdate依存で物理と同期不可）\n\n<strong>■ 成果</strong>\n▸ 状態競合に起因する致命的バグをゼロに抑制\n▸ 演出追加・状態追加が他担当のコードに波及しない構造を実現\n\n※ 詳細な構造は下図を参照してください。",
         descriptionEn: "<strong>■ What I Did</strong>\nDesigned state management for a player with 10+ states (attack, damage, death, cinematic lock, etc.) in a 3D action game, and prevented physics behavior breakdown during cinematics.\n\n<strong>■ Core Design</strong>\n▸ Separated responsibilities: PlayerController (input/physics) and CinematicManager (cinematics)\n▸ Defined transition priorities at design level — distinguishing interruptible vs. non-interruptible states\n▸ During cinematics: early return in FixedUpdate + Physics.IgnoreLayerCollision to halt physics interference\n▸ UniTask guarantees state recovery at FixedUpdate timing (coroutines are Update-dependent, can't sync with physics)\n\n<strong>■ Results</strong>\n▸ Zero critical bugs caused by state conflicts\n▸ Adding cinematics or states never ripples into other team members' code\n\n※ See the diagram below for detailed architecture.",
         status: { genre: "3Dアクションゲーム", platform: "PC / Windows", teamSize: "1人", duration: "3ヶ月", event: "デザイン展2026", role: "すべて" },
@@ -176,7 +177,7 @@ export const m_GameJamData = [
         title: "グローバルゲームジャム2026",
         description: "担当：ゲームシーン設計・実装全般\n\n<strong>■ やったこと</strong>\n途中参加の制約下で、既存構造を把握→仕様再定義→ロジック再構築→完成まで担当。\n\n<strong>■ 設計の核心</strong>\n▸ NPC生成（ScreenEdgeSpawner）・個体制御（PersonController）・イベント管理（RandomEventManager）を責務分離\n▸ 3種の経路パターンを確率ベースで割り当て\n▸ 雨イベントによる状態割り込み時の競合防止処理\n▸ CharacterCreatorEditor（Editor拡張）で設定作業を自動化\n\n<strong>■ 学び</strong>\n▸ 36時間の制約下で「何を省略し、何を守るか」の判断を実践\n▸ 抽象化は省略しつつもロジックの安定性を最優先にした",
         descriptionEn: "Role: Game scene design & full implementation\n\n<strong>■ What I Did</strong>\nJoined mid-development: grasped existing structure → redefined specs → reconstructed logic → completed.\n\n<strong>■ Core Design</strong>\n▸ Separated NPC generation (ScreenEdgeSpawner), individual control (PersonController), and event management (RandomEventManager)\n▸ 3 route patterns assigned via probability at spawn\n▸ State conflict prevention during rain event interruptions\n▸ CharacterCreatorEditor (Editor extension) to automate setup\n\n<strong>■ Learnings</strong>\n▸ Practiced 'what to omit and what to protect' decisions under 36-hour constraint\n▸ Prioritized logic stability while intentionally omitting abstraction layers",
-        status: { event: "グローバルゲームジャム2026", teamSize: "2人", duration: "36時間", role: "ゲームシーン設計・実装全般" },
+        status: { platform: "PC", event: "グローバルゲームジャム2026", teamSize: "2人", duration: "36時間", role: "ゲームシーン設計・実装全般" },
         imageUrls: [
             "/projects/GameJam/GlobalGameJam/GlobalGameJam1.webp",
             "/projects/GameJam/GlobalGameJam/GlobalGameJam2.webp",
@@ -196,7 +197,7 @@ export const m_GameJamData = [
         title: "ゲームジャム高梁2025",
         description: "プログラムリーダー・キャラクター実装担当\n\n<strong>■ やったこと</strong>\n自作State Patternベースのステートマシンでキャラクター制御基盤を設計。GitHubブランチ運用で並列開発。\n\n<strong>■ 発生した問題</strong>\n▸ 遷移優先度・キャンセルフレーム・アニメーションイベントの事前合意不足\n▸ → 統合時にアニメと判定のズレ、状態競合が発生（統合設計ミス）\n\n<strong>■ この経験からの学び</strong>\n▸ 実装前にステート遷移図＋優先度を明文化する\n▸ 2〜3時間単位で統合テスト\n▸ 設計基準を「速度最大化」→「統合容易性と完成確率の最大化」へ転換\n▸ この失敗が、現在の状態競合防止設計方針の直接の契機",
         descriptionEn: "Program Leader & Character Implementation\n\n<strong>■ What I Did</strong>\nDesigned character control foundation using custom State Pattern-based state machine. Parallel development via GitHub branches.\n\n<strong>■ Problem Encountered</strong>\n▸ Lack of prior agreement on transition priorities, cancelable frames, and animation events\n▸ → Animation-hitbox misalignment and state conflicts during integration (integration design failure)\n\n<strong>■ Learnings</strong>\n▸ Document state transition diagrams + priorities before implementation\n▸ Integration tests every 2-3 hours\n▸ Shifted design standard from 'maximizing speed' → 'maximizing ease of integration and completion probability'\n▸ This failure became the direct catalyst for my current state conflict prevention design policy",
-        status: { event: "ゲームジャム高梁", teamSize: "6人", duration: "36時間", role: "プログラムリーダー・キャラクター実装" },
+        status: { platform: "PC", event: "ゲームジャム高梁", teamSize: "6人", duration: "36時間", role: "プログラムリーダー・キャラクター実装" },
         imageUrls: [
             "/projects/GameJam/GameJamTakahashi/GameJamTakahashi1.webp",
             "/projects/GameJam/GameJamTakahashi/GameJamTakahashi2.webp",
@@ -216,7 +217,7 @@ export const m_GameJamData = [
         title: "ビットサミットゲームジャム2025",
         description: "スコア全般・リザルト画面全般",
         descriptionEn: "Game Jam entry",
-        status: { event: "BitSummit GameJam", role: "スコア全般・リザルト画面全般" },
+        status: { platform: "PC", event: "BitSummit GameJam", role: "スコア全般・リザルト画面全般" },
         imageUrls: [
             "/projects/GameJam/BitSummitGameJam/BitSummitGameJam1.webp",
             "/projects/GameJam/BitSummitGameJam/BitSummitGameJam2.webp",
@@ -235,7 +236,7 @@ export const m_GameJamData = [
         title: "最強ゲームジャム2025",
         description: "タイトル画面全般",
         descriptionEn: "Game Jam entry",
-        status: { event: "最強ゲームジャム2025", role: "タイトル画面全般" },
+        status: { platform: "PC", event: "最強ゲームジャム2025", role: "タイトル画面全般" },
         imageUrls: [
             "/projects/GameJam/SaikyouGameJam/SaikyouGameJam1.webp",
             "/projects/GameJam/SaikyouGameJam/SaikyouGameJam2.webp",
@@ -255,7 +256,7 @@ export const m_GameJamData = [
         title: "商店街ゲームジャム2024",
         description: "左上のうんちバーの配置",
         descriptionEn: "Game Jam entry",
-        status: { event: "商店街ゲームジャム2024", role: "左上のうんちバーの配置" },
+        status: { platform: "PC", event: "商店街ゲームジャム2024", role: "左上のうんちバーの配置" },
         imageUrls: [
             "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJam1.webp",
             "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJam2.webp",
@@ -272,9 +273,10 @@ export const m_GameJamData = [
     {
         id: "gj-6",
         title: "最強ゲームジャム2026",
+        isNew: true,
         description: "詳細は準備中です。",
         descriptionEn: "Details coming soon.",
-        status: { event: "最強ゲームジャム2026", teamSize: "6人", duration: "2日" },
+        status: { platform: "PC", event: "最強ゲームジャム2026", teamSize: "6人", duration: "2日", role: "タイトル、メニューリザルト全般" },
         videoUrl: "/projects/GameJam/SaikyouGameJam2026/SaikyouGameJam2026.mp4",
         imageUrls: [
             "/projects/GameJam/SaikyouGameJam2026/SaikyouGameJam2026Samune1.webp",
@@ -282,6 +284,7 @@ export const m_GameJamData = [
         ],
         backgroundUrl: "/projects/GameJam/SaikyouGameJam2026/SaikyouGameJam2026Samune1.webp",
         technologies: ["Unity", "C#"],
+        githubUrl: "https://github.com/SanukiGameN108/SGJ26_teamC",
         year: 3,
         alternatingThumbnail: true,
     }
