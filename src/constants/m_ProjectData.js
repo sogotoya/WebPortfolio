@@ -2,8 +2,9 @@ export const m_ProjectData = [
     {
         id: 1,
         title: "Axis:Save",
-        description: "<strong>■ やったこと</strong>\n3Dアクションゲームにおいて、10以上の状態（攻撃・被ダメ・死亡・演出ロック等）を持つプレイヤーの状態管理と、演出中の物理挙動の破綻防止を設計しました。\n\n<strong>■ 設計の核心</strong>\n▸ PlayerController（入力・物理）と CinematicManager（演出）を責務分離\n▸ 状態遷移に優先度を設定し、「割り込める状態」と「割り込めない状態」を設計段階で定義\n▸ 演出中は FixedUpdate早期return ＋ Physics.IgnoreLayerCollision で物理干渉を停止\n▸ UniTaskでFixedUpdateタイミングの状態復帰を保証（コルーチンではUpdate依存で物理と同期不可）\n\n<strong>■ 成果</strong>\n▸ 状態競合に起因する致命的バグをゼロに抑制\n▸ 演出追加・状態追加が他担当のコードに波及しない構造を実現\n\n※ 詳細な構造は下図を参照してください。\n\n<strong>制作期間</strong> : 3ヶ月 &emsp; <strong>チーム人数</strong> : 個人制作 &emsp; <strong>プラットフォーム</strong> : PC / Windows",
-        descriptionEn: "<strong>■ What I Did</strong>\nDesigned state management for a player with 10+ states (attack, damage, death, cinematic lock, etc.) in a 3D action game, and prevented physics behavior breakdown during cinematics.\n\n<strong>■ Core Design</strong>\n▸ Separated responsibilities: PlayerController (input/physics) and CinematicManager (cinematics)\n▸ Defined transition priorities at design level — distinguishing interruptible vs. non-interruptible states\n▸ During cinematics: early return in FixedUpdate + Physics.IgnoreLayerCollision to halt physics interference\n▸ UniTask guarantees state recovery at FixedUpdate timing (coroutines are Update-dependent, can't sync with physics)\n\n<strong>■ Results</strong>\n▸ Zero critical bugs caused by state conflicts\n▸ Adding cinematics or states never ripples into other team members' code\n\n※ See the diagram below for detailed architecture.\n\n<strong>Duration</strong> : 3 months &emsp; <strong>Team</strong> : Solo &emsp; <strong>Platform</strong> : PC / Windows",
+        description: "<strong>■ やったこと</strong>\n3Dアクションゲームにおいて、10以上の状態（攻撃・被ダメ・死亡・演出ロック等）を持つプレイヤーの状態管理と、演出中の物理挙動の破綻防止を設計しました。\n\n<strong>■ 設計の核心</strong>\n▸ PlayerController（入力・物理）と CinematicManager（演出）を責務分離\n▸ 状態遷移に優先度を設定し、「割り込める状態」と「割り込めない状態」を設計段階で定義\n▸ 演出中は FixedUpdate早期return ＋ Physics.IgnoreLayerCollision で物理干渉を停止\n▸ UniTaskでFixedUpdateタイミングの状態復帰を保証（コルーチンではUpdate依存で物理と同期不可）\n\n<strong>■ 成果</strong>\n▸ 状態競合に起因する致命的バグをゼロに抑制\n▸ 演出追加・状態追加が他担当のコードに波及しない構造を実現\n\n※ 詳細な構造は下図を参照してください。",
+        descriptionEn: "<strong>■ What I Did</strong>\nDesigned state management for a player with 10+ states (attack, damage, death, cinematic lock, etc.) in a 3D action game, and prevented physics behavior breakdown during cinematics.\n\n<strong>■ Core Design</strong>\n▸ Separated responsibilities: PlayerController (input/physics) and CinematicManager (cinematics)\n▸ Defined transition priorities at design level — distinguishing interruptible vs. non-interruptible states\n▸ During cinematics: early return in FixedUpdate + Physics.IgnoreLayerCollision to halt physics interference\n▸ UniTask guarantees state recovery at FixedUpdate timing (coroutines are Update-dependent, can't sync with physics)\n\n<strong>■ Results</strong>\n▸ Zero critical bugs caused by state conflicts\n▸ Adding cinematics or states never ripples into other team members' code\n\n※ See the diagram below for detailed architecture.",
+        status: { genre: "3Dアクションゲーム", platform: "PC / Windows", teamSize: "1人", duration: "3ヶ月" },
         videoUrl: "/projects/AxisSave/Game4.mp4",
         imageUrls: [
             "/projects/AxisSave/AxisSave1.png",
@@ -21,8 +22,9 @@ export const m_ProjectData = [
     {
         id: 2,
         title: "PlanetariumVR",
-        description: "<strong>■ やったこと</strong>\nVR空間でのプラネタリウム体験アプリ。音声・UI・進行が連動するプレゼンテーションシーケンスを設計しました。\n\n<strong>■ 設計の核心</strong>\n▸ フラグ依存の進行管理 → UniTask.WaitWhile() によるイベントベースの非同期シーケンスへ再構築\n▸ 音響制御・UI制御・進行管理をクラス単位で責務分離\n▸ Vector3.Dot で視線方向を算出し、音量補間による自然な視線誘導を実装\n\n<strong>■ 成果</strong>\n▸ 音声とフェードの完了タイミングを保証し、進行破綻をゼロに\n▸ 本作での非同期制御経験が Axis:Save の UniTask設計の基盤に\n\n※ 詳細な構造は下図を参照してください。\n\n<strong>制作期間</strong> : 3日 &emsp; <strong>チーム人数</strong> : 個人制作 &emsp; <strong>プラットフォーム</strong> : VR",
-        descriptionEn: "<strong>■ What I Did</strong>\nA planetarium experience app in VR. Designed a presentation sequence where audio, UI, and progression are synchronized.\n\n<strong>■ Core Design</strong>\n▸ Rebuilt flag-dependent progression → event-based async sequence using UniTask.WaitWhile()\n▸ Separated audio control, UI control, and progression management at class level\n▸ Calculated gaze direction via Vector3.Dot; implemented natural gaze guidance through volume interpolation\n\n<strong>■ Results</strong>\n▸ Guaranteed audio and fade completion timing — zero progression breakdowns\n▸ Async control experience here became the foundation for UniTask design in Axis:Save\n\n※ See the diagram below for detailed architecture.\n\n<strong>Duration</strong> : 3 days &emsp; <strong>Team</strong> : Solo &emsp; <strong>Platform</strong> : VR",
+        description: "<strong>■ やったこと</strong>\nVR空間でのプラネタリウム体験アプリ。音声・UI・進行が連動するプレゼンテーションシーケンスを設計しました。\n\n<strong>■ 設計の核心</strong>\n▸ フラグ依存の進行管理 → UniTask.WaitWhile() によるイベントベースの非同期シーケンスへ再構築\n▸ 音響制御・UI制御・進行管理をクラス単位で責務分離\n▸ Vector3.Dot で視線方向を算出し、音量補間による自然な視線誘導を実装\n\n<strong>■ 成果</strong>\n▸ 音声とフェードの完了タイミングを保証し、進行破綻をゼロに\n▸ 本作での非同期制御経験が Axis:Save の UniTask設計の基盤に\n\n※ 詳細な構造は下図を参照してください。",
+        descriptionEn: "<strong>■ What I Did</strong>\nA planetarium experience app in VR. Designed a presentation sequence where audio, UI, and progression are synchronized.\n\n<strong>■ Core Design</strong>\n▸ Rebuilt flag-dependent progression → event-based async sequence using UniTask.WaitWhile()\n▸ Separated audio control, UI control, and progression management at class level\n▸ Calculated gaze direction via Vector3.Dot; implemented natural gaze guidance through volume interpolation\n\n<strong>■ Results</strong>\n▸ Guaranteed audio and fade completion timing — zero progression breakdowns\n▸ Async control experience here became the foundation for UniTask design in Axis:Save\n\n※ See the diagram below for detailed architecture.",
+        status: { genre: "VR体験アプリ", platform: "VR", teamSize: "1人", role: "すべて", duration: "3日" },
         videoUrl: "/projects/PlanetariumVR/PlanetariumVr.mp4",
         imageUrls: [
             "/projects/PlanetariumVR/PlanetariumVR1.png",
@@ -35,9 +37,10 @@ export const m_ProjectData = [
     },
     {
         id: 4,
-        title: "GreenKun",
-        description: "<strong>■ やったこと</strong>\nState PatternによるボスAI制御を実装。責務分離による拡張性確保に初めて本格的に取り組んだ作品です。\n\n<strong>■ 設計の核心</strong>\n▸ 各攻撃（Move / Roll / Hari 等）を個別ステートクラスとして分離\n▸ Time.deltaTimeによるフレームレート非依存移動\n▸ 攻撃ロジックをクラス単位で分離し、巨大な単一クラス化を回避\n\n<strong>■ 課題と学び</strong>\n▸ パラメータのコード依存 / Instantiate依存のGCリスク / Coroutine主体の進行分散\n▸ →「状態を分けるだけでは不十分。終了保証・データ駆動設計まで踏み込む必要がある」と学んだ\n▸ この経験が Axis:Save の状態競合防止設計に直結\n\n※ 詳細な構造は下図を参照してください。\n\n<strong>制作期間</strong> : 3週間 &emsp; <strong>チーム人数</strong> : 2人 &emsp; <strong>プラットフォーム</strong> : PC / スマホ",
-        descriptionEn: "<strong>■ What I Did</strong>\nImplemented boss AI control using the State Pattern. My first serious attempt at ensuring extensibility through separation of responsibilities.\n\n<strong>■ Core Design</strong>\n▸ Each attack (Move / Roll / Hari, etc.) separated into individual state classes\n▸ Framerate-independent movement via Time.deltaTime\n▸ Attack logic separated at class level — avoided monolithic single class\n\n<strong>■ Challenges & Learnings</strong>\n▸ Hard-coded parameters / GC risks from Instantiate / fragmented progression via Coroutines\n▸ → Learned: 'Merely separating states is insufficient — must address guaranteed completion and data-driven design'\n▸ These challenges directly led to state conflict prevention design in Axis:Save\n\n※ See the diagram below for detailed architecture.\n\n<strong>Duration</strong> : 3 weeks &emsp; <strong>Team</strong> : 2 people &emsp; <strong>Platform</strong> : PC / Mobile",
+        title: "とびだせ！グリーンくん",
+        description: "<strong>■ やったこと</strong>\nState PatternによるボスAI制御を実装。責務分離による拡張性確保に初めて本格的に取り組んだ作品です。\n\n<strong>■ 設計の核心</strong>\n▸ 各攻撃（Move / Roll / Hari 等）を個別ステートクラスとして分離\n▸ Time.deltaTimeによるフレームレート非依存移動\n▸ 攻撃ロジックをクラス単位で分離し、巨大な単一クラス化を回避\n\n<strong>■ 課題と学び</strong>\n▸ パラメータのコード依存 / Instantiate依存のGCリスク / Coroutine主体の進行分散\n▸ →「状態を分けるだけでは不十分。終了保証・データ駆動設計まで踏み込む必要がある」と学んだ\n▸ この経験が Axis:Save の状態競合防止設計に直結\n\n※ 詳細な構造は下図を参照してください。",
+        descriptionEn: "<strong>■ What I Did</strong>\nImplemented boss AI control using the State Pattern. My first serious attempt at ensuring extensibility through separation of responsibilities.\n\n<strong>■ Core Design</strong>\n▸ Each attack (Move / Roll / Hari, etc.) separated into individual state classes\n▸ Framerate-independent movement via Time.deltaTime\n▸ Attack logic separated at class level — avoided monolithic single class\n\n<strong>■ Challenges & Learnings</strong>\n▸ Hard-coded parameters / GC risks from Instantiate / fragmented progression via Coroutines\n▸ → Learned: 'Merely separating states is insufficient — must address guaranteed completion and data-driven design'\n▸ These challenges directly led to state conflict prevention design in Axis:Save\n\n※ See the diagram below for detailed architecture.",
+        status: { genre: "2Dアクションゲーム", platform: "PC / スマホ", teamSize: "2人", duration: "3週間", event: "SANUKI X GAME2025", role: "チュートリアル、ボスシーン全般" },
 
         imageUrls: [
             "/projects/Orimichikun/Orimichikun2.png",
@@ -60,6 +63,7 @@ export const m_ProjectData = [
         title: "DartsVR",
         description: "VRダーツゲーム制作中",
         descriptionEn: "A VR darts game (in production)",
+        status: { genre: "VRダーツゲーム", platform: "VR", teamSize: "1人" },
         videoUrl: "",
         imageUrls: [
             "/projects/DartsVR/DartsVR1.png",
@@ -72,9 +76,10 @@ export const m_ProjectData = [
     },
     {
         id: 5,
-        title: "Tsumitobu",
+        title: "Tumitobu",
         description: "<strong>■ ゲーム概要</strong>\nプレイヤー操作担当とブロック操作担当の 2人で協力してゴールを目指す2Dアクションゲーム。\nブロックを回転・配置して足場を作りながらステージを進んでいく協力型ゲームとして制作しました。\n\n<strong>■ 実装した要素（地形による移動挙動の変化）</strong>\nプレイヤーの移動処理では摩擦係数（friction）を用いて速度を制御し、ステージごとに値を変更することで地形による移動感の違いを表現しました。\n\n▸ 通常ステージ: friction = 0.7\n▸ 氷ステージ: friction = 0.9（滑りやすくなる）\n▸ 砂ステージ: friction = 0.63（減速しやすくなる）\n\nまた、移動速度が過剰に増加しないよう最大速度を設定してクランプ処理を行っています。\n\n<strong>■ 苦労した点（プレイヤーがブロックに挟まる問題の解決）</strong>\nプレイヤーとマップの衝突処理ではX軸とY軸を分離した判定を行っています。\nしかし、ジャンプ時や狭い隙間でプレイヤーがブロックに挟まり動けなくなる問題が発生しました。\n\nそこで、衝突処理後に再度Collision判定を行い、重なりが残っていた場合はプレイヤーを1マス分押し出す処理を追加することで、挟まりバグを解消しました。",
         descriptionEn: "<strong>■ Game Overview</strong>\nA 2D action game where two players cooperate to reach the goal—one controls the character, and the other controls blocks.\nDeveloped as a cooperative game where players progress by rotating and placing blocks to create footholds.\n\n<strong>■ Implemented Features (Movement based on Terrain)</strong>\nMovement speed is controlled using a friction coefficient, changing values per stage to express different movement feels:\n\n▸ Normal stage: friction = 0.7\n▸ Ice stage: friction = 0.9 (slippery)\n▸ Sand stage: friction = 0.63 (easy to decelerate)\n\nAdditionally, a maximum speed clamp is applied to prevent excessive acceleration.\n\n<strong>■ Challenges Overcome (Solving the Block Stuck Issue)</strong>\nCollision detection between the player and the map separates the X and Y axes.\nHowever, an issue occurred where the player would get stuck in blocks during jumps or in narrow gaps.\n\nTo resolve this, I added a process to \"perform another collision check after the initial collision handling, and if an overlap remains, push the player out by one tile space,\" effectively eliminating the stuck bug.",
+        status: { genre: "2D協力アクション", platform: "PC / Windows", teamSize: "3人", event: "デザイン展2025", role: "ステージ選択、ゲームシーン全般", duration: "3か月", awards: "協賛賞" },
         videoUrl: "",
         imageUrls: [
             "/projects/Tsumitobu/Tsumitobu1.png",
@@ -101,20 +106,21 @@ export const m_ClientWorksData = [
         id: "cw-1",
         title: "玉藻城",
         description: "香川県高松市にある「玉藻城（高松城）」をテーマにした案件作品です。詳細は準備中です。",
-        descriptionEn: "A client project based on 'Tamamo Castle' (Takamatsu Castle) in Kagawa Prefecture. Details coming soon.",
+        status: { genre: "VRワールド", platform: "VRChat", event: "案件作品", teamSize: "穴吹デザインカレッジ XR専攻(６人)" },
         videoUrl: "/projects/Client/Tamamo/Tamamo.mp4",
         imageUrls: ["/projects/Client/Tamamo/TamamoSamune.png"],
         githubUrl: "",
         downloadUrl: "",
         playUrl: "https://vrchat.com/home/world/wrld_01e7d57d-1224-4138-bcc3-915a9560bdd1/info",
         backgroundUrl: "/projects/Client/Tamamo/TamamoSamune.png",
-        technologies: ["Unity"],
+        technologies: ["Unity", "C#"],
     },
     {
         id: "cw-2",
         title: "瀬戸内お宝マウンテン",
-        description: "瀬戸内芸術祭用ゲーム。\n香川県さぬき市津田町周辺に設置されている絵を探し、そこに書かれている【パスワード】を見つけ出して該当する画像の入力フォームに打ち込むとクリア。全10問すべてクリアすると、津田の松原に設置されているパズルのピースが1つ追加されます。\n参加者全員で、パズルのピースを探し出し隠された3つの絵を完成させましょう!!\n\n<strong>開発元</strong> : 専門学校穴吹デザインカレッジ ゲームクリエイター学科XR専攻",
-        descriptionEn: "A game created for the Setouchi Art Festival.\nSearch for paintings placed around Tsuda Town, Sanuki City, Kagawa Prefecture, find the [PASSWORD] written on them, and enter it into the input form of the corresponding image to clear. Clearing all 10 questions adds a puzzle piece to the puzzle installed at Tsuda no Matsubara.\nLet all participants search for puzzle pieces and complete the 3 hidden paintings!!\n\n<strong>Developer</strong> : Anabuki Design College, Game Creator Department, XR Major",
+        description: "瀬戸内芸術祭用ゲーム。\n香川県さぬき市津田町周辺に設置されている絵を探し、そこに書かれている【パスワード】を見つけ出して該当する画像の入力フォームに打ち込むとクリア。全10問すべてクリアすると、津田の松原に設置されているパズルのピースが1つ追加されます。\n参加者全員で、パズルのピースを探し出し隠された3つの絵を完成させましょう!!",
+        descriptionEn: "A game created for the Setouchi Art Festival.\nSearch for paintings placed around Tsuda Town, Sanuki City, Kagawa Prefecture, find the [PASSWORD] written on them, and enter it into the input form of the corresponding image to clear. Clearing all 10 questions adds a puzzle piece to the puzzle installed at Tsuda no Matsubara.\nLet all participants search for puzzle pieces and complete the 3 hidden paintings!!",
+        status: { genre: "謎解きゲーム", platform: "WebGL", event: "瀬戸内芸術祭", teamSize: "穴吹デザインカレッジ XR専攻(６人)", role: "謎解き画面すべて", duration: "1週間" },
         videoUrl: "",
         imageUrls: [
             "/projects/Client/SetouchiTreasureQuest/SetouchiTreasureQuest1.png",
@@ -125,7 +131,7 @@ export const m_ClientWorksData = [
         downloadUrl: "",
         playUrl: "https://anabukigames.itch.io/setouchitreasurequest",
         backgroundUrl: "/projects/Client/SetouchiTreasureQuest/SetouchiTreasureQuestBack.png",
-        technologies: ["Unity"],
+        technologies: ["Unity", "C#"],
     }
 ];
 
@@ -168,8 +174,9 @@ export const m_GameJamData = [
     {
         id: "gj-1",
         title: "グローバルゲームジャム2026",
-        description: "開発人数：2名（双方途中参加） / 制作期間：36時間\n担当：ゲームシーン設計・実装全般\n\n<strong>■ やったこと</strong>\n途中参加の制約下で、既存構造を把握→仕様再定義→ロジック再構築→完成まで担当。\n\n<strong>■ 設計の核心</strong>\n▸ NPC生成（ScreenEdgeSpawner）・個体制御（PersonController）・イベント管理（RandomEventManager）を責務分離\n▸ 3種の経路パターンを確率ベースで割り当て\n▸ 雨イベントによる状態割り込み時の競合防止処理\n▸ CharacterCreatorEditor（Editor拡張）で設定作業を自動化\n\n<strong>■ 学び</strong>\n▸ 36時間の制約下で「何を省略し、何を守るか」の判断を実践\n▸ 抽象化は省略しつつもロジックの安定性を最優先にした",
-        descriptionEn: "Team Size: 2 (both joined mid-development) / Development Time: 36 hours\nRole: Game scene design & full implementation\n\n<strong>■ What I Did</strong>\nJoined mid-development: grasped existing structure → redefined specs → reconstructed logic → completed.\n\n<strong>■ Core Design</strong>\n▸ Separated NPC generation (ScreenEdgeSpawner), individual control (PersonController), and event management (RandomEventManager)\n▸ 3 route patterns assigned via probability at spawn\n▸ State conflict prevention during rain event interruptions\n▸ CharacterCreatorEditor (Editor extension) to automate setup\n\n<strong>■ Learnings</strong>\n▸ Practiced 'what to omit and what to protect' decisions under 36-hour constraint\n▸ Prioritized logic stability while intentionally omitting abstraction layers",
+        description: "担当：ゲームシーン設計・実装全般\n\n<strong>■ やったこと</strong>\n途中参加の制約下で、既存構造を把握→仕様再定義→ロジック再構築→完成まで担当。\n\n<strong>■ 設計の核心</strong>\n▸ NPC生成（ScreenEdgeSpawner）・個体制御（PersonController）・イベント管理（RandomEventManager）を責務分離\n▸ 3種の経路パターンを確率ベースで割り当て\n▸ 雨イベントによる状態割り込み時の競合防止処理\n▸ CharacterCreatorEditor（Editor拡張）で設定作業を自動化\n\n<strong>■ 学び</strong>\n▸ 36時間の制約下で「何を省略し、何を守るか」の判断を実践\n▸ 抽象化は省略しつつもロジックの安定性を最優先にした",
+        descriptionEn: "Role: Game scene design & full implementation\n\n<strong>■ What I Did</strong>\nJoined mid-development: grasped existing structure → redefined specs → reconstructed logic → completed.\n\n<strong>■ Core Design</strong>\n▸ Separated NPC generation (ScreenEdgeSpawner), individual control (PersonController), and event management (RandomEventManager)\n▸ 3 route patterns assigned via probability at spawn\n▸ State conflict prevention during rain event interruptions\n▸ CharacterCreatorEditor (Editor extension) to automate setup\n\n<strong>■ Learnings</strong>\n▸ Practiced 'what to omit and what to protect' decisions under 36-hour constraint\n▸ Prioritized logic stability while intentionally omitting abstraction layers",
+        status: { event: "グローバルゲームジャム2026", teamSize: "2人", duration: "36時間", role: "ゲームシーン設計・実装全般" },
         imageUrls: [
             "/projects/GameJam/GlobalGameJam/GlobalGameJam1.png",
             "/projects/GameJam/GlobalGameJam/GlobalGameJam2.png",
@@ -187,8 +194,9 @@ export const m_GameJamData = [
     {
         id: "gj-2",
         title: "ゲームジャム高梁2025",
-        description: "ゲームジャム高梁 参加作品\nプログラムリーダー・キャラクター実装担当 / 36時間 / 6名\n\n<strong>■ やったこと</strong>\n自作State Patternベースのステートマシンでキャラクター制御基盤を設計。GitHubブランチ運用で並列開発。\n\n<strong>■ 発生した問題</strong>\n▸ 遷移優先度・キャンセルフレーム・アニメーションイベントの事前合意不足\n▸ → 統合時にアニメと判定のズレ、状態競合が発生（統合設計ミス）\n\n<strong>■ この経験からの学び</strong>\n▸ 実装前にステート遷移図＋優先度を明文化する\n▸ 2〜3時間単位で統合テスト\n▸ 設計基準を「速度最大化」→「統合容易性と完成確率の最大化」へ転換\n▸ この失敗が、現在の状態競合防止設計方針の直接の契機",
-        descriptionEn: "Game Jam Takahashi Entry\nProgram Leader & Character Implementation / 36 hours / 6 members\n\n<strong>■ What I Did</strong>\nDesigned character control foundation using custom State Pattern-based state machine. Parallel development via GitHub branches.\n\n<strong>■ Problem Encountered</strong>\n▸ Lack of prior agreement on transition priorities, cancelable frames, and animation events\n▸ → Animation-hitbox misalignment and state conflicts during integration (integration design failure)\n\n<strong>■ Learnings</strong>\n▸ Document state transition diagrams + priorities before implementation\n▸ Integration tests every 2-3 hours\n▸ Shifted design standard from 'maximizing speed' → 'maximizing ease of integration and completion probability'\n▸ This failure became the direct catalyst for my current state conflict prevention design policy",
+        description: "プログラムリーダー・キャラクター実装担当\n\n<strong>■ やったこと</strong>\n自作State Patternベースのステートマシンでキャラクター制御基盤を設計。GitHubブランチ運用で並列開発。\n\n<strong>■ 発生した問題</strong>\n▸ 遷移優先度・キャンセルフレーム・アニメーションイベントの事前合意不足\n▸ → 統合時にアニメと判定のズレ、状態競合が発生（統合設計ミス）\n\n<strong>■ この経験からの学び</strong>\n▸ 実装前にステート遷移図＋優先度を明文化する\n▸ 2〜3時間単位で統合テスト\n▸ 設計基準を「速度最大化」→「統合容易性と完成確率の最大化」へ転換\n▸ この失敗が、現在の状態競合防止設計方針の直接の契機",
+        descriptionEn: "Program Leader & Character Implementation\n\n<strong>■ What I Did</strong>\nDesigned character control foundation using custom State Pattern-based state machine. Parallel development via GitHub branches.\n\n<strong>■ Problem Encountered</strong>\n▸ Lack of prior agreement on transition priorities, cancelable frames, and animation events\n▸ → Animation-hitbox misalignment and state conflicts during integration (integration design failure)\n\n<strong>■ Learnings</strong>\n▸ Document state transition diagrams + priorities before implementation\n▸ Integration tests every 2-3 hours\n▸ Shifted design standard from 'maximizing speed' → 'maximizing ease of integration and completion probability'\n▸ This failure became the direct catalyst for my current state conflict prevention design policy",
+        status: { event: "ゲームジャム高梁", teamSize: "6人", duration: "36時間", role: "プログラムリーダー・キャラクター実装" },
         imageUrls: [
             "/projects/GameJam/GameJamTakahashi/GameJamTakahashi1.png",
             "/projects/GameJam/GameJamTakahashi/GameJamTakahashi2.png",
@@ -206,8 +214,9 @@ export const m_GameJamData = [
     {
         id: "gj-3",
         title: "ビットサミットゲームジャム2025",
-        description: "BitSummit GameJam 参加作品\nスコア全般・リザルト画面全般",
+        description: "スコア全般・リザルト画面全般",
         descriptionEn: "Game Jam entry",
+        status: { event: "BitSummit GameJam", role: "スコア全般・リザルト画面全般" },
         imageUrls: [
             "/projects/GameJam/BitSummitGameJam/BitSummitGameJam1.png",
             "/projects/GameJam/BitSummitGameJam/BitSummitGameJam2.png",
@@ -224,8 +233,9 @@ export const m_GameJamData = [
     {
         id: "gj-4",
         title: "最強ゲームジャム2025",
-        description: "最強ゲームジャム 参加作品\nタイトル画面全般",
+        description: "タイトル画面全般",
         descriptionEn: "Game Jam entry",
+        status: { event: "最強ゲームジャム2025", role: "タイトル画面全般" },
         imageUrls: [
             "/projects/GameJam/SaikyouGameJam/SaikyouGameJam1.png",
             "/projects/GameJam/SaikyouGameJam/SaikyouGameJam2.png",
@@ -243,8 +253,9 @@ export const m_GameJamData = [
     {
         id: "gj-5",
         title: "商店街ゲームジャム2024",
-        description: "商店街ゲームジャム 参加作品\n左上のうんちバーの配置",
+        description: "左上のうんちバーの配置",
         descriptionEn: "Game Jam entry",
+        status: { event: "商店街ゲームジャム2024", role: "左上のうんちバーの配置" },
         imageUrls: [
             "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJam1.png",
             "/projects/GameJam/ShoutengaiGameJam/ShoutengaiGameJam2.png",
@@ -261,8 +272,9 @@ export const m_GameJamData = [
     {
         id: "gj-6",
         title: "最強ゲームジャム2026",
-        description: "最強ゲームジャム2026 参加作品。\n開発人数：4名 / 制作期間：36時間\n詳細は準備中です。",
-        descriptionEn: "Saikyou Game Jam 2026 entry.\nTeam Size: 4 / Duration: 36 hours\nDetails coming soon.",
+        description: "詳細は準備中です。",
+        descriptionEn: "Details coming soon.",
+        status: { event: "最強ゲームジャム2026", teamSize: "6人", duration: "2日" },
         videoUrl: "/projects/GameJam/SaikyouGameJam2026/SaikyouGameJam2026.mp4",
         imageUrls: [
             "/projects/GameJam/SaikyouGameJam2026/SaikyouGameJam2026Samune1.png",
@@ -282,6 +294,7 @@ export const m_VRChatWorldsData = [
         title: "Bar",
         description: "美しいライティングと雰囲気を重視して制作しました。",
         descriptionEn: "Focuses on beautiful lighting and atmosphere.",
+        status: { genre: "VRChat ワールド", platform: "VRChat", teamSize: "1人", role: "すべて", duration: "1日" },
         videoUrl: "/projects/VrC/Bar/Bar.mp4",
         imageUrls: [
             "/projects/VrC/Bar/BarBack.png", // 仮で背景画像を代用
@@ -295,6 +308,7 @@ export const m_VRChatWorldsData = [
         title: "Bill",
         description: "落ち着いた空間を目指して制作しました。",
         descriptionEn: "Designed with a focus on creating a calm, relaxing space.",
+        status: { genre: "VRChat ワールド", platform: "VRChat", teamSize: "1人", role: "すべて", duration: "2日" },
         videoUrl: "/projects/VrC/Bill/Bill.mp4",
         imageUrls: [
             "/projects/VrC/Bill/BillBack.png",

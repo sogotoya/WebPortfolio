@@ -91,13 +91,54 @@ const ProjectDetail = () => {
 
                     <h1 className="text-4xl md:text-5xl font-orbitron font-bold text-white mb-4">{project.title}</h1>
 
-                    <div className="flex flex-wrap gap-3 mb-6">
-                        {project.technologies.map((tech, index) => (
-                            <span key={index} className="px-3 py-1 bg-dark-bg border border-neon-blue text-neon-blue text-sm font-rajdhani font-bold">
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
+                    {project.status ? (
+                        <div className="mb-8 border border-gray-700 bg-black/50 rounded overflow-hidden">
+                            <table className="w-full text-left text-gray-300 font-rajdhani text-sm md:text-base">
+                                <tbody>
+                                    <tr className="border-b border-gray-700">
+                                        <th className="py-3 px-4 bg-gray-900/80 font-bold w-1/3 md:w-1/4 text-neon-pink border-r border-gray-700">ジャンル</th>
+                                        <td className="py-3 px-4">{project.status.genre || ""}</td>
+                                    </tr>
+                                    <tr className="border-b border-gray-700">
+                                        <th className="py-3 px-4 bg-gray-900/80 font-bold w-1/3 md:w-1/4 text-neon-pink border-r border-gray-700">プラットフォーム</th>
+                                        <td className="py-3 px-4">{project.status.platform || ""}</td>
+                                    </tr>
+                                    <tr className="border-b border-gray-700">
+                                        <th className="py-3 px-4 bg-gray-900/80 font-bold w-1/3 md:w-1/4 text-neon-pink border-r border-gray-700">イベント</th>
+                                        <td className="py-3 px-4">{project.status.event || ""}</td>
+                                    </tr>
+                                    <tr className="border-b border-gray-700">
+                                        <th className="py-3 px-4 bg-gray-900/80 font-bold w-1/3 md:w-1/4 text-neon-pink border-r border-gray-700">制作人数</th>
+                                        <td className="py-3 px-4">{project.status.teamSize || ""}</td>
+                                    </tr>
+                                    <tr className="border-b border-gray-700">
+                                        <th className="py-3 px-4 bg-gray-900/80 font-bold w-1/3 md:w-1/4 text-neon-pink border-r border-gray-700">担当</th>
+                                        <td className="py-3 px-4">{project.status.role || ""}</td>
+                                    </tr>
+                                    <tr className="border-b border-gray-700">
+                                        <th className="py-3 px-4 bg-gray-900/80 font-bold w-1/3 md:w-1/4 text-neon-pink border-r border-gray-700">開発期間</th>
+                                        <td className="py-3 px-4">{project.status.duration || ""}</td>
+                                    </tr>
+                                    <tr className="border-b border-gray-700">
+                                        <th className="py-3 px-4 bg-gray-900/80 font-bold w-1/3 md:w-1/4 text-neon-pink border-r border-gray-700">開発環境</th>
+                                        <td className="py-3 px-4">{(project.technologies && project.technologies.length > 0) ? project.technologies.join(" / ") : ""}</td>
+                                    </tr>
+                                    <tr>
+                                        <th className="py-3 px-4 bg-gray-900/80 font-bold w-1/3 md:w-1/4 text-neon-pink border-r border-gray-700">受賞</th>
+                                        <td className="py-3 px-4">{project.status.awards || ""}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : (
+                        <div className="flex flex-wrap gap-3 mb-6">
+                            {project.technologies.map((tech, index) => (
+                                <span key={index} className="px-3 py-1 bg-dark-bg border border-neon-blue text-neon-blue text-sm font-rajdhani font-bold">
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+                    )}
 
                     <p
                         className="text-gray-300 text-lg leading-relaxed mb-8 font-rajdhani"
