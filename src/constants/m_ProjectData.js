@@ -82,7 +82,7 @@ export const m_ProjectData = [
         description: "<strong>■ ゲーム概要</strong>\n▸ プレイヤー操作担当とブロック操作担当の2人で協力してゴールを目指す2Dアクションゲーム\n\n<strong>■ 実装した要素（地形による移動挙動の変化）</strong>\n▸ <span style='color:#d4a574'>摩擦係数（friction）</span>を用いて速度を制御し、地形ごとに移動感の違いを表現\n▸ 通常: friction = 0.7 / 氷: friction = 0.9 / 砂: friction = 0.63\n▸ 最大速度のクランプ処理で過剰な加速を防止\n\n<strong>■ 苦労した点（挟まり問題の解決）</strong>\n▸ X軸とY軸を分離した衝突判定でプレイヤーがブロックに挟まる問題が発生\n▸ 衝突処理後に<span style='color:#d4a574'>再度Collision判定</span>を行い、重なりが残っていた場合は1マス分押し出す処理を追加して解消",
         descriptionEn: "<strong>■ Game Overview</strong>\n▸ A 2D co-op action game where two players cooperate — one controls the character, the other controls blocks\n\n<strong>■ Implemented Features (Terrain-Based Movement)</strong>\n▸ Controlled speed using <span style='color:#d4a574'>friction coefficient</span>, changing values per stage for different movement feels\n▸ Normal: friction = 0.7 / Ice: friction = 0.9 / Sand: friction = 0.63\n▸ Maximum speed clamp prevents excessive acceleration\n\n<strong>■ Challenges Overcome (Block Stuck Issue)</strong>\n▸ Player got stuck in blocks during jumps with X/Y axis separated collision detection\n▸ Added <span style='color:#d4a574'>secondary collision check</span> after initial handling — pushes player out by one tile if overlap remains",
         status: { genre: "2D協力アクション", platform: "PC / Windows", teamSize: "3人", event: "デザイン展2025", role: "ステージ選択、ゲームシーン全般", duration: "3か月", awards: "協賛賞" },
-        videoUrl: "",
+        videoUrl: "/projects/Tsumitobu/Tumitobu.mp4",
         imageUrls: [
             "/projects/Tsumitobu/Tsumitobu1.webp",
             "/projects/Tsumitobu/Tsumitobu2.webp",
@@ -157,7 +157,7 @@ export const m_ToolData = [
     {
         id: "tool-2",
         title: "AssetDependencyVisualizer",
-        description: "プロジェクト内の「アセット同士のつながり」を可視化するEditor拡張ツールです。\nテクスチャ・プレハブ・マテリアルなどの使用状況を簡単に確認でき、\nどこからも参照されていない不要なアセットの特定に役立ちます。",
+        description: "プロジェクト内の「アセット同士のつながり」を可視化するEditor拡張ツールです。\nテクスチャ・プレハブ・マテリアルなどの使用状況を簡単に確認でき、\nどこからも参照されていない不要なアセットの特定に役立ちます。\n\n※ 現在調整中",
         descriptionEn: "Unity Editor Extension",
         imageUrls: [
             "/projects/Tools/AssetDependencyVisualizer/AssetDependencyVisualizer1.webp",
