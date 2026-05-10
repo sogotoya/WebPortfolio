@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
     Terminal, FileCode2, Code2, Box, Wrench, Layers, Glasses,
     MonitorPlay, Video, Palette, Component, Zap, Bot, Package, Music, Github
@@ -163,10 +164,31 @@ const ProfileSection = () => {
                                 本ポートフォリオでは、状態数の増加や並行処理が発生する状況において、「状態競合の防止」と「責務分離による拡張性確保」を設計方針としています。
                             </p>
 
-                            <ul className="list-disc list-inside space-y-1 my-4 ml-2 text-gray-300">
-                                <li>状態競合を防ぐための明示的な状態遷移管理</li>
-                                <li>責務分離による拡張性および保守性の確保</li>
-                                <li>実行順序を考慮した制御設計（Update / FixedUpdateの分離）</li>
+                            <ul className="list-disc list-inside space-y-3 my-4 ml-2 text-gray-300">
+                                <li>
+                                    状態競合を防ぐための明示的な状態遷移管理
+                                    <span className="ml-2 text-xs">
+                                        → <Link to="/project/1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">Axis:Save</Link>
+                                        <span className="text-gray-600 mx-1">|</span>
+                                        <Link to="/project/gj-2" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">ゲームジャム高梁</Link>
+                                    </span>
+                                </li>
+                                <li>
+                                    責務分離による拡張性および保守性の確保
+                                    <span className="ml-2 text-xs">
+                                        → <Link to="/project/1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">Axis:Save</Link>
+                                        <span className="text-gray-600 mx-1">|</span>
+                                        <Link to="/project/2" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">PlanetariumVR</Link>
+                                        <span className="text-gray-600 mx-1">|</span>
+                                        <Link to="/project/gj-1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">GGJ2026</Link>
+                                    </span>
+                                </li>
+                                <li>
+                                    実行順序を考慮した制御設計（Update / FixedUpdateの分離）
+                                    <span className="ml-2 text-xs">
+                                        → <Link to="/project/1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">Axis:Save</Link>
+                                    </span>
+                                </li>
                             </ul>
 
                             <p className="text-gray-300 mt-2">
