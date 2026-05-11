@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-    Wrench, Layers, Glasses, Component, Bot, Package
+    Wrench, Layers, Glasses, Component, Bot, Package,
+    CalendarDays, MapPin, Briefcase, Trophy
 } from 'lucide-react';
 import { SiGithub, SiUnity } from 'react-icons/si';
 import { TbBrandCSharp } from 'react-icons/tb';
@@ -147,7 +148,33 @@ const ProfileSection = () => {
                     </div>
                 </div>
 
-                {/* Bottom Row: Design Philosophy */}
+                {/* Activities Section */}
+                <div className="w-full p-6 md:p-8 border-b border-gray-800 bg-black/50 relative">
+                    <h3 className="text-sm font-orbitron text-neon-blue/80 tracking-widest mb-6 flex items-center gap-2">
+                        <span className="w-2 h-2 bg-neon-blue rounded-full animate-pulse-slow"></span>
+                        ACTIVITIES
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div className="flex items-center gap-3 px-4 py-3 border border-gray-800 bg-black/40 rounded cursor-default select-none">
+                            <div className="text-neon-pink/70 flex-shrink-0">
+                                <MapPin size={16} />
+                            </div>
+                            <span className="text-sm text-gray-300 font-rajdhani tracking-wider">BitSummit 出展</span>
+                        </div>
+                        <div className="flex items-center gap-3 px-4 py-3 border border-gray-800 bg-black/40 rounded cursor-default select-none">
+                            <div className="text-neon-pink/70 flex-shrink-0">
+                                <MapPin size={16} />
+                            </div>
+                            <span className="text-sm text-gray-300 font-rajdhani tracking-wider">ゲームパビリオンjp 2025 出展</span>
+                        </div>
+                        <div className="flex items-center gap-3 px-4 py-3 border border-gray-800 bg-black/40 rounded cursor-default select-none">
+                            <div className="text-neon-pink/70 flex-shrink-0">
+                                <MapPin size={16} />
+                            </div>
+                            <span className="text-sm text-gray-300 font-rajdhani tracking-wider">神戸ゲームラビリンス2025 出展</span>
+                        </div>
+                    </div>
+                </div>
                 <div className="w-full p-6 md:p-8 relative bg-black/60">
                     {/* Background grid pattern */}
                     <div className="absolute inset-0 pointer-events-none opacity-20"
