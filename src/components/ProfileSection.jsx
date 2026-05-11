@@ -95,7 +95,7 @@ const ProfileSection = () => {
         statusLabel: "STATUS",
         status: "実務インターン参加中",
         skillTitle: "SKILLS",
-        philosophyTitle: "■ 設計ポリシー",
+        philosophyTitle: "■ 完成確率を重視した設計",
     };
 
     return (
@@ -158,30 +158,23 @@ const ProfileSection = () => {
                             {t.philosophyTitle}
                         </h3>
                         <div className="text-sm md:text-base text-gray-400 leading-relaxed font-rajdhani whitespace-pre-line space-y-4">
-                            <div className="mb-6 p-4 border border-neon-blue/40 bg-neon-blue/10 rounded-sm shadow-[0_0_15px_rgba(0,243,255,0.1)]">
-                                <p className="text-neon-blue font-bold text-center tracking-wide text-sm md:text-base">
-                                    <span className="inline-block">私は「実装速度の最大化」ではなく</span>
-                                    <span className="inline-block">「完成確率の最大化」を優先しています。</span>
-                                </p>
-                            </div>
-
                             <p className="text-gray-300">
-                                Unityでのゲーム・VR開発において、状態競合の防止と責務分離を重視した設計を行っています。
+                                実装中に発生した状態競合やUpdate順による不具合をきっかけに、現在は状態管理と責務分離を重視した設計を行っています。
                             </p>
 
                             <ul className="list-disc list-inside space-y-3 my-4 ml-2 text-gray-300">
                                 <li>
-                                    明示的な状態遷移管理による状態競合の防止
+                                    状態遷移を明示化し、競合を防止
                                     <span className="ml-2 text-xs">
-                                        → <Link to="/project/1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">Axis:Save</Link>
+                                        　→ <Link to="/project/1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">Axis:Save</Link>
                                         <span className="text-gray-600 mx-1">/</span>
                                         <Link to="/project/gj-2" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">ゲームジャム高梁</Link>
                                     </span>
                                 </li>
                                 <li>
-                                    責務分離による拡張性・保守性の確保
+                                    処理責務を分離し、機能追加時の影響範囲を限定
                                     <span className="ml-2 text-xs">
-                                        → <Link to="/project/1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">Axis:Save</Link>
+                                        　→ <Link to="/project/1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">Axis:Save</Link>
                                         <span className="text-gray-600 mx-1">/</span>
                                         <Link to="/project/2" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">PlanetariumVR</Link>
                                         <span className="text-gray-600 mx-1">/</span>
@@ -189,15 +182,15 @@ const ProfileSection = () => {
                                     </span>
                                 </li>
                                 <li>
-                                    Update / FixedUpdate を分離した実行順序制御
+                                    Update / FixedUpdate を分離し、実行順序を整理
                                     <span className="ml-2 text-xs">
-                                        → <Link to="/project/1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">Axis:Save</Link>
+                                        　→ <Link to="/project/1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">Axis:Save</Link>
                                     </span>
                                 </li>
                             </ul>
 
                             <p className="text-gray-300 mt-2">
-                                これらの設計方針により、不具合発生時の影響範囲を限定し、機能追加やチーム開発時の保守性向上を目指しています。
+                                制作規模が大きくなっても、機能追加や修正を行いやすい構成を意識しています。
                             </p>
 
                         </div>
