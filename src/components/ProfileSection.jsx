@@ -1,75 +1,99 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-    Terminal, FileCode2, Code2, Box, Wrench, Layers, Glasses,
-    MonitorPlay, Video, Palette, Component, Zap, Bot, Package, Music, Github
+    Wrench, Layers, Glasses, Component, Bot, Package
 } from 'lucide-react';
-import { SiC, SiCplusplus, SiGithub, SiUnity, SiUnrealengine } from 'react-icons/si';
+import { SiGithub, SiUnity } from 'react-icons/si';
 import { TbBrandCSharp } from 'react-icons/tb';
 import { DiVisualstudio } from 'react-icons/di';
 import { VscVscode } from 'react-icons/vsc';
 
 const ProfileSection = () => {
 
-    const skillCategories = [
+    // Left column: Unity設計系
+    const leftCategories = [
         {
-            category: "プログラミング言語",
+            category: "Core Development",
             skills: [
-                { name: "C", icon: <SiC size={18} />, period: "半年" },
-                { name: "C++", icon: <SiCplusplus size={18} />, period: "半年" },
-                { name: "C#", icon: <TbBrandCSharp size={18} />, period: "1年半" },
+                { name: "Unity", icon: <SiUnity size={16} />, size: "lg" },
+                { name: "C#", icon: <TbBrandCSharp size={16} />, size: "lg" },
+                { name: "OpenGL", icon: <Layers size={14} /> },
+                { name: "XR Interaction Toolkit", icon: <Glasses size={14} /> },
+                { name: "UI System", icon: <Component size={14} /> },
             ]
         },
         {
-            category: "IDE",
+            category: "Architecture",
             skills: [
-                { name: "Visual Studio", icon: <DiVisualstudio size={18} /> },
-                { name: "VS Code", icon: <VscVscode size={18} /> },
+                { name: "State Machine", icon: <Layers size={14} /> },
+                { name: "UniTask", icon: <Package size={14} /> },
+                { name: "Netcode", icon: <Package size={14} /> },
             ]
         },
+    ];
+
+    // Right column: XR・ツール系
+    const rightCategories = [
         {
-            category: "ライブラリ",
+            category: "XR / Platform",
             skills: [
-                { name: "OpenGL", icon: <Layers size={18} />, period: "1年" },
-            ]
-        },
-        {
-            category: "ゲームエンジン",
-            skills: [
-                { name: "Unity", icon: <SiUnity size={18} />, period: "1年半" },
-                { name: "Unreal Engine", icon: <SiUnrealengine size={18} />, period: "半年未満" },
+                { name: "Meta Quest", icon: <Glasses size={14} /> },
+                { name: "XREAL", icon: <Glasses size={14} /> },
+                { name: "VRChat SDK", icon: <Wrench size={14} /> },
             ]
         },
         {
             category: "Tools",
             skills: [
-                { name: "GitHub Desktop", icon: <SiGithub size={18} />, period: "2年" },
-                { name: "XREAL", icon: <Glasses size={18} />, period: "半年未満" },
-                { name: "VRChat CC", icon: <Wrench size={18} />, period: "半年" },
-                { name: "Meta Quest", icon: <Glasses size={18} />, period: "半年" },
-                { name: "Antigravity", icon: <Zap size={18} />, period: "半年" },
-                { name: "Claude Code", icon: <Bot size={18} />, period: "半年" },
+                { name: "GitHub", icon: <SiGithub size={14} /> },
+                { name: "Visual Studio", icon: <DiVisualstudio size={14} /> },
+                { name: "VSCode", icon: <VscVscode size={14} />, size: "sm" },
+                { name: "Claude Code", icon: <Bot size={14} />, size: "sm" },
             ]
         },
-        {
-            category: "Unityパッケージ",
-            skills: [
-                { name: "UniTask", icon: <Package size={18} /> },
-                { name: "Netcode", icon: <Package size={18} /> },
-                { name: "Cinemachine", icon: <Package size={18} /> },
-            ]
-        }
     ];
+
+    const sizeClasses = {
+        lg: "px-4 py-2.5 text-sm border-gray-700",
+        default: "px-3 py-2 text-xs border-gray-800",
+        sm: "px-2.5 py-1.5 text-[11px] border-gray-800/70",
+    };
+
+    const renderCategory = (categoryGroup, categoryIndex) => (
+        <div key={categoryIndex} className="flex flex-col">
+            <h4 className="text-xs text-neon-blue/60 font-orbitron tracking-widest mb-3 border-l-2 border-neon-blue/30 pl-2 py-0.5">
+                {categoryGroup.category}
+            </h4>
+            <div className="flex flex-wrap gap-2">
+                {categoryGroup.skills.map((skill, index) => {
+                    const size = skill.size || "default";
+                    return (
+                        <div
+                            key={index}
+                            className={`flex items-center gap-2 ${sizeClasses[size]} border bg-black/40 rounded cursor-default select-none`}
+                        >
+                            <div className="text-gray-400 flex-shrink-0">
+                                {skill.icon}
+                            </div>
+                            <span className="font-rajdhani text-gray-300 tracking-wider whitespace-nowrap">
+                                {skill.name}
+                            </span>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
 
 
     const t = {
         title: "PROFILE",
         nameLabel: "NAME",
         name: "十河 柊弥",
-        ageLabel: "AGE",
-        age: "20",
         roleLabel: "ROLE",
-        role: "プログラマ",
+        role: "Unity / XR Programmer",
+        statusLabel: "STATUS",
+        status: "実務インターン参加中",
         skillTitle: "SKILLS",
         philosophyTitle: "■ 設計ポリシー",
     };
@@ -94,50 +118,31 @@ const ProfileSection = () => {
                                 <span className="text-lg md:text-xl text-gray-200 tracking-wider translate-y-0.5">{t.name}</span>
                             </div>
                             <div className="flex items-baseline gap-3 border-b border-gray-800 pb-1">
-                                <span className="text-xs font-orbitron text-gray-500 tracking-widest">{t.ageLabel}</span>
-                                <span className="text-lg md:text-xl text-gray-200 font-rajdhani translate-y-0.5">{t.age}</span>
+                                <span className="text-xs font-orbitron text-gray-500 tracking-widest">{t.roleLabel}</span>
+                                <span className="text-lg md:text-xl text-gray-200 font-rajdhani translate-y-0.5">{t.role}</span>
                             </div>
                             <div className="flex items-baseline gap-3 border-b border-gray-800 pb-1">
-                                <span className="text-xs font-orbitron text-gray-500 tracking-widest">{t.roleLabel}</span>
-                                <span className="text-lg md:text-xl text-gray-200 tracking-wider translate-y-0.5">{t.role}</span>
+                                <span className="text-xs font-orbitron text-gray-500 tracking-widest">{t.statusLabel}</span>
+                                <span className="text-lg md:text-xl text-gray-200 tracking-wider translate-y-0.5">{t.status}</span>
                             </div>
                         </div>
                     </div>
 
-                    {/* Right: Skills */}
+                    {/* Skills: 2-column layout */}
                     <div className="w-full p-6 bg-black/40 relative">
-                        <h3 className="text-sm font-orbitron text-neon-blue/80 tracking-widest mb-4 flex items-center gap-2">
+                        <h3 className="text-sm font-orbitron text-neon-blue/80 tracking-widest mb-6 flex items-center gap-2">
                             <span className="w-2 h-2 bg-neon-blue rounded-full animate-pulse-slow"></span>
                             {t.skillTitle}
                         </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
-                            {skillCategories.map((categoryGroup, categoryIndex) => (
-                                <div key={categoryIndex} className="flex flex-col">
-                                    <h4 className="text-xs text-neon-blue/60 font-orbitron tracking-widest mb-3 border-l-2 border-neon-blue/30 pl-2 py-0.5">
-                                        {categoryGroup.category}
-                                    </h4>
-                                    <div className="flex flex-wrap gap-2.5">
-                                        {categoryGroup.skills.map((skill, index) => (
-                                            <div
-                                                key={index}
-                                                className="flex items-center gap-2.5 px-3 py-2.5 min-w-[100px] h-[44px] border border-gray-800 bg-black/40 rounded cursor-default select-none"
-                                            >
-                                                <div className="text-gray-400 flex-shrink-0">
-                                                    {skill.icon}
-                                                </div>
-                                                <span className="text-xs font-rajdhani text-gray-300 tracking-wider whitespace-nowrap">
-                                                    {skill.name}
-                                                </span>
-                                                {skill.period && (
-                                                    <span className="text-[10px] font-rajdhani text-neon-blue/70 ml-auto pl-2 whitespace-nowrap border-l border-gray-700">
-                                                        {skill.period}
-                                                    </span>
-                                                )}
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+                            {/* Left: Unity設計系 */}
+                            <div className="flex flex-col gap-8">
+                                {leftCategories.map(renderCategory)}
+                            </div>
+                            {/* Right: XR・ツール系 */}
+                            <div className="flex flex-col gap-8">
+                                {rightCategories.map(renderCategory)}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -161,30 +166,30 @@ const ProfileSection = () => {
                             </div>
 
                             <p className="text-gray-300">
-                                本ポートフォリオでは、状態数の増加や並行処理が発生する状況において、「状態競合の防止」と「責務分離による拡張性確保」を設計方針としています。
+                                Unityでのゲーム・VR開発において、状態競合の防止と責務分離を重視した設計を行っています。
                             </p>
 
                             <ul className="list-disc list-inside space-y-3 my-4 ml-2 text-gray-300">
                                 <li>
-                                    状態競合を防ぐための明示的な状態遷移管理
+                                    明示的な状態遷移管理による状態競合の防止
                                     <span className="ml-2 text-xs">
                                         → <Link to="/project/1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">Axis:Save</Link>
-                                        <span className="text-gray-600 mx-1">|</span>
+                                        <span className="text-gray-600 mx-1">/</span>
                                         <Link to="/project/gj-2" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">ゲームジャム高梁</Link>
                                     </span>
                                 </li>
                                 <li>
-                                    責務分離による拡張性および保守性の確保
+                                    責務分離による拡張性・保守性の確保
                                     <span className="ml-2 text-xs">
                                         → <Link to="/project/1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">Axis:Save</Link>
-                                        <span className="text-gray-600 mx-1">|</span>
+                                        <span className="text-gray-600 mx-1">/</span>
                                         <Link to="/project/2" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">PlanetariumVR</Link>
-                                        <span className="text-gray-600 mx-1">|</span>
+                                        <span className="text-gray-600 mx-1">/</span>
                                         <Link to="/project/gj-1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">GGJ2026</Link>
                                     </span>
                                 </li>
                                 <li>
-                                    実行順序を考慮した制御設計（Update / FixedUpdateの分離）
+                                    Update / FixedUpdate を分離した実行順序制御
                                     <span className="ml-2 text-xs">
                                         → <Link to="/project/1" className="text-[#d4a574] hover:underline hover:brightness-125 transition-all">Axis:Save</Link>
                                     </span>
@@ -192,7 +197,7 @@ const ProfileSection = () => {
                             </ul>
 
                             <p className="text-gray-300 mt-2">
-                                これらの設計方針により、状態競合による不具合の局所化と、機能追加時の影響範囲の限定を実現し、チーム開発における安全な並行実装を可能にしています。
+                                これらの設計方針により、不具合発生時の影響範囲を限定し、機能追加やチーム開発時の保守性向上を目指しています。
                             </p>
 
                         </div>
