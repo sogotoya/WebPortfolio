@@ -142,7 +142,7 @@ export const m_ToolData = [
     {
         id: "tool-1",
         title: "BatchProcessAutomation",
-        description: "このツールは、プロジェクトの健康診断（エラーチェック）や各種の自動処理を、複数まとめて一気に実行できる便利な機能です。\nビルド前（ゲームを書き出す前）の最終チェックなどに活用できます。",
+        description: "制作数増加に伴い、ビルド前確認や定型処理の負担を減らすために制作した、Unity向けのバッチ処理ツールです。\n\n複数のエラーチェックや自動処理をまとめて実行できるようにし、確認作業を一元化しています。",
         descriptionEn: "Unity Editor Extension",
         videoUrl: "/projects/Tools/BatchProcessAutomation/BatchProcessAutomation.mp4",
         imageUrls: [
