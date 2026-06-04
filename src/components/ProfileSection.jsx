@@ -94,7 +94,7 @@ const ProfileSection = () => {
         roleLabel: "ROLE",
         role: "Unity / XR Programmer",
         statusLabel: "STATUS",
-        status: "実務インターン参加中",
+        status: "実務インターン参加中(日本XRセンター)",
         skillTitle: "SKILLS",
         philosophyTitle: "■ 完成確率を重視した設計",
     };
